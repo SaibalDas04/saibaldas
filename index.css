@@ -768,6 +768,8 @@ pre {
   .site-wrapper {
     display: block;
     width: 100%;
+    position: static; /* Allows drawer z-index to escape to the root screen */
+    z-index: auto;
   }
 
   /* Show Top Header Bar with Hamburger */
@@ -844,13 +846,17 @@ pre {
     height: 100vh;
     height: 100dvh;
     background-color: var(--bg-sidebar);
-    z-index: 1000;
-    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.7);
+    z-index: 1001; /* Higher than backdrop (999) and top bar (1000) */
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.85);
     border-right: 1px solid var(--border-subtle);
     border-bottom: none;
     
     transform: translateX(-105%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Hardware acceleration fix for sharp text on mobile */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .sidebar-col.drawer-open {
