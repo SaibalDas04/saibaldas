@@ -50,94 +50,142 @@
       </div>
     </section>
     <!-- Profile & Career Journey Section -->
+<!-- ==========================================================================
+     Profile, Experience & Certifications Section
+     ========================================================================== -->
 <section id="profile" class="section profile-section animate-slide-up">
-  <div class="section-header">
-    <span class="badge">Professional Background</span>
-    <h2 class="section-title">Technical Profile &amp; Career</h2>
-    <p class="section-subtitle">Bridging traditional SAP architectures with modern Cloud &amp; Clean Core engineering.</p>
-  </div>
+  <div class="profile-card">
+    
+    <!-- Left Column: Avatar, Status & Certifications -->
+    <div class="profile-visual">
+      <div class="avatar-container">
+        <div class="avatar-ring-glow"></div>
+        <img 
+          src="profile.jpg" 
+          alt="Saibal Das - SAP Technical Consultant" 
+          class="profile-img" 
+        />
+      </div>
+      
+      <div class="status-badge">
+        <span class="status-pulse"></span>
+        <span>Open for S/4HANA &amp; RAP Advisory</span>
+      </div>
 
-  <div class="profile-layout">
-    <!-- Left Column: Visual Profile Card -->
-    <div class="profile-card-wrapper">
-      <div class="profile-card">
-        <div class="avatar-glow"></div>
-        <div class="avatar-frame">
-          <!-- Replace 'profile.jpg' with your actual image file or path -->
-          <img 
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
-            alt="Profile portrait" 
-            class="profile-img"
-          />
+      <!-- Verified Certifications -->
+      <div class="certifications-block">
+        <h4 class="cert-heading">Official SAP Credentials</h4>
+        <div class="cert-badge">
+          <span class="cert-icon">🏅</span>
+          <div class="cert-info">
+            <span class="cert-name">SAP Certified - Back-End Developer</span>
+            <span class="cert-sub">ABAP Cloud &bull; SAP</span>
+          </div>
         </div>
-        <div class="profile-meta">
-          <h3 class="profile-name">SAP Technical Consultant</h3>
-          <p class="profile-role">ABAP Cloud &bull; RAP &bull; Clean Core Architect</p>
-          <div class="profile-status">
-            <span class="status-indicator"></span> Available for Architecture &amp; Advisory
+
+        <div class="cert-badge">
+          <span class="cert-icon">🏅</span>
+          <div class="cert-info">
+            <span class="cert-name">SAP Certified Associate</span>
+            <span class="cert-sub">SAP Fiori Application Developer &bull; SAP</span>
           </div>
         </div>
       </div>
+
+      <div class="social-links-quick">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">LinkedIn Profile &rarr;</a>
+      </div>
     </div>
 
-    <!-- Right Column: Career Overview & Track Record -->
-    <div class="career-content">
-      <h3 class="career-heading">Engineering upgrade-stable digital cores on SAP S/4HANA</h3>
-      <p class="career-bio">
-        Specializing in modernizing enterprise backends from legacy custom code (`Z-programs`, unreleased function modules, direct database manipulations) into robust, decoupled architectures using <strong>ABAP Cloud, RESTful Application Programming (RAP), and BTP Side-by-Side extensibility</strong>.
+    <!-- Right Column: Career Overview & Detailed Work History -->
+    <div class="profile-details">
+      <span class="badge">Professional Profile</span>
+      <h2 class="profile-name">Saibal Das</h2>
+      <h3 class="profile-role">Consultant &bull; SAP S/4HANA &amp; ABAP Cloud Specialist</h3>
+      
+      <p class="profile-lead">
+        Enterprise consultant with nearly 5 years of engineering experience across top global consulting firms. Specialized in <strong>ABAP Cloud, the RESTful Application Programming Model (RAP), Fiori Elements, and Clean Core extensibility</strong> to design resilient, upgrade-stable S/4HANA solutions.
       </p>
 
-      <!-- Key Career Impact Metrics -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number">4+</span>
-          <span class="stat-label">Years of SAP Development Experience</span>
+      <!-- Key Metrics -->
+      <div class="profile-metrics-grid">
+        <div class="metric-box">
+          <span class="metric-number">4.5+ yrs</span>
+          <span class="metric-label">Enterprise Consulting</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">20+</span>
-          <span class="stat-label">Production RAP Business Objects Delivered</span>
+        <div class="metric-box">
+          <span class="metric-number">2x SAP</span>
+          <span class="metric-label">Certified Specialist</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">100%</span>
-          <span class="stat-label">C1 Tier-1 Release Contract Compliance</span>
+        <div class="metric-box">
+          <span class="metric-number">Clean Core</span>
+          <span class="metric-label">Tier-1 Cloud Architecture</span>
         </div>
       </div>
 
-      <!-- Career Milestones Timeline -->
-      <div class="career-milestones">
-        <h4 class="milestones-title">Trajectory &amp; Focus Areas</h4>
+      <!-- Experience Track Record -->
+      <div class="experience-timeline">
+        <h4 class="highlights-title">Work Experience</h4>
         
-        <div class="milestone-entry">
-          <div class="milestone-bullet"></div>
-          <div class="milestone-details">
-            <span class="milestone-period">Current Focus</span>
-            <h5 class="milestone-role">Clean Core &amp; RAP Implementation Architect</h5>
-            <p class="milestone-desc">Guiding S/4HANA migration pathways, refactoring classic user exits into Cloud BAdIs, and designing transactional OData v4 interfaces for Fiori Elements.</p>
+        <!-- Role 1: Capgemini -->
+        <article class="exp-item current-role">
+          <div class="exp-header">
+            <div>
+              <h5 class="exp-role">Consultant</h5>
+              <span class="exp-company">Capgemini &bull; Full-time (Hybrid)</span>
+              <span class="exp-loc">Kolkata, West Bengal, India</span>
+            </div>
+            <span class="exp-duration">Feb 2025 &ndash; Present</span>
           </div>
-        </div>
+          <ul class="exp-deliverables">
+            <li>Leading the design of end-to-end business objects using the ABAP RESTful Application Programming Model (RAP) with draft persistence, custom validations, and determinations.</li>
+            <li>Enforcing Clean Core governance: decoupling custom extensions via Tier-1 standard APIs and replacing legacy custom code with modern Cloud BAdIs.</li>
+            <li>Exposing high-performance Core Data Services (CDS) view entities as OData v4 services for modern SAP Fiori Elements user interfaces.</li>
+          </ul>
+        </article>
 
-        <div class="milestone-entry">
-          <div class="milestone-bullet"></div>
-          <div class="milestone-details">
-            <span class="milestone-period">Enterprise Experience</span>
-            <h5 class="milestone-role">SAP Technical Consultant &amp; S/4HANA Engineer</h5>
-            <p class="milestone-desc">Engineered core ABAP solutions across SD, MM, and FI domains, optimizing database access patterns via CDS analytical views and automated EML operations.</p>
+        <!-- Role 2: Accenture -->
+        <article class="exp-item">
+          <div class="exp-header">
+            <div>
+              <h5 class="exp-role">Packaged App Development Analyst</h5>
+              <span class="exp-company">Accenture in India &bull; Full-time (Hybrid)</span>
+              <span class="exp-loc">Kolkata, West Bengal, India</span>
+            </div>
+            <span class="exp-duration">Dec 2023 &ndash; Feb 2025</span>
           </div>
-        </div>
+          <ul class="exp-deliverables">
+            <li>Built and optimized transactional business processes in S/4HANA using RAP and CDS analytical projection layers.</li>
+            <li>Conducted remediation of custom code for S/4HANA migrations using Custom Code Migration Worklist (CCMW) and ABAP Test Cockpit (ATC).</li>
+            <li>Delivered responsive Fiori web applications by coupling metadata-driven UI annotations with backend business logic.</li>
+          </ul>
+        </article>
+
+        <!-- Role 3: TCS -->
+        <article class="exp-item">
+          <div class="exp-header">
+            <div>
+              <h5 class="exp-role">Associate System Engineer</h5>
+              <span class="exp-company">Tata Consultancy Services &bull; Full-time</span>
+              <span class="exp-loc">Kolkata, West Bengal, India</span>
+            </div>
+            <span class="exp-duration">Nov 2021 &ndash; Jan 2024</span>
+          </div>
+          <ul class="exp-deliverables">
+            <li>Engineered and maintained core ABAP objects across standard modules (SD, MM, FI), developing reports, interfaces, conversions, and enhancements (RICEFW).</li>
+            <li>Implemented complex ABAP SQL logic, internal table performance tuning, and database optimization for SAP HANA.</li>
+            <li>Collaborated with functional teams to translate enterprise business requirements into robust technical specifications and unit test scripts.</li>
+          </ul>
+        </article>
       </div>
 
-      <!-- Professional Capabilities Badges -->
-      <div class="skills-cluster">
-        <span class="skill-chip">ABAP Cloud</span>
-        <span class="skill-chip">RAP (Managed &amp; Draft)</span>
-        <span class="skill-chip">CDS View Entities</span>
-        <span class="skill-chip">EML</span>
-        <span class="skill-chip">BAdI Extensibility</span>
-        <span class="skill-chip">OData v4</span>
-        <span class="skill-chip">SAP BTP</span>
-        <span class="skill-chip">ATC &amp; Clean Code</span>
+      <!-- Action Buttons -->
+      <div class="profile-cta-group">
+        <a href="#showcase" class="btn btn-primary">Review Work Demos</a>
+        <a href="#sandbox" class="btn btn-secondary">Explore Code Lab</a>
       </div>
     </div>
+
   </div>
 </section>
 
