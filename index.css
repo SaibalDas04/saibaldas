@@ -81,16 +81,18 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 430px 1fr;
+  /* Use minmax(0, 1fr) instead of 1fr to stop code blocks from stretching the screen */
+  grid-template-columns: 380px minmax(0, 1fr);
   min-height: 100vh;
+  width: 100%;
 }
 
 /* ==========================================================================
    LEFT SIDEBAR: Profile & Work History
    ========================================================================== */
 .sidebar-col {
-  border-right: 1px solid var(--border-subtle);
-  background-color: var(--bg-sidebar);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .sidebar-inner {
@@ -417,8 +419,8 @@ body {
 /* Principles Cards */
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .glass-card {
@@ -573,6 +575,8 @@ body {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+   width: 100%;
+  max-width: 100%;
 }
 
 .ide-topbar {
@@ -627,8 +631,10 @@ body {
 
 .ide-editor {
   display: none;
-  padding: 24px;
+  padding: 20px;
   overflow-x: auto;
+  max-width: 100%;
+   
 }
 
 .ide-editor.active {
@@ -637,9 +643,12 @@ body {
 }
 
 pre {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  line-height: 1.7;
+
+   font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  white-space: pre;
+  overflow-x: auto;
 }
 
 .tok-kw { color: var(--tok-kw); font-weight: 500; }
@@ -712,31 +721,111 @@ pre {
 /* ==========================================================================
    Responsive Adaptations (Tablet & Mobile)
    ========================================================================== */
-@media (max-width: 1080px) {
+/* ==========================================================================
+   Multi-Device Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Smaller Laptops (under 1024px) */
+@media (max-width: 1024px) {
   .site-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Switch to single column */
+  }
+
+  .sidebar-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .sidebar-inner {
     position: static;
     height: auto;
-    padding: 40px 24px;
-    border-bottom: 1px solid var(--border-subtle);
+    overflow-y: visible;
+    padding: 40px 32px;
   }
 
   .content-col {
-    padding: 40px 24px;
-  }
-
-  .principles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .slide-card {
-    flex: 0 0 85%;
+    padding: 48px 32px;
+    gap: 56px;
   }
 
   .hero-headline {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
+  }
+}
+
+/* Small Tablets & Large Phones (under 768px) */
+@media (max-width: 768px) {
+  .sidebar-inner {
+    padding: 32px 20px;
+    gap: 28px;
+  }
+
+  .content-col {
+    padding: 36px 16px;
+    gap: 48px;
+  }
+
+  .hero-headline {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+  }
+
+  .slider-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .slider-controls {
+    align-self: flex-end;
+  }
+
+  .ide-tabs {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .ide-tab-btn {
+    white-space: nowrap;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+  }
+
+  .timeline-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Small Handheld Phones (under 480px) */
+@media (max-width: 480px) {
+  .avatar-wrapper {
+    width: 85px;
+    height: 85px;
+  }
+
+  .profile-name {
+    font-size: 1.55rem;
+  }
+
+  .block-title {
+    font-size: 1.3rem;
+  }
+
+  .glass-card,
+  .timeline-card,
+  .note-card {
+    padding: 16px;
+  }
+
+  .content-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 }
