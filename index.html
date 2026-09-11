@@ -3,445 +3,399 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio & Technical Learning Hub - SAP ABAP, RAP, ABAP Cloud & Clean Core Extensibility" />
-  <title>Architect & Developer | SAP S/4HANA & Clean Core</title>
-  <link rel="stylesheet" href="index.css" />
+  <meta name="description" content="Saibal Das | SAP S/4HANA Consultant, ABAP Cloud, RAP & Clean Core Architecture Hub" />
+  <title>Saibal Das | SAP ABAP Cloud & Clean Core Architect</title>
+  
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="#hero" class="brand-logo">&lt;CleanCore<span class="highlight">::ABAP</span> /&gt;</a>
-      <nav class="site-nav">
-        <ul class="nav-list">
-          <li><a href="#principles" class="nav-link">Architecture</a></li>
-          <li><a href="#showcase" class="nav-link">Projects Slider</a></li>
-          <li><a href="#sandbox" class="nav-link">Interactive Demos</a></li>
-          <li><a href="#updates" class="nav-link">Tech Log</a></li>
-          <ul class="nav-list">
-          <li><a href="#profile" class="nav-link">Profile</a></li>
-          <li><a href="#principles" class="nav-link">Architecture</a></li>
-          <li><a href="#showcase" class="nav-link">Projects Slider</a></li>
-          <li><a href="#sandbox" class="nav-link">Interactive Demos</a></li>
-          <li><a href="#updates" class="nav-link">Tech Log</a></li>
-        </ul>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Ambient Background Lighting -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="hero" class="section hero-section animate-fade">
-      <div class="hero-content">
-        <span class="badge">SAP S/4HANA &amp; ABAP Cloud</span>
-        <h1 class="hero-title">Engineering Resilient Enterprise Solutions with <span class="gradient-text">Clean Core &amp; RAP</span></h1>
-        <p class="hero-description">
-          A dedicated repository of modern ABAP development patterns, RAP (RESTful Application Programming Model) business objects, side-by-side extensibility architectures, and migration strategies toward zero-modification ERPs.
-        </p>
-        <div class="hero-actions">
-          <a href="#showcase" class="btn btn-primary">Explore Demo Showcase</a>
-          <a href="#sandbox" class="btn btn-secondary">Review Code Sandbox</a>
-        </div>
-      </div>
-    </section>
-    <!-- Profile & Career Journey Section -->
-<!-- ==========================================================================
-     Profile, Experience & Certifications Section
-     ========================================================================== -->
-<section id="profile" class="section profile-section animate-slide-up">
-  <div class="profile-card">
-    
-    <!-- Left Column: Avatar, Status & Certifications -->
-    <div class="profile-visual">
-      <div class="avatar-container">
-        <div class="avatar-ring-glow"></div>
-        <img 
-          src="profile.jpg" 
-          alt="Saibal Das - SAP Technical Consultant" 
-          class="profile-img" 
-        />
-      </div>
-      
-      <div class="status-badge">
-        <span class="status-pulse"></span>
-        <span>Open for S/4HANA &amp; RAP Advisory</span>
-      </div>
+  <!-- Master Two-Column Container -->
+  <div class="site-wrapper">
 
-      <!-- Verified Certifications -->
-      <div class="certifications-block">
-        <h4 class="cert-heading">Official SAP Credentials</h4>
-        <div class="cert-badge">
-          <span class="cert-icon">🏅</span>
-          <div class="cert-info">
-            <span class="cert-name">SAP Certified - Back-End Developer</span>
-            <span class="cert-sub">ABAP Cloud &bull; SAP</span>
-          </div>
-        </div>
-
-        <div class="cert-badge">
-          <span class="cert-icon">🏅</span>
-          <div class="cert-info">
-            <span class="cert-name">SAP Certified Associate</span>
-            <span class="cert-sub">SAP Fiori Application Developer &bull; SAP</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="social-links-quick">
-        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">LinkedIn Profile &rarr;</a>
-      </div>
-    </div>
-
-    <!-- Right Column: Career Overview & Detailed Work History -->
-    <div class="profile-details">
-      <span class="badge">Professional Profile</span>
-      <h2 class="profile-name">Saibal Das</h2>
-      <h3 class="profile-role">Consultant &bull; SAP S/4HANA &amp; ABAP Cloud Specialist</h3>
-      
-      <p class="profile-lead">
-        Enterprise consultant with nearly 5 years of engineering experience across top global consulting firms. Specialized in <strong>ABAP Cloud, the RESTful Application Programming Model (RAP), Fiori Elements, and Clean Core extensibility</strong> to design resilient, upgrade-stable S/4HANA solutions.
-      </p>
-
-      <!-- Key Metrics -->
-      <div class="profile-metrics-grid">
-        <div class="metric-box">
-          <span class="metric-number">4.5+ yrs</span>
-          <span class="metric-label">Enterprise Consulting</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-number">2x SAP</span>
-          <span class="metric-label">Certified Specialist</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-number">Clean Core</span>
-          <span class="metric-label">Tier-1 Cloud Architecture</span>
-        </div>
-      </div>
-
-      <!-- Experience Track Record -->
-      <div class="experience-timeline">
-        <h4 class="highlights-title">Work Experience</h4>
+    <!-- ====================================================================
+         LEFT SIDEBAR: Profile, Career Experience & Certifications (Sticky)
+         ==================================================================== -->
+    <aside class="sidebar-col">
+      <div class="sidebar-inner">
         
-        <!-- Role 1: Capgemini -->
-        <article class="exp-item current-role">
-          <div class="exp-header">
-            <div>
-              <h5 class="exp-role">Consultant</h5>
-              <span class="exp-company">Capgemini &bull; Full-time (Hybrid)</span>
-              <span class="exp-loc">Kolkata, West Bengal, India</span>
-            </div>
-            <span class="exp-duration">Feb 2025 &ndash; Present</span>
+        <!-- Profile Header -->
+        <header class="profile-header">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring-glow"></div>
+            <!-- Update src with your photo file name (e.g., saibal.jpg) -->
+            <img 
+              src="profile.jpg" 
+              alt="Saibal Das" 
+              class="avatar-image" 
+              onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'"
+            />
           </div>
-          <ul class="exp-deliverables">
-            <li>Leading the design of end-to-end business objects using the ABAP RESTful Application Programming Model (RAP) with draft persistence, custom validations, and determinations.</li>
-            <li>Enforcing Clean Core governance: decoupling custom extensions via Tier-1 standard APIs and replacing legacy custom code with modern Cloud BAdIs.</li>
-            <li>Exposing high-performance Core Data Services (CDS) view entities as OData v4 services for modern SAP Fiori Elements user interfaces.</li>
-          </ul>
-        </article>
 
-        <!-- Role 2: Accenture -->
-        <article class="exp-item">
-          <div class="exp-header">
-            <div>
-              <h5 class="exp-role">Packaged App Development Analyst</h5>
-              <span class="exp-company">Accenture in India &bull; Full-time (Hybrid)</span>
-              <span class="exp-loc">Kolkata, West Bengal, India</span>
+          <div class="profile-title-block">
+            <h1 class="profile-name">Saibal Das</h1>
+            <p class="profile-role">SAP S/4HANA Consultant &bull; ABAP Cloud</p>
+            <div class="status-pill">
+              <span class="status-indicator"></span>
+              <span>Available for Architecture Advisory</span>
             </div>
-            <span class="exp-duration">Dec 2023 &ndash; Feb 2025</span>
           </div>
-          <ul class="exp-deliverables">
-            <li>Built and optimized transactional business processes in S/4HANA using RAP and CDS analytical projection layers.</li>
-            <li>Conducted remediation of custom code for S/4HANA migrations using Custom Code Migration Worklist (CCMW) and ABAP Test Cockpit (ATC).</li>
-            <li>Delivered responsive Fiori web applications by coupling metadata-driven UI annotations with backend business logic.</li>
-          </ul>
-        </article>
+        </header>
 
-        <!-- Role 3: TCS -->
-        <article class="exp-item">
-          <div class="exp-header">
-            <div>
-              <h5 class="exp-role">Associate System Engineer</h5>
-              <span class="exp-company">Tata Consultancy Services &bull; Full-time</span>
-              <span class="exp-loc">Kolkata, West Bengal, India</span>
+        <!-- Brief Bio -->
+        <p class="sidebar-bio">
+          Enterprise technical consultant specializing in <strong>modern ABAP Cloud, RAP, and Clean Core governance</strong>. Focused on zero-modification digital core modernization and upgrade-stable extensibility.
+        </p>
+
+        <!-- Official Certifications -->
+        <section class="sidebar-section">
+          <h2 class="sidebar-label">Verified Credentials</h2>
+          <div class="cert-card-group">
+            <div class="cert-item">
+              <div class="cert-badge-icon">🏅</div>
+              <div class="cert-text">
+                <span class="cert-title">SAP Certified - Back-End Developer</span>
+                <span class="cert-meta">ABAP Cloud &bull; SAP Standard</span>
+              </div>
             </div>
-            <span class="exp-duration">Nov 2021 &ndash; Jan 2024</span>
+            <div class="cert-item">
+              <div class="cert-badge-icon">🏅</div>
+              <div class="cert-text">
+                <span class="cert-title">SAP Certified Associate</span>
+                <span class="cert-meta">SAP Fiori Application Developer</span>
+              </div>
+            </div>
           </div>
-          <ul class="exp-deliverables">
-            <li>Engineered and maintained core ABAP objects across standard modules (SD, MM, FI), developing reports, interfaces, conversions, and enhancements (RICEFW).</li>
-            <li>Implemented complex ABAP SQL logic, internal table performance tuning, and database optimization for SAP HANA.</li>
-            <li>Collaborated with functional teams to translate enterprise business requirements into robust technical specifications and unit test scripts.</li>
-          </ul>
-        </article>
+        </section>
+
+        <!-- Career Experience Timeline -->
+        <section class="sidebar-section experience-section">
+          <h2 class="sidebar-label">Career &amp; Industry Track Record</h2>
+          <div class="timeline-container">
+            
+            <!-- Capgemini -->
+            <article class="timeline-card active-position">
+              <div class="timeline-meta">
+                <span class="company-name">Capgemini</span>
+                <span class="time-tag">Feb 2025 &ndash; Present</span>
+              </div>
+              <h3 class="role-title">Consultant</h3>
+              <p class="role-location">Kolkata, India &bull; Hybrid</p>
+              <ul class="role-bullets">
+                <li>Designing end-to-end transactional RAP business objects (Managed/Unmanaged) with Draft persistence, determinations, and validations.</li>
+                <li>Executing Clean Core Tier-1 migrations: decoupling legacy user exits (`MV45AFZZ`) to cloud-ready Developer Extensibility BAdIs.</li>
+              </ul>
+            </article>
+
+            <!-- Accenture -->
+            <article class="timeline-card">
+              <div class="timeline-meta">
+                <span class="company-name">Accenture in India</span>
+                <span class="time-tag">Dec 2023 &ndash; Feb 2025</span>
+              </div>
+              <h3 class="role-title">Packaged App Development Analyst</h3>
+              <p class="role-location">Kolkata, India &bull; Hybrid</p>
+              <ul class="role-bullets">
+                <li>Remediated custom codebases during enterprise S/4HANA migrations using Custom Code Migration Worklist (CCMW) and ATC checks.</li>
+                <li>Constructed Core Data Services (CDS) analytical view hierarchies and custom OData services consumed by Fiori web applications.</li>
+              </ul>
+            </article>
+
+            <!-- TCS -->
+            <article class="timeline-card">
+              <div class="timeline-meta">
+                <span class="company-name">Tata Consultancy Services</span>
+                <span class="time-tag">Nov 2021 &ndash; Jan 2024</span>
+              </div>
+              <h3 class="role-title">Associate System Engineer</h3>
+              <p class="role-location">Kolkata, India</p>
+              <ul class="role-bullets">
+                <li>Delivered standard RICEFW development across SD and MM modules, tuning ABAP SQL statements for in-memory SAP HANA databases.</li>
+                <li>Authored technical design specifications and integrated synchronous REST/OData APIs with non-SAP systems.</li>
+              </ul>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Quick Contacts & Links -->
+        <footer class="sidebar-footer">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-primary full-width">Connect on LinkedIn &rarr;</a>
+        </footer>
+
       </div>
+    </aside>
 
-      <!-- Action Buttons -->
-      <div class="profile-cta-group">
-        <a href="#showcase" class="btn btn-primary">Review Work Demos</a>
-        <a href="#sandbox" class="btn btn-secondary">Explore Code Lab</a>
-      </div>
-    </div>
+    <!-- ====================================================================
+         RIGHT CONTENT STREAM: Works, Code Demos & Clean Core Architecture
+         ==================================================================== -->
+    <main class="content-col">
 
-  </div>
-</section>
+      <!-- Hero Header -->
+      <section class="content-block hero-block">
+        <span class="tag-label">Enterprise Architecture Showcase</span>
+        <h2 class="hero-headline">Building Resilient ERP Systems with <span class="gradient-text">Clean Core &amp; RAP</span></h2>
+        <p class="hero-lead">
+          A living repository of modern ABAP engineering patterns. Here you can inspect real-world solutions built to withstand cloud upgrades without modifying the standard SAP core.
+        </p>
+      </section>
 
-    <!-- Clean Core Architecture Pillars -->
-    <section id="principles" class="section principles-section animate-slide-up">
-      <div class="section-header">
-        <h2 class="section-title">Core Development Principles</h2>
-        <p class="section-subtitle">Methodologies applied to keep the digital core upgrade-stable and decoupled.</p>
-      </div>
-
-      <div class="principles-grid">
-        <article class="principle-card">
-          <div class="card-icon">⚡</div>
-          <h3 class="card-title">ABAP Cloud &amp; Tier-1 APIs</h3>
-          <p class="card-text">
-            Restricting all development strictly to released SAP standard interfaces (`C1` contracts), eliminating reliance on unreleased internal function modules and transparent tables.
-          </p>
-        </article>
-
-        <article class="principle-card">
-          <div class="card-icon">🧩</div>
-          <h3 class="card-title">RAP Architecture</h3>
-          <p class="card-text">
-            End-to-end implementation of Managed &amp; Unmanaged BOs with draft handling, validations, determinations, and strict transaction boundary controls via Entity Manipulation Language (EML).
-          </p>
-        </article>
-
-        <article class="principle-card">
-          <div class="card-icon">☁️</div>
-          <h3 class="card-title">Clean Core Extensibility</h3>
-          <p class="card-text">
-            Architecting extensions via On-Stack Developer Extensibility and Side-by-Side integration on SAP BTP using asynchronous events (SAP Event Mesh) and OData v4 APIs.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Projects / Work Demos Showcase (Animated Slider) -->
-    <section id="showcase" class="section showcase-section animate-slide-up">
-      <div class="section-header">
-        <h2 class="section-title">Featured Solutions &amp; POC Demos</h2>
-        <p class="section-subtitle">Swipe or scroll through real-world implementation blueprints and architectural demos.</p>
-      </div>
-
-      <!-- Fluid CSS Slider Container -->
-      <div class="slider-wrapper">
-        <div class="slider-track" id="sliderTrack">
-
-          <!-- Slide 1 -->
-          <article class="slide-item">
-            <div class="slide-badge">RAP Managed Scenario</div>
-            <h3 class="slide-title">End-to-End Sales Order Exception Processing App</h3>
-            <p class="slide-description">
-              Custom business object built with ABAP RAP, implementing active/draft persistence, side-effects, automatic determinations for pricing, and OData v4 exposure for Fiori Elements.
-            </p>
-            <div class="tag-cloud">
-              <span class="tech-tag">ABAP Cloud</span>
-              <span class="tech-tag">Draft BO</span>
-              <span class="tech-tag">Fiori Elements</span>
-            </div>
-            <a href="#sandbox" class="slide-link">Review Implementation Details &rarr;</a>
-          </article>
-
-          <!-- Slide 2 -->
-          <article class="slide-item">
-            <div class="slide-badge">Clean Core Migration</div>
-            <h3 class="slide-title">Legacy User Exit Modernization Pattern</h3>
-            <p class="slide-description">
-              Step-by-step refactoring of classic user exits (`MV45AFZZ`) into cloud-ready Business Add-Ins (BAdIs) using standard extension spots and released RAP behaviors.
-            </p>
-            <div class="tag-cloud">
-              <span class="tech-tag">Custom Logic BAdI</span>
-              <span class="tech-tag">Developer Extensibility</span>
-              <span class="tech-tag">S/4HANA</span>
-            </div>
-            <a href="#sandbox" class="slide-link">Review Implementation Details &rarr;</a>
-          </article>
-
-          <!-- Slide 3 -->
-          <article class="slide-item">
-            <div class="slide-badge">Side-by-Side Pattern</div>
-            <h3 class="slide-title">Real-Time Event-Driven Integration with BTP</h3>
-            <p class="slide-description">
-              Architecture capturing core S/4HANA business events via RAP Event Definition, forwarded through SAP Event Mesh to offload heavy custom analytics processing to SAP BTP.
-            </p>
-            <div class="tag-cloud">
-              <span class="tech-tag">RAP Events</span>
-              <span class="tech-tag">SAP Event Mesh</span>
-              <span class="tech-tag">SAP BTP</span>
-            </div>
-            <a href="#sandbox" class="slide-link">Review Implementation Details &rarr;</a>
-          </article>
-
-          <!-- Slide 4 -->
-          <article class="slide-item">
-            <div class="slide-badge">Core Data Services</div>
-            <h3 class="slide-title">Hierarchical Analytics Projection Architecture</h3>
-            <p class="slide-description">
-              High-performance CDS Analytical View hierarchy utilizing association-based joins, parameterized currency conversions, and aggregated dimensional modeling.
-            </p>
-            <div class="tag-cloud">
-              <span class="tech-tag">CDS View Entities</span>
-              <span class="tech-tag">Virtual Elements</span>
-              <span class="tech-tag">Analytical Engine</span>
-            </div>
-            <a href="#sandbox" class="slide-link">Review Implementation Details &rarr;</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Learning & Code Sandbox -->
-    <section id="sandbox" class="section sandbox-section animate-slide-up">
-      <div class="section-header">
-        <h2 class="section-title">Architectural Code Learning Lab</h2>
-        <p class="section-subtitle">Examine clean code implementations designed for upgrade stability and modularity.</p>
-      </div>
-
-      <div class="code-showcase-container">
-        <!-- Tab Controls -->
-        <div class="code-tabs">
-          <button class="tab-btn active" onclick="switchTab(event, 'tab-bdef')">Behavior Definition (BDEF)</button>
-          <button class="tab-btn" onclick="switchTab(event, 'tab-eml')">EML Controller Logic</button>
-          <button class="tab-btn" onclick="switchTab(event, 'tab-cds')">CDS View Entity</button>
+      <!-- Architecture Principles Grid -->
+      <section class="content-block">
+        <div class="block-header">
+          <h3 class="block-title">Core Development Standards</h3>
+          <p class="block-subtitle">Governing rules applied across all implementation blueprints.</p>
         </div>
 
-        <!-- Code Content 1: BDEF -->
-        <div id="tab-bdef" class="code-content active">
-          <pre><code><span class="code-keyword">managed</span> <span class="code-keyword">implementation in class</span> zbp_r_travel_processor <span class="code-keyword">unique</span>;
-<span class="code-keyword">strict</span> ( 2 );
-<span class="code-keyword">with draft</span>;
+        <div class="principles-grid">
+          <div class="glass-card">
+            <div class="card-icon">⚡</div>
+            <h4>Tier-1 Interface Standard</h4>
+            <p>Strict limitation to released standard APIs (C1 contract), avoiding unreleased internal tables and raw function modules.</p>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">🛡️</div>
+            <h4>Draft-First RAP Architecture</h4>
+            <p>Full lifecycle Managed and Unmanaged BOs with EML-governed transactions and multi-level data validation logic.</p>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">☁️</div>
+            <h4>Side-by-Side Decoupling</h4>
+            <p>Offloading custom workloads to SAP BTP via asynchronous Event Mesh messages and secure OData v4 web endpoints.</p>
+          </div>
+        </div>
+      </section>
 
-<span class="code-keyword">define behavior for</span> ZR_Travel_Processor <span class="code-keyword">alias</span> Travel
-<span class="code-keyword">persistent table</span> ztravel_data
-<span class="code-keyword">draft table</span> ztravel_d
-<span class="code-keyword">lock master total etag</span> LastChangedAt
-<span class="code-keyword">authorization master</span> ( <span class="code-keyword">global</span> )
+      <!-- Fluid Interactive Showcase Slider -->
+      <section class="content-block">
+        <div class="block-header slider-header-flex">
+          <div>
+            <h3 class="block-title">Featured Solutions &amp; POC Demos</h3>
+            <p class="block-subtitle">Slide horizontally to inspect architectural patterns.</p>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow" onclick="scrollSlider(-1)" aria-label="Previous demo">&larr;</button>
+            <button class="slider-arrow" onclick="scrollSlider(1)" aria-label="Next demo">&rarr;</button>
+          </div>
+        </div>
+
+        <!-- Scroll-Snap Track -->
+        <div class="slider-viewport" id="sliderViewport">
+          <div class="slider-canvas" id="sliderCanvas">
+
+            <!-- Slide 1 -->
+            <article class="slide-card">
+              <span class="slide-category">RAP Managed Scenario</span>
+              <h4 class="slide-heading">Automated Order Exception Handling Engine</h4>
+              <p class="slide-text">
+                Custom RAP transactional business object featuring draft state persistence, automatic pricing recalculation determinations, and custom authorization checks.
+              </p>
+              <div class="pill-group">
+                <span class="pill">ABAP Cloud</span>
+                <span class="pill">RAP Draft</span>
+                <span class="pill">Fiori Elements</span>
+              </div>
+              <a href="#sandbox" class="slide-action">Inspect Code Logic &rarr;</a>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="slide-card">
+              <span class="slide-category">Clean Core Remediation</span>
+              <h4 class="slide-heading">Legacy User Exit Modernization Blueprint</h4>
+              <p class="slide-text">
+                Step-by-step refactoring pattern converting legacy SD/MM user exits (`MV45AFZZ`) into cloud-ready developer extensibility Business Add-Ins (BAdIs).
+              </p>
+              <div class="pill-group">
+                <span class="pill">Cloud BAdI</span>
+                <span class="pill">Developer Extensibility</span>
+                <span class="pill">S/4HANA</span>
+              </div>
+              <a href="#sandbox" class="slide-action">Inspect Code Logic &rarr;</a>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="slide-card">
+              <span class="slide-category">Side-by-Side Integration</span>
+              <h4 class="slide-heading">Event-Driven Asynchronous SAP BTP Bridge</h4>
+              <p class="slide-text">
+                Publishing native business events upon sales contract creation via RAP Event Definition, routed through SAP Event Mesh to offload analytics.
+              </p>
+              <div class="pill-group">
+                <span class="pill">RAP Events</span>
+                <span class="pill">Event Mesh</span>
+                <span class="pill">SAP BTP</span>
+              </div>
+              <a href="#sandbox" class="slide-action">Inspect Code Logic &rarr;</a>
+            </article>
+
+            <!-- Slide 4 -->
+            <article class="slide-card">
+              <span class="slide-category">Analytics Modeling</span>
+              <h4 class="slide-heading">High-Throughput CDS Projection Hierarchies</h4>
+              <p class="slide-text">
+                Parameterized analytical CDS view entities utilizing transactional query contracts, transient associations, and automated currency conversions.
+              </p>
+              <div class="pill-group">
+                <span class="pill">CDS Entities</span>
+                <span class="pill">OData v4</span>
+                <span class="pill">Analytical Engine</span>
+              </div>
+              <a href="#sandbox" class="slide-action">Inspect Code Logic &rarr;</a>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Code Sandbox -->
+      <section id="sandbox" class="content-block">
+        <div class="block-header">
+          <h3 class="block-title">Interactive Architectural Code Lab</h3>
+          <p class="block-subtitle">Examine the implementation patterns powering modern Clean Core apps.</p>
+        </div>
+
+        <div class="ide-window">
+          <!-- Window Controls Bar -->
+          <div class="ide-topbar">
+            <div class="ide-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="ide-tabs">
+              <button class="ide-tab-btn active" onclick="selectTab(event, 'code-bdef')">Travel_Processor.bdef</button>
+              <button class="ide-tab-btn" onclick="selectTab(event, 'code-eml')">ValidationLogic.abap</button>
+              <button class="ide-tab-btn" onclick="selectTab(event, 'code-cds')">C_TravelProjection.cds</button>
+            </div>
+          </div>
+
+          <!-- Code View 1: Behavior Definition -->
+          <div id="code-bdef" class="ide-editor active">
+            <pre><code><span class="tok-kw">managed implementation in class</span> zbp_r_travel_processor <span class="tok-kw">unique</span>;
+<span class="tok-kw">strict</span> ( 2 );
+<span class="tok-kw">with draft</span>;
+
+<span class="tok-kw">define behavior for</span> ZR_Travel_Processor <span class="tok-kw">alias</span> Travel
+<span class="tok-kw">persistent table</span> ztravel_data
+<span class="tok-kw">draft table</span> ztravel_d
+<span class="tok-kw">lock master total etag</span> LastChangedAt
+<span class="tok-kw">authorization master</span> ( <span class="tok-kw">global</span> )
 {
-  <span class="code-keyword">field</span> ( <span class="code-keyword">readonly</span>, <span class="code-keyword">numbering</span> : <span class="code-keyword">managed</span> ) TravelUUID;
-  <span class="code-keyword">field</span> ( <span class="code-keyword">mandatory</span> ) CustomerID, BeginDate, EndDate;
+  <span class="tok-kw">field</span> ( <span class="tok-kw">readonly, numbering : managed</span> ) TravelUUID;
+  <span class="tok-kw">field</span> ( <span class="tok-kw">mandatory</span> ) CustomerID, BeginDate, EndDate;
 
-  <span class="code-keyword">create</span>;
-  <span class="code-keyword">update</span>;
-  <span class="code-keyword">delete</span>;
+  <span class="tok-kw">create</span>; <span class="tok-kw">update</span>; <span class="tok-kw">delete</span>;
 
-  <span class="code-comment">/* Clean Core Compliance: Explicit validations replace legacy triggers */</span>
-  <span class="code-keyword">validation</span> validateDates <span class="code-keyword">on save</span> { <span class="code-keyword">field</span> BeginDate, EndDate; <span class="code-keyword">create</span>; }
-  <span class="code-keyword">determination</span> setInitialStatus <span class="code-keyword">on modify</span> { <span class="code-keyword">create</span>; }
+  <span class="tok-comment">/* Clean Core Compliance: Validation trigger on transactional save */</span>
+  <span class="tok-kw">validation</span> validateDates <span class="tok-kw">on save</span> { <span class="tok-kw">field</span> BeginDate, EndDate; <span class="tok-kw">create</span>; }
+  <span class="tok-kw">determination</span> setInitialStatus <span class="tok-kw">on modify</span> { <span class="tok-kw">create</span>; }
 
-  <span class="code-keyword">draft action</span> Edit;
-  <span class="code-keyword">draft action</span> Activate <span class="code-keyword">optimized</span>;
-  <span class="code-keyword">draft action</span> Discard;
-  <span class="code-keyword">draft determine action</span> Prepare { <span class="code-keyword">validation</span> validateDates; }
+  <span class="tok-kw">draft action</span> Edit;
+  <span class="tok-kw">draft action</span> Activate <span class="tok-kw">optimized</span>;
+  <span class="tok-kw">draft action</span> Discard;
+  <span class="tok-kw">draft determine action</span> Prepare { <span class="tok-kw">validation</span> validateDates; }
 }</code></pre>
-        </div>
+          </div>
 
-        <!-- Code Content 2: EML -->
-        <div id="tab-eml" class="code-content">
-          <pre><code><span class="code-keyword">METHOD</span> validateDates.
-  <span class="code-comment">" Read business object entity via EML (Tier-1 Clean Standard)</span>
-  <span class="code-keyword">READ ENTITIES OF</span> ZR_Travel_Processor <span class="code-keyword">IN LOCAL MODE</span>
-    <span class="code-keyword">ENTITY</span> Travel
-    <span class="code-keyword">FIELDS</span> ( BeginDate EndDate )
-    <span class="code-keyword">WITH CORRESPONDING</span> #( keys )
-    <span class="code-keyword">RESULT DATA</span>(lt_travel).
+          <!-- Code View 2: EML -->
+          <div id="code-eml" class="ide-editor">
+            <pre><code><span class="tok-kw">METHOD</span> validateDates.
+  <span class="tok-comment">" Read business object data via Entity Manipulation Language (EML)</span>
+  <span class="tok-kw">READ ENTITIES OF</span> ZR_Travel_Processor <span class="tok-kw">IN LOCAL MODE</span>
+    <span class="tok-kw">ENTITY</span> Travel
+    <span class="tok-kw">FIELDS</span> ( BeginDate EndDate )
+    <span class="tok-kw">WITH CORRESPONDING</span> #( keys )
+    <span class="tok-kw">RESULT DATA</span>(lt_travel).
 
-  <span class="code-keyword">LOOP AT</span> lt_travel <span class="code-keyword">INTO DATA</span>(ls_travel).
-    <span class="code-keyword">IF</span> ls_travel-EndDate &lt; ls_travel-BeginDate.
-      <span class="code-comment">" Append message to RAP framework message stack</span>
-      <span class="code-keyword">APPEND VALUE</span> #( %tky = ls_travel-%tky ) <span class="code-keyword">TO</span> failed-travel.
-      <span class="code-keyword">APPEND VALUE</span> #( %tky = ls_travel-%tky
-                      %msg = new_message( id       = <span class="code-string">'ZTRAVEL_MSG'</span>
+  <span class="tok-kw">LOOP AT</span> lt_travel <span class="tok-kw">INTO DATA</span>(ls_travel).
+    <span class="tok-kw">IF</span> ls_travel-EndDate &lt; ls_travel-BeginDate.
+      <span class="tok-comment">" Populate the RAP reported & failed response structures</span>
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_travel-%tky ) <span class="tok-kw">TO</span> failed-travel.
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_travel-%tky
+                      %msg = new_message( id       = <span class="tok-str">'ZTRAVEL_MSG'</span>
                                          number   = 001
                                          severity = if_abap_behv_message=>severity-error )
-                      %element-EndDate = if_abap_behv=>mk-on ) <span class="code-keyword">TO</span> reported-travel.
-    <span class="code-keyword">ENDIF</span>.
-  <span class="code-keyword">ENDLOOP</span>.
-<span class="code-keyword">ENDMETHOD</span>.</code></pre>
-        </div>
+                      %element-EndDate = if_abap_behv=>mk-on ) <span class="tok-kw">TO</span> reported-travel.
+    <span class="tok-kw">ENDIF</span>.
+  <span class="tok-kw">ENDLOOP</span>.
+<span class="tok-kw">ENDMETHOD</span>.</code></pre>
+          </div>
 
-        <!-- Code Content 3: CDS -->
-        <div id="tab-cds" class="code-content">
-          <pre><code>@AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: <span class="code-string">'Clean Core Projection View for Travel Analytics'</span>
-@Metadata.allowExtensions: <span class="code-keyword">true</span>
-<span class="code-keyword">define root view entity</span> ZC_TravelAnalyticsProjection
-  <span class="code-keyword">provider contract</span> transactional_query
-  <span class="code-keyword">as projection on</span> ZR_Travel_Processor
+          <!-- Code View 3: CDS Projection -->
+          <div id="code-cds" class="ide-editor">
+            <pre><code>@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: <span class="tok-str">'Clean Core Projection View for Travel'</span>
+@Metadata.allowExtensions: <span class="tok-kw">true</span>
+<span class="tok-kw">define root view entity</span> ZC_TravelAnalyticsProjection
+  <span class="tok-kw">provider contract</span> transactional_query
+  <span class="tok-kw">as projection on</span> ZR_Travel_Processor
 {
-  <span class="code-keyword">key</span> TravelUUID,
+  <span class="tok-kw">key</span> TravelUUID,
       TravelID,
-      @Consumption.valueHelpDefinition: [{ entity: { name: <span class="code-string">'/DMO/I_Customer'</span>, element: <span class="code-string">'CustomerID'</span> } }]
       CustomerID,
       BeginDate,
       EndDate,
-      @Semantics.amount.currencyCode: <span class="code-string">'CurrencyCode'</span>
+      @Semantics.amount.currencyCode: <span class="tok-str">'CurrencyCode'</span>
       BookingFee,
       CurrencyCode,
       OverallStatus,
-      <span class="code-comment">/* Transient association resolution */</span>
-      _Customer.LastName <span class="code-keyword">as</span> CustomerLastName
+      <span class="tok-comment">/* Association resolution conforming to Tier-1 guidelines */</span>
+      _Customer.LastName <span class="tok-kw">as</span> CustomerLastName
 }</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Updates / Changelog -->
-    <section id="updates" class="section updates-section animate-slide-up">
-      <div class="section-header">
-        <h2 class="section-title">Technical Updates &amp; Findings</h2>
-        <p class="section-subtitle">Weekly architectural patterns, clean core observations, and benchmarks.</p>
-      </div>
-
-      <div class="updates-timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">September 2026</div>
-          <div class="timeline-content">
-            <h4>Benchmarking EML Operations vs. Legacy RFCs in Mass Processing</h4>
-            <p>Conducted latency and memory utilization tests on S/4HANA 2023 comparing bulk `MODIFY ENTITIES` with classic BAPI function modules. Observed a 28% decrease in runtime overhead when leveraging internal buffer optimizations.</p>
           </div>
         </div>
+      </section>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">August 2026</div>
-          <div class="timeline-content">
-            <h4>Clean Core Extensibility Playbook Published</h4>
-            <p>Outlined developer guidelines for evaluating Custom Code Migration Worklist results and establishing proper Tier-1 / Tier-2 decoupling boundaries.</p>
+      <!-- Technical Log / Notes -->
+      <section class="content-block">
+        <div class="block-header">
+          <h3 class="block-title">Engineering Observations &amp; Benchmarks</h3>
+        </div>
+
+        <div class="notes-stack">
+          <div class="note-card">
+            <div class="note-date">September 2026</div>
+            <h4>High-Volume EML `MODIFY` Operations vs Classic BAPIs</h4>
+            <p>Evaluated mass record insertion latencies on S/4HANA 2023. Leveraging internal RAP memory buffers yielded a 28% drop in runtime overhead over traditional RFC wrappers.</p>
+          </div>
+          <div class="note-card">
+            <div class="note-date">August 2026</div>
+            <h4>De-coupling Cloud Extensibility from Standard Modules</h4>
+            <p>Best practice checklist for structuring Tier-1 vs Tier-2 boundaries when addressing legacy custom code flagged in the Custom Code Migration Worklist.</p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2026 Architectural Knowledge Base &amp; Technical Portfolio. Built with Clean Core Guidelines.</p>
-      <div class="footer-links">
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub Profile</a>
-        <a href="#hero">Back to Top &uarr;</a>
-      </div>
-    </div>
-  </footer>
+      <!-- Footer -->
+      <footer class="content-footer">
+        <p>&copy; 2026 Saibal Das &bull; SAP S/4HANA &amp; Clean Core Architecture Portfolio.</p>
+        <a href="#top" class="back-top">&uarr; Back to Top</a>
+      </footer>
 
+    </main>
+  </div>
+
+  <!-- Interactive Logic -->
   <script>
-    function switchTab(evt, tabId) {
-      const tabContents = document.querySelectorAll('.code-content');
-      tabContents.forEach(content => content.classList.remove('active'));
+    function selectTab(event, contentId) {
+      document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(contentId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
 
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(tabId).classList.add('active');
-      evt.currentTarget.classList.add('active');
+    function scrollSlider(direction) {
+      const container = document.getElementById('sliderViewport');
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
     }
   </script>
 </body>
