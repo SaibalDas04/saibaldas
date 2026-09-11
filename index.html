@@ -6,49 +6,46 @@
   <meta name="description" content="Saibal Das | SAP S/4HANA Consultant, ABAP Cloud, RAP & Clean Core Architecture Hub" />
   <title>Saibal Das | SAP ABAP Cloud & Clean Core Architect</title>
   
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="index.css?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-  
 <body>
 
-  <!-- Mobile Floating Navigation Bar with 3-Line Hamburger -->
-<div class="mobile-top-bar">
-  <span class="mobile-logo">&lt;Saibal<span class="highlight">::Das</span> /&gt;</span>
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Profile Drawer">
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  </button>
-</div>
+  <!-- Mobile Floating Header with 3-Line Hamburger -->
+  <div class="mobile-top-bar">
+    <span class="mobile-logo">&lt;Saibal<span class="highlight">::Das</span> /&gt;</span>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle Profile Drawer">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
 
-<!-- Backdrop Shadow (Clicking outside closes drawer) -->
-<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <!-- Dimmed Backdrop for Mobile Drawer -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-  <!-- Ambient Background Lighting -->
+  <!-- Ambient Radial Glows -->
   <div class="ambient-glow glow-top"></div>
   <div class="ambient-glow glow-bottom"></div>
 
-  <!-- Master Two-Column Container -->
+  <!-- Master Layout Container -->
   <div class="site-wrapper">
 
     <!-- ====================================================================
-         LEFT SIDEBAR: Profile, Career Experience & Certifications (Sticky)
+         LEFT SIDEBAR: Profile & Experience (Sticky on Desktop / Drawer on Mobile)
          ==================================================================== -->
-    <<aside class="sidebar-col" id="sidebarCol">
-  <div class="sidebar-inner">
-    
-    <!-- Mobile Close Button (Hidden on Desktop) -->
-    <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Profile">&times;</button>
-    
-    <!-- Profile Header -->
-    <header class="profile-header">
-      <!-- ... Rest of your profile content remains unchanged ... -->
+    <aside class="sidebar-col" id="sidebarCol">
+      <div class="sidebar-inner">
+        
+        <!-- Mobile Drawer Close Button -->
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Close Profile">&times;</button>
+        
+        <!-- Profile Header -->
+        <header class="profile-header">
           <div class="avatar-wrapper">
             <div class="avatar-ring-glow"></div>
-            <!-- Update src with your photo file name (e.g., saibal.jpg) -->
             <img 
               src="saibal.jpg" 
               alt="Saibal Das" 
@@ -67,12 +64,12 @@
           </div>
         </header>
 
-        <!-- Brief Bio -->
+        <!-- Bio -->
         <p class="sidebar-bio">
           Enterprise technical consultant specializing in <strong>modern ABAP Cloud, RAP, and Clean Core governance</strong>. Focused on zero-modification digital core modernization and upgrade-stable extensibility.
         </p>
 
-        <!-- Official Certifications -->
+        <!-- Verified Certifications -->
         <section class="sidebar-section">
           <h2 class="sidebar-label">Verified Credentials</h2>
           <div class="cert-card-group">
@@ -93,7 +90,7 @@
           </div>
         </section>
 
-        <!-- Career Experience Timeline -->
+        <!-- Career Timeline -->
         <section class="sidebar-section experience-section">
           <h2 class="sidebar-label">Career &amp; Industry Track Record</h2>
           <div class="timeline-container">
@@ -143,7 +140,7 @@
           </div>
         </section>
 
-        <!-- Quick Contacts & Links -->
+        <!-- Sidebar Actions -->
         <footer class="sidebar-footer">
           <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-primary full-width">Connect on LinkedIn &rarr;</a>
         </footer>
@@ -191,7 +188,7 @@
         </div>
       </section>
 
-      <!-- Fluid Interactive Showcase Slider -->
+      <!-- Projects Showcase Slider -->
       <section class="content-block">
         <div class="block-header slider-header-flex">
           <div>
@@ -204,7 +201,6 @@
           </div>
         </div>
 
-        <!-- Scroll-Snap Track -->
         <div class="slider-viewport" id="sliderViewport">
           <div class="slider-canvas" id="sliderCanvas">
 
@@ -272,7 +268,7 @@
         </div>
       </section>
 
-      <!-- Interactive Code Sandbox -->
+      <!-- Code Sandbox -->
       <section id="sandbox" class="content-block">
         <div class="block-header">
           <h3 class="block-title">Interactive Architectural Code Lab</h3>
@@ -280,7 +276,6 @@
         </div>
 
         <div class="ide-window">
-          <!-- Window Controls Bar -->
           <div class="ide-topbar">
             <div class="ide-dots">
               <span class="dot dot-red"></span>
@@ -294,7 +289,7 @@
             </div>
           </div>
 
-          <!-- Code View 1: Behavior Definition -->
+          <!-- Code View 1 -->
           <div id="code-bdef" class="ide-editor active">
             <pre><code><span class="tok-kw">managed implementation in class</span> zbp_r_travel_processor <span class="tok-kw">unique</span>;
 <span class="tok-kw">strict</span> ( 2 );
@@ -322,7 +317,7 @@
 }</code></pre>
           </div>
 
-          <!-- Code View 2: EML -->
+          <!-- Code View 2 -->
           <div id="code-eml" class="ide-editor">
             <pre><code><span class="tok-kw">METHOD</span> validateDates.
   <span class="tok-comment">" Read business object data via Entity Manipulation Language (EML)</span>
@@ -346,7 +341,7 @@
 <span class="tok-kw">ENDMETHOD</span>.</code></pre>
           </div>
 
-          <!-- Code View 3: CDS Projection -->
+          <!-- Code View 3 -->
           <div id="code-cds" class="ide-editor">
             <pre><code>@AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: <span class="tok-str">'Clean Core Projection View for Travel'</span>
@@ -371,7 +366,7 @@
         </div>
       </section>
 
-      <!-- Technical Log / Notes -->
+      <!-- Technical Log -->
       <section class="content-block">
         <div class="block-header">
           <h3 class="block-title">Engineering Observations &amp; Benchmarks</h3>
@@ -400,67 +395,61 @@
     </main>
   </div>
 
-  <!-- Interactive Logic -->
+  <!-- Clean, Error-Free JavaScript -->
   <script>
-    // function selectTab(event, contentId) {
-    //   document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
-    //   document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
-      
-    //   document.getElementById(contentId).classList.add('active');
-    //   event.currentTarget.classList.add('active');
-    // }
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebarCol = document.getElementById('sidebarCol');
+      const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+      const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
 
-    // function scrollSlider(direction) {
-    //   const container = document.getElementById('sliderViewport');
-    //   const scrollAmount = container.clientWidth * 0.8;
-    //   container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
-    // }
-    <script>
-    // Tab switcher logic
+      function openProfile() {
+        if (!sidebarCol) return;
+        sidebarCol.classList.add('drawer-open');
+        sidebarBackdrop.classList.add('active');
+        menuToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProfile() {
+        if (!sidebarCol) return;
+        sidebarCol.classList.remove('drawer-open');
+        sidebarBackdrop.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (sidebarCol && sidebarCol.classList.contains('drawer-open')) {
+            closeProfile();
+          } else {
+            openProfile();
+          }
+        });
+      }
+
+      if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeProfile);
+      if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeProfile);
+    });
+
     function selectTab(event, contentId) {
       document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(contentId).classList.add('active');
+      
+      const activeTab = document.getElementById(contentId);
+      if (activeTab) activeTab.classList.add('active');
       event.currentTarget.classList.add('active');
     }
 
     function scrollSlider(direction) {
       const container = document.getElementById('sliderViewport');
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
-    }
-
-    // Mobile Profile Drawer Controls
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebarCol = document.getElementById('sidebarCol');
-    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
-
-    function openProfile() {
-      sidebarCol.classList.add('drawer-open');
-      sidebarBackdrop.classList.add('active');
-      menuToggle.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Stop background scroll
-    }
-
-    function closeProfile() {
-      sidebarCol.classList.remove('drawer-open');
-      sidebarBackdrop.classList.remove('active');
-      menuToggle.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    menuToggle.addEventListener('click', () => {
-      if (sidebarCol.classList.contains('drawer-open')) {
-        closeProfile();
-      } else {
-        openProfile();
+      if (container) {
+        const scrollAmount = container.clientWidth * 0.8;
+        container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
       }
-    });
-
-    sidebarBackdrop.addEventListener('click', closeProfile);
-    sidebarCloseBtn.addEventListener('click', closeProfile);
+    }
   </script>
 </body>
- 
 </html>
