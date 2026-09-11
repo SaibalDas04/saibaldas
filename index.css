@@ -544,3 +544,287 @@ pre {
     margin: 0 8px;
   }
 }
+
+/* ==========================================================================
+   Profile & Career Section Styles
+   ========================================================================== */
+.profile-section {
+  padding-top: 40px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Fluid Glowing Profile Card */
+.profile-card-wrapper {
+  position: sticky;
+  top: 100px;
+}
+
+.profile-card {
+  position: relative;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* Subtle Animated Ambient Glow Behind Avatar */
+.avatar-glow {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(129, 140, 248, 0) 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  animation: floatGlow 6s ease-in-out infinite alternate;
+}
+
+.avatar-frame {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--text-accent), #818cf8, transparent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: pulseBorder 8s ease-in-out infinite alternate;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  display: block;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.profile-role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.profile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-accent);
+  background-color: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: blink 2s infinite ease-in-out;
+}
+
+/* Career Content Column */
+.career-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.career-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-main);
+}
+
+.career-bio {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.career-bio strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Stats / Metrics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.stat-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px 16px;
+  text-align: center;
+  transition: var(--transition-fluid);
+}
+
+.stat-card:hover {
+  border-color: var(--text-accent);
+  transform: translateY(-4px);
+  background-color: var(--bg-surface-hover);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-accent);
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Career Milestones */
+.career-milestones {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.milestones-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.milestone-entry {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.milestone-bullet {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--text-brand);
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 6px var(--text-brand);
+}
+
+.milestone-period {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-accent);
+  font-family: var(--font-mono);
+}
+
+.milestone-role {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2px 0 6px;
+}
+
+.milestone-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Skill Chips Cluster */
+.skills-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.skill-chip {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  transition: var(--transition-fluid);
+}
+
+.skill-chip:hover {
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+  transform: translateY(-2px);
+}
+
+/* Fluid Keyframe Animations */
+@keyframes floatGlow {
+  0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.7; }
+  100% { transform: translateX(-50%) translateY(15px) scale(1.15); opacity: 1; }
+}
+
+@keyframes pulseBorder {
+  0% { background: linear-gradient(135deg, #38bdf8, #818cf8, transparent); }
+  50% { background: linear-gradient(225deg, #818cf8, #38bdf8, transparent); }
+  100% { background: linear-gradient(315deg, #38bdf8, #818cf8, transparent); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .profile-card-wrapper {
+    position: static;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
