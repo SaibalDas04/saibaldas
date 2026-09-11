@@ -11,7 +11,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+  
 <body>
+
+  <!-- Mobile Floating Navigation Bar with 3-Line Hamburger -->
+<div class="mobile-top-bar">
+  <span class="mobile-logo">&lt;Saibal<span class="highlight">::Das</span> /&gt;</span>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Profile Drawer">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+</div>
+
+<!-- Backdrop Shadow (Clicking outside closes drawer) -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
   <!-- Ambient Background Lighting -->
   <div class="ambient-glow glow-top"></div>
@@ -23,11 +37,15 @@
     <!-- ====================================================================
          LEFT SIDEBAR: Profile, Career Experience & Certifications (Sticky)
          ==================================================================== -->
-    <aside class="sidebar-col">
-      <div class="sidebar-inner">
-        
-        <!-- Profile Header -->
-        <header class="profile-header">
+    <<aside class="sidebar-col" id="sidebarCol">
+  <div class="sidebar-inner">
+    
+    <!-- Mobile Close Button (Hidden on Desktop) -->
+    <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Profile">&times;</button>
+    
+    <!-- Profile Header -->
+    <header class="profile-header">
+      <!-- ... Rest of your profile content remains unchanged ... -->
           <div class="avatar-wrapper">
             <div class="avatar-ring-glow"></div>
             <!-- Update src with your photo file name (e.g., saibal.jpg) -->
@@ -384,10 +402,24 @@
 
   <!-- Interactive Logic -->
   <script>
+    // function selectTab(event, contentId) {
+    //   document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
+    //   document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+    //   document.getElementById(contentId).classList.add('active');
+    //   event.currentTarget.classList.add('active');
+    // }
+
+    // function scrollSlider(direction) {
+    //   const container = document.getElementById('sliderViewport');
+    //   const scrollAmount = container.clientWidth * 0.8;
+    //   container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+    // }
+    <script>
+    // Tab switcher logic
     function selectTab(event, contentId) {
       document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
-      
       document.getElementById(contentId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
@@ -397,6 +429,38 @@
       const scrollAmount = container.clientWidth * 0.8;
       container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
     }
+
+    // Mobile Profile Drawer Controls
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebarCol = document.getElementById('sidebarCol');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+
+    function openProfile() {
+      sidebarCol.classList.add('drawer-open');
+      sidebarBackdrop.classList.add('active');
+      menuToggle.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Stop background scroll
+    }
+
+    function closeProfile() {
+      sidebarCol.classList.remove('drawer-open');
+      sidebarBackdrop.classList.remove('active');
+      menuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', () => {
+      if (sidebarCol.classList.contains('drawer-open')) {
+        closeProfile();
+      } else {
+        openProfile();
+      }
+    });
+
+    sidebarBackdrop.addEventListener('click', closeProfile);
+    sidebarCloseBtn.addEventListener('click', closeProfile);
   </script>
 </body>
+ 
 </html>
