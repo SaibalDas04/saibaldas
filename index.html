@@ -758,6 +758,212 @@
                         </div>
                     </div>
                 </section>
+                <!-- ====================================================================
+           CUSTOM FIELDS & LOGIC (CFL) & CODING BLOCK REMOVAL RUNBOOK
+           ==================================================================== -->
+                <!-- ====================================================================
+           CUSTOM FIELDS & LOGIC (CFL) & CODING BLOCK REMOVAL RUNBOOK
+           ==================================================================== -->
+                <section id="cfl-section" class="content-block">
+                    <div class="block-header">
+                        <span class="tag-label">Key User Extensibility</span>
+                        <h3 class="block-title">Custom Fields &amp; Logic (CFL) Architecture</h3>
+                        <p class="block-subtitle">
+                            Hover or click across lifecycle phases to inspect SAP Fiori enablement, standard UI
+                            publishing, and decommission procedures.
+                        </p>
+                    </div>
+
+                    <!-- 1. Interactive Lifecycle Cards (Hover + Click) -->
+                    <div class="cfl-lifecycle-grid" id="cflLifecycleGrid">
+                        <!-- Card 1: Enable -->
+                        <button class="cfl-card active" data-cfl="enable" type="button">
+                            <div class="cfl-card-header">
+                                <span class="card-icon">⚡</span>
+                                <span class="cfl-card-tag">Phase 01</span>
+                            </div>
+                            <h4>Field Enablement</h4>
+                            <p class="cfl-phase-desc">Create typed custom fields in standard SAP business contexts.</p>
+                            <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+                        </button>
+
+                        <!-- Card 2: Publish in Fiori -->
+                        <button class="cfl-card" data-cfl="publish" type="button">
+                            <div class="cfl-card-header">
+                                <span class="card-icon">🚀</span>
+                                <span class="cfl-card-tag">Phase 02</span>
+                            </div>
+                            <h4>Publish to Standard Fiori</h4>
+                            <p class="cfl-phase-desc">
+                                Expose fields to OData APIs and place them using UI Adaptation.
+                            </p>
+                            <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+                        </button>
+
+                        <!-- Card 3: Disable & Deprecate -->
+                        <button class="cfl-card" data-cfl="disable" type="button">
+                            <div class="cfl-card-header">
+                                <span class="card-icon">🛑</span>
+                                <span class="cfl-card-tag">Phase 03</span>
+                            </div>
+                            <h4>Field Disabling</h4>
+                            <p class="cfl-phase-desc">
+                                Safely decouple metadata without corrupting persistent database storage.
+                            </p>
+                            <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Detailed Walkthrough Panel -->
+                    <div class="cfl-detail-panel" id="cflDetailPanel">
+                        <div class="cfl-panel-topbar">
+                            <span class="cfl-panel-badge" id="cflPanelBadge">LIFECYCLE PHASE: ENABLEMENT</span>
+                            <span class="cfl-panel-tool" id="cflPanelTool">App: Custom Fields and Logic</span>
+                        </div>
+                        <h4 class="cfl-panel-title" id="cflPanelTitle">
+                            1. Field Creation &amp; Business Context Allocation
+                        </h4>
+                        <p class="cfl-panel-desc" id="cflPanelDesc">
+                            Create fields directly in target SAP business contexts (e.g. Accounting: Coding Block, Sales
+                            Document Item). SAP automatically generates the underlying database append tables and
+                            dictionary structures transparently.
+                        </p>
+                        <div class="cfl-steps-box">
+                            <span class="cfl-box-label">Execution Blueprint:</span>
+                            <ol class="cfl-instructions-list" id="cflInstructionsList">
+                                <li>
+                                    Open the <strong>Custom Fields and Logic</strong> Fiori app and select
+                                    <strong>Create (+).</strong>
+                                </li>
+                                <li>
+                                    Assign targeted <strong>Business Context</strong> (e.g.,
+                                    <code>Accounting: Coding Block</code> or <code>Sales Document Item</code>).
+                                </li>
+                                <li>
+                                    Provide Field Label, Identifier, and Data Type (Text, Amount, Code List, or Date).
+                                </li>
+                                <li>Save and trigger backend dictionary persistence generation.</li>
+                            </ol>
+                        </div>
+                        <div class="cfl-guardrail-note" id="cflGuardrailNote">
+                            <strong>Clean Core Standard:</strong> Key User Extensibility manages physical DDIC
+                            enhancement append tables automatically, preserving core upgrade stability.
+                        </div>
+                    </div>
+
+                    <!-- 2. Coding Block Removal Runbook -->
+                    <div class="coding-block-runbook-wrapper">
+                        <div class="runbook-header">
+                            <div class="runbook-badge">High Complexity Procedure</div>
+                            <h4 class="runbook-title">Coding Block Custom Field Removal Pipeline</h4>
+                            <p class="runbook-desc">
+                                Decommissioning fields from the <strong>Accounting: Coding Block</strong> context (<code
+                                    >COBL</code
+                                >
+                                / <code>ACDOCA</code>) requires precise sequencing to prevent DDIC dictionary lockups
+                                and financial document posting termination. Hover or click each step to inspect the
+                                technical scope.
+                            </p>
+                        </div>
+
+                        <div class="runbook-stepper-container">
+                            <!-- Left: Step Indicator Rail -->
+                            <div class="stepper-nav-rail" id="runbookNavRail">
+                                <button class="step-nav-btn active" data-step="0" type="button">
+                                    <span class="step-num">01</span>
+                                    <span class="step-nav-title">Dependency Audit</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="1" type="button">
+                                    <span class="step-num">02</span>
+                                    <span class="step-nav-title">Unbind Fiori UI</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="2" type="button">
+                                    <span class="step-num">03</span>
+                                    <span class="step-nav-title">Disable OData &amp; CDS</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="3" type="button">
+                                    <span class="step-num">04</span>
+                                    <span class="step-nav-title">Decouple via SCFD_EUI</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="4" type="button">
+                                    <span class="step-num">05</span>
+                                    <span class="step-nav-title">Coding Block Re-gen</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="5" type="button">
+                                    <span class="step-num">06</span>
+                                    <span class="step-nav-title">Validation / Sub Rules</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="6" type="button">
+                                    <span class="step-num">07</span>
+                                    <span class="step-nav-title">Cache &amp; Buffer Purge</span>
+                                </button>
+                                <button class="step-nav-btn" data-step="7" type="button">
+                                    <span class="step-num">08</span>
+                                    <span class="step-nav-title">Transport &amp; Verification</span>
+                                </button>
+                            </div>
+
+                            <!-- Right: Active Step Execution Display -->
+                            <div class="stepper-display-card" id="runbookDisplayCard">
+                                <div class="display-card-top">
+                                    <span class="step-counter" id="stepCounter">Step 01 of 08</span>
+                                    <span class="step-phase-tag" id="stepPhaseTag">Preparation Phase</span>
+                                </div>
+
+                                <h4 class="display-step-title animate-cascade" id="stepTitle">
+                                    Execute Global Dependency &amp; Usage Audit
+                                </h4>
+                                <p class="display-step-desc animate-cascade" id="stepDescription">
+                                    Verify whether the custom field is currently actively referenced in posting
+                                    routines, journal entry validation rules, substitution exits, or active Fiori app
+                                    variant fragments before modifying dictionary definitions.
+                                </p>
+
+                                <!-- Technical Command / T-Code Console -->
+                                <div class="step-console-box animate-cascade">
+                                    <div class="console-topbar">
+                                        <span>SAP Technical Scope</span>
+                                        <span class="console-tcode" id="stepTCode"
+                                            >T-Code / Tool: Custom Fields &amp; Where-Used</span
+                                        >
+                                    </div>
+                                    <div class="console-body">
+                                        <pre><code id="stepCommand">1. Open Custom Fields app &gt; Locate target Coding Block field
+2. Trigger "Where-Used List" to inspect downstream bindings
+3. Verify zero unposted parked documents or draft financial batches hold this field</code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Safety Guardrail -->
+                                <div class="step-guardrail-alert animate-cascade" id="stepAlert">
+                                    <strong>Critical Check:</strong> Do not proceed to deletion without un-publishing
+                                    from active interfaces; doing so causes inconsistent SAP HANA active dictionary
+                                    entries.
+                                </div>
+
+                                <!-- Navigation Controls -->
+                                <div class="step-action-footer">
+                                    <button
+                                        class="btn btn-secondary btn-sm"
+                                        id="prevStepBtn"
+                                        type="button"
+                                        onclick="navigateRunbook(-1)"
+                                    >
+                                        &larr; Previous Step
+                                    </button>
+                                    <button
+                                        class="btn btn-primary btn-sm"
+                                        id="nextStepBtn"
+                                        type="button"
+                                        onclick="navigateRunbook(1)"
+                                    >
+                                        Next Step &rarr;
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- ====================================================================
             CLEAN CORE EXTENSIBILITY MATRIX (Hover + Click Interactive Slider)
@@ -1841,10 +2047,253 @@ CLEAR: ls_target-internal_id, ls_target-created_at.`,
             }
 
             // Master Initialization Handler
+            // ==========================================================================
+            // 11. CUSTOM FIELDS & LOGIC (CFL) INTERACTIVE ENGINE
+            // ==========================================================================
+            const cflLifecycleData = {
+                enable: {
+                    badge: "LIFECYCLE PHASE: ENABLEMENT",
+                    tool: "App: Custom Fields and Logic",
+                    title: "1. Field Creation & Business Context Allocation",
+                    desc: "Create custom fields directly in targeted SAP business contexts (e.g. Accounting: Coding Block, Sales Document Item). The platform automatically generates the underlying database append tables and dictionary structures transparently.",
+                    steps: [
+                        "Open the <strong>Custom Fields and Logic</strong> Fiori app and select <strong>Create (+)</strong>.",
+                        "Assign targeted <strong>Business Context</strong> (e.g. <code>Accounting: Coding Block</code> or <code>Sales Document Item</code>).",
+                        "Provide Field Label, Identifier, and Data Type (Text, Amount, Code List, or Date).",
+                        "Save and trigger backend dictionary persistence generation.",
+                    ],
+                    guardrail:
+                        "<strong>Clean Core Standard:</strong> Key User Extensibility manages physical DDIC enhancement append tables automatically, preserving core upgrade stability.",
+                },
+                publish: {
+                    badge: "LIFECYCLE PHASE: UI & API PUBLISHING",
+                    tool: "Tool: Adapt UI & CDS Extension",
+                    title: "2. Exposing to Standard Fiori Elements Apps",
+                    desc: "Extend standard SAP Fiori Elements apps with zero custom ABAP code by publishing the field into released Standard Core Data Services (CDS) view entities and OData v2/v4 services.",
+                    steps: [
+                        "In the CFL app, open the field and navigate to the <strong>UIs and Reports</strong> tab.",
+                        "Enable usage across required standard services and click <strong>Publish</strong>.",
+                        "Launch the target standard Fiori app as a Key User and select <strong>Adapt UI</strong> from user settings.",
+                        "Drag & drop the custom field into the desired Header or Object Page facet, then click <strong>Save & Publish</strong>.",
+                    ],
+                    guardrail:
+                        "<strong>Clean Core Standard:</strong> Generates automated OData annotations without modifying SAP standard Fiori codebases.",
+                },
+                disable: {
+                    badge: "LIFECYCLE PHASE: DEPRECATION & DECOMMISSION",
+                    tool: "App: Custom Fields and Logic",
+                    title: "3. Safe Disabling & Deprecation Workflow",
+                    desc: "Safely withdraw fields from standard user interfaces and consumer APIs without deleting underlying database columns, ensuring historical postings remain intact.",
+                    steps: [
+                        "Open the standard Fiori app in <strong>Adapt UI</strong> mode and remove the field from visible sections.",
+                        "In the CFL app under <strong>UIs and Reports</strong>, toggle usage from <em>Enabled</em> to <em>Disabled</em>.",
+                        "Click <strong>Publish</strong> to re-compile the CDS and OData metadata without the custom binding.",
+                        "Change field status to <strong>Deprecated</strong> to block further usage in new development.",
+                    ],
+                    guardrail:
+                        "<strong>Clean Core Standard:</strong> Decouples consumer interfaces safely while preserving historic database entries and financial consistency.",
+                },
+            };
+
+            function renderCflLifecycle(key) {
+                const data = cflLifecycleData[key];
+                if (!data) return;
+
+                // Update Card Active States
+                const cards = document.querySelectorAll("#cflLifecycleGrid .cfl-card");
+                cards.forEach((card) => {
+                    card.classList.toggle("active", card.getAttribute("data-cfl") === key);
+                });
+
+                // Trigger Animation
+                const panel = document.getElementById("cflDetailPanel");
+                if (panel) {
+                    panel.classList.remove("animating-in");
+                    void panel.offsetWidth;
+                    panel.classList.add("animating-in");
+                }
+
+                // Update Content
+                document.getElementById("cflPanelBadge").innerText = data.badge;
+                document.getElementById("cflPanelTool").innerText = data.tool;
+                document.getElementById("cflPanelTitle").innerText = data.title;
+                document.getElementById("cflPanelDesc").innerText = data.desc;
+                document.getElementById("cflGuardrailNote").innerHTML = data.guardrail;
+
+                const listEl = document.getElementById("cflInstructionsList");
+                if (listEl) {
+                    listEl.innerHTML = data.steps.map((step) => `<li>${step}</li>`).join("");
+                }
+            }
+
+            function setupCflLifecycleEvents() {
+                const cards = document.querySelectorAll("#cflLifecycleGrid .cfl-card");
+                cards.forEach((card) => {
+                    const key = card.getAttribute("data-cfl");
+
+                    // Click event
+                    card.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        renderCflLifecycle(key);
+                    });
+
+                    // Hover event
+                    card.addEventListener("mouseenter", () => {
+                        renderCflLifecycle(key);
+                    });
+                });
+            }
+
+            // ==========================================================================
+            // 12. CODING BLOCK REMOVAL RUNBOOK ENGINE (8 Steps)
+            // ==========================================================================
+            const codingBlockSteps = [
+                {
+                    counter: "Step 01 of 08",
+                    phase: "Audit & Analysis",
+                    title: "Execute Global Dependency & Where-Used Audit",
+                    desc: "Inspect all active runtime references. Confirm the field is not actively referenced in posted financial batches, analytical CDS query hierarchies, or external web APIs.",
+                    tcode: "App: Custom Fields & Logic",
+                    command: `1. Open Custom Fields and Logic Fiori App\n2. Select context: "Accounting: Coding Block"\n3. Choose the target field -> Click "Where-Used List"\n4. Record all active CDS views, BAdIs, and Reports linked to this field`,
+                    alert: "Critical Check: Deleting before completing un-publish steps will trigger active HANA dictionary inconsistency errors.",
+                },
+                {
+                    counter: "Step 02 of 08",
+                    phase: "UI Layer Decommission",
+                    title: "Remove Field from Standard Fiori App Variants",
+                    desc: "Strip the custom field from visible facets in standard Fiori apps (such as Manage Journal Entries, Create PO) to prevent end-user client payload submission errors.",
+                    tcode: "Tool: Fiori UI Adaptation (RTA)",
+                    command: `1. Launch target Fiori application as Key User\n2. Click user avatar -> Select "Adapt UI"\n3. Locate the custom Coding Block field -> Right-click -> "Remove"\n4. Save as Draft -> Publish new UI App Variant`,
+                    alert: "Notice: End users must refresh browser caches to load the updated manifest file with the removed UI binding.",
+                },
+                {
+                    counter: "Step 03 of 08",
+                    phase: "Interface Decoupling",
+                    title: "Disable Usage in UIs, OData Services & CDS Entities",
+                    desc: "Sever the metadata generation between the Coding Block persistence structure and standard OData endpoints in the CFL app.",
+                    tcode: "App: Custom Fields & Logic",
+                    command: `1. In Custom Fields app, open target field details\n2. Navigate to "UIs and Reports" tab\n3. Toggle status to "Disabled" across all standard services\n4. Click "Save" and trigger background "Publish"`,
+                    alert: "Rule: Wait for background job to turn status from 'Publishing' back to 'Published' before proceeding to backend steps.",
+                },
+                {
+                    counter: "Step 04 of 08",
+                    phase: "Extensibility Cleanup",
+                    title: "Deregister Custom Field via SCFD_EUI",
+                    desc: "Clean up the Extensibility Registry metadata. In cases of blocked or corrupt states, deregister and decouple the field entry using the expert cleanup workbench.",
+                    tcode: "SAP GUI: T-Code SCFD_EUI",
+                    command: `1. Run transaction SCFD_EUI in SAP GUI\n2. Enter Business Context = CFD_CODING_BLOCK\n3. Locate custom field name (e.g. ZZ1_COST_BUCKET)\n4. Execute "Prepare for Deletion" / "Remove Extensibility Enablement"`,
+                    alert: "Warning: Ensure proper authorization for SCFD_EUI; do not delete dictionary records manually via SE11.",
+                },
+                {
+                    counter: "Step 05 of 08",
+                    phase: "DDIC Synchronization",
+                    title: "Regenerate Coding Block Dictionary Structures",
+                    desc: "Re-synchronize the standard financial table structures (COBL, ACDOCA, BSEG) to compile out the custom append structure cleanly.",
+                    tcode: "SAP GUI: SE38 / Report",
+                    command: `1. Review table COBL & ACDOCA in SE11 to confirm custom append removal\n2. If required by SAP Note, execute structure regeneration tool\n3. Ensure no inactive DDIC runtime objects remain for structures INCL_EEW_COBL*`,
+                    alert: "System State: Run this during a maintenance window to avoid financial posting table locking.",
+                },
+                {
+                    counter: "Step 06 of 08",
+                    phase: "Rules & Logic Validation",
+                    title: "Regenerate Validations, Substitutions & G/L Rules",
+                    desc: "Re-compile financial rules engine to purge phantom references to the removed Coding Block field in FI-SL and CO validation ladders.",
+                    tcode: "SAP GUI: SE38 / RGUGBR00",
+                    command: `1. Run transaction SE38 -> Report RGUGBR00\n2. Select application area: "FI" / "CO"\n3. Tick: "Regenerate substitutions" & "Regenerate validations"\n4. Execute in background mode`,
+                    alert: "Safety Gate: Skipping RGUGBR00 may lead to ABAP dumps during subsequent transaction code FB01/FB50 postings.",
+                },
+                {
+                    counter: "Step 07 of 08",
+                    phase: "Buffer Refresh",
+                    title: "Flush Gateway Metadata & Shared Memory Buffers",
+                    desc: "Clear system OData caches so Gateway servers and front-end browsers consume updated metadata models without stale field bindings.",
+                    tcode: "SAP GUI: /IWFND/CACHE_CLEANUP",
+                    command: `1. Execute transaction /IWFND/CACHE_CLEANUP on Gateway server\n2. Execute transaction /IWBEP/CACHE_CLEANUP on Backend server\n3. Reset CUA buffers ($CUA) and screen buffers ($DYNP) via /n$SYNC`,
+                    alert: "Performance: Flushes all invalid service cache tokens across application servers.",
+                },
+                {
+                    counter: "Step 08 of 08",
+                    phase: "Transport & Validation",
+                    title: "Transport Release & Production Post-Sanity Test",
+                    desc: "Package the decommissioning changes into a Customizing/Workbench transport request, import to test systems, and verify financial entry postings.",
+                    tcode: "SAP GUI: SE09 / SE10",
+                    command: `1. Verify all generated transport tasks in transaction SE09\n2. Release transport request to QA environment\n3. Smoke Test: Post test Journal Entry via "Post General Journal Entries" Fiori app\n4. Confirm ACDOCA row creation without runtime exception`,
+                    alert: "Sign-Off: Complete regression test on billing, PO receipt, and general posting before releasing to Production.",
+                },
+            ];
+
+            let currentRunbookStep = 0;
+
+            function renderRunbookStep(index) {
+                if (index < 0 || index >= codingBlockSteps.length) return;
+                currentRunbookStep = index;
+                const step = codingBlockSteps[index];
+
+                const navButtons = document.querySelectorAll("#runbookNavRail .step-nav-btn");
+                navButtons.forEach((btn, idx) => {
+                    btn.classList.toggle("active", idx === index);
+                });
+
+                const displayCard = document.getElementById("runbookDisplayCard");
+                if (displayCard) {
+                    displayCard.classList.remove("animating-in");
+                    void displayCard.offsetWidth;
+                    displayCard.classList.add("animating-in");
+                }
+
+                document.getElementById("stepCounter").innerText = step.counter;
+                document.getElementById("stepPhaseTag").innerText = step.phase;
+                document.getElementById("stepTitle").innerText = step.title;
+                document.getElementById("stepDescription").innerText = step.desc;
+                document.getElementById("stepTCode").innerText = step.tcode;
+                document.getElementById("stepCommand").innerText = step.command;
+                document.getElementById("stepAlert").innerHTML = `<strong>Rule:</strong> ${step.alert}`;
+
+                const prevBtn = document.getElementById("prevStepBtn");
+                const nextBtn = document.getElementById("nextStepBtn");
+                if (prevBtn) prevBtn.disabled = index === 0;
+                if (nextBtn) nextBtn.disabled = index === codingBlockSteps.length - 1;
+            }
+
+            function navigateRunbook(direction) {
+                const target = currentRunbookStep + direction;
+                if (target >= 0 && target < codingBlockSteps.length) {
+                    renderRunbookStep(target);
+
+                    const activeNavBtn = document.querySelectorAll("#runbookNavRail .step-nav-btn")[target];
+                    if (activeNavBtn && window.innerWidth <= 960) {
+                        activeNavBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                    }
+                }
+            }
+
+            function setupRunbookEvents() {
+                const navButtons = document.querySelectorAll("#runbookNavRail .step-nav-btn");
+                navButtons.forEach((btn) => {
+                    const idx = parseInt(btn.getAttribute("data-step"), 10);
+
+                    btn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        renderRunbookStep(idx);
+                    });
+
+                    btn.addEventListener("mouseenter", () => {
+                        renderRunbookStep(idx);
+                    });
+                });
+
+                renderRunbookStep(0);
+            }
+
+            // ==========================================================================
+            // Master Initialization Handler (All Handlers Explicitly Registered)
+            // ==========================================================================
             function initializeEngine() {
                 setupMatrixEvents();
                 setupCookbookEvents();
                 setupExperienceAccordion();
+                setupCflLifecycleEvents(); // <-- Registered for top CFL cards
+                setupRunbookEvents(); // <-- Registered for 8 Runbook steps
             }
 
             if (document.readyState === "loading") {
