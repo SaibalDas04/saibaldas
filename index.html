@@ -1,1118 +1,1372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Saibal Das | SAP S/4HANA Consultant, ABAP Cloud, RAP & Clean Core Architecture Hub" />
-  <title>Saibal Das | SAP ABAP Cloud & Clean Core Architect</title>
-  
-  <!-- Note: Ensure this filename matches your css file name (style.css or index.css) -->
-  <link rel="stylesheet" href="index.css?v=7" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta
+            name="description"
+            content="Saibal Das | SAP ABAP + Fiori Application Developer, ABAP Cloud, RAP & Clean Core Architecture Lead"
+        />
+        <title>Saibal Das | SAP ABAP Cloud, RAP & Clean Core Architect</title>
 
-  <!-- ====================================================================
+        <!-- Note: Ensure this filename matches your css file name (style.css or index.css) -->
+        <link rel="stylesheet" href="style.css?v=7" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- ====================================================================
        TOP NAVIGATION BAR
        ==================================================================== -->
-  <header class="master-header">
-    <div class="header-container">
-      <div class="header-left">
-        <!-- Mobile 3-Line Hamburger Menu (<= 1024px) -->
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle Profile Drawer">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
+        <header class="master-header">
+            <div class="header-container">
+                <div class="header-left">
+                    <!-- Mobile 3-Line Hamburger Menu (<= 1024px) -->
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle Profile Drawer">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
 
-        <!-- Desktop Sidebar Toggle Button (> 1024px) -->
-        <button class="desktop-sidebar-toggle" id="desktopSidebarToggle" type="button" aria-label="Toggle Profile Sidebar">
-          <svg class="sidebar-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="9" y1="3" x2="9" y2="23"></line>
-          </svg>
-          <span id="desktopToggleText">Show Profile</span>
-        </button>
+                    <!-- Desktop Sidebar Toggle Button (> 1024px) -->
+                    <button
+                        class="desktop-sidebar-toggle"
+                        id="desktopSidebarToggle"
+                        type="button"
+                        aria-label="Toggle Profile Sidebar"
+                    >
+                        <svg
+                            class="sidebar-svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="3" x2="9" y2="23"></line>
+                        </svg>
+                        <span id="desktopToggleText">Show Profile</span>
+                    </button>
 
-        <a href="#landing" class="brand-logo">
-          <span class="logo-accent">&lt;</span>Saibal<span class="highlight">::Das</span><span class="logo-accent"> /&gt;</span>
-        </a>
-      </div>
+                    <a href="#landing" class="brand-logo">
+                        <span class="logo-accent">&lt;</span>Saibal<span class="highlight">::Das</span
+                        ><span class="logo-accent"> /&gt;</span>
+                    </a>
+                </div>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="desktop-nav">
-        <a href="#principles-section" class="nav-link">Architecture</a>
-        <a href="#cookbook-section" class="nav-link">Modern ABAP</a>
-        <a href="#showcase-section" class="nav-link">Solutions</a>
-        <a href="#sandbox-section" class="nav-link">Code Lab</a>
-        <a href="#cleanCoreSection" class="nav-link">Clean Core</a>
-      </nav>
+                <!-- Desktop Navigation Links -->
+                <nav class="desktop-nav">
+                    <a href="#principles-section" class="nav-link">Architecture</a>
+                    <a href="#cookbook-section" class="nav-link">Modern ABAP</a>
+                    <a href="#showcase-section" class="nav-link">Solutions</a>
+                    <a href="#sandbox-section" class="nav-link">Code Lab</a>
+                    <a href="#cleanCoreSection" class="nav-link">Clean Core</a>
+                </nav>
 
-      <!-- Action Buttons -->
-      <div class="header-actions">
-        <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-nav btn-secondary">
-          <span>📄 Resume</span>
-        </a>
-        <button class="btn btn-nav btn-primary" onclick="openContactModal()">
-          <span>✉️ Contact</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Backdrop (<= 1024px) -->
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
-  <!-- Master Two-Column Container -->
-  <div class="site-wrapper desktop-collapsed" id="siteWrapper">
-
-    <!-- ====================================================================
-         LEFT SIDEBAR: Profile, Credentials & Experience
-         ==================================================================== -->
-    <aside class="sidebar-col" id="sidebarCol">
-      <div class="sidebar-inner">
-
-        <!-- Desktop Collapse Button inside Sidebar -->
-        <button class="desktop-collapse-btn" id="desktopCollapseBtn" type="button" title="Hide Profile Sidebar" aria-label="Hide Profile">
-          <span>&lsaquo;</span>
-        </button>
-
-        <!-- Mobile Drawer Close Button -->
-        <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Close Profile">&times;</button>
-
-        <!-- Profile Header -->
-        <header class="profile-header">
-          <div class="avatar-wrapper">
-            <div class="avatar-ring-glow"></div>
-            <img 
-              src="saibal.jpg" 
-              alt="Saibal Das" 
-              class="avatar-image" 
-              onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'"
-            />
-          </div>
-
-          <div class="profile-title-block">
-            <h1 class="profile-name">Saibal Das</h1>
-            <p class="profile-role">Consultant &bull; SAP S/4HANA &amp; ABAP Cloud</p>
-            <div class="status-pill">
-              <span class="status-indicator"></span>
-              <span>Available for Architecture Advisory</span>
+                <!-- Action Buttons -->
+                <div class="header-actions">
+                    <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-nav btn-secondary">
+                        <span>📄 Resume</span>
+                    </a>
+                    <button class="btn btn-nav btn-primary" onclick="openContactModal()">
+                        <span>✉️ Contact</span>
+                    </button>
+                </div>
             </div>
-          </div>
         </header>
 
-        <!-- Bio -->
-        <p class="sidebar-bio">
-          Enterprise technical consultant with <strong>nearly 5 years of engineering experience</strong> specializing in <strong>ABAP Cloud, RAP, and Clean Core governance</strong> to build upgrade-stable, zero-modification ERP systems.
-        </p>
+        <!-- Mobile Drawer Backdrop (<= 1024px) -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-        <!-- Verified Credentials -->
-        <section class="sidebar-section">
-          <h2 class="sidebar-label">Official Credentials</h2>
-          <div class="cert-card-group">
-            <div class="cert-item">
-              <div class="cert-badge-icon">🏅</div>
-              <div class="cert-text">
-                <span class="cert-title">SAP Certified - Back-End Developer</span>
-                <span class="cert-meta">ABAP Cloud &bull; SAP Standard</span>
-              </div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-badge-icon">🏅</div>
-              <div class="cert-text">
-                <span class="cert-title">SAP Certified Associate</span>
-                <span class="cert-meta">SAP Fiori Application Developer</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        <!-- Master Two-Column Container -->
+        <div class="site-wrapper desktop-collapsed" id="siteWrapper">
+            <!-- ====================================================================
+          LEFT SIDEBAR: Profile, Credentials & Experience
+          ==================================================================== -->
+            <aside class="sidebar-col" id="sidebarCol">
+                <div class="sidebar-inner">
+                    <!-- Desktop Collapse Button inside Sidebar -->
+                    <button
+                        class="desktop-collapse-btn"
+                        id="desktopCollapseBtn"
+                        type="button"
+                        title="Hide Profile Sidebar"
+                        aria-label="Hide Profile"
+                    >
+                        <span>&lsaquo;</span>
+                    </button>
 
-        <!-- Experience Timeline -->
-        <section class="sidebar-section">
-          <h2 class="sidebar-label">Career Track Record</h2>
-          <div class="timeline-container">
+                    <!-- Mobile Drawer Close Button -->
+                    <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Close Profile">
+                        &times;
+                    </button>
 
-            <!-- Capgemini -->
-            <article class="timeline-card active-position">
-              <div class="timeline-meta">
-                <span class="company-name">Capgemini</span>
-                <span class="time-tag">Feb 2025 &ndash; Present</span>
-              </div>
-              <h3 class="role-title">Consultant &bull; Full-time</h3>
-              <p class="role-location">Kolkata, India &bull; Hybrid</p>
-              <ul class="role-bullets">
-                <li>Designing transactional RAP business objects (Managed/Unmanaged) with Draft persistence, validations, and determinations.</li>
-                <li>Executing Clean Core Tier-1 migrations: decoupling legacy user exits (`MV45AFZZ`) into cloud-ready Developer Extensibility BAdIs.</li>
-              </ul>
-            </article>
+                    <!-- Profile Header -->
+                    <header class="profile-header">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-ring-glow"></div>
+                            <img
+                                src="saibal.jpg"
+                                alt="Saibal Das"
+                                class="avatar-image"
+                                onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'"
+                            />
+                        </div>
 
-            <!-- Accenture -->
-            <article class="timeline-card">
-              <div class="timeline-meta">
-                <span class="company-name">Accenture in India</span>
-                <span class="time-tag">Dec 2023 &ndash; Feb 2025</span>
-              </div>
-              <h3 class="role-title">Packaged App Development Analyst</h3>
-              <p class="role-location">Kolkata, India &bull; Hybrid</p>
-              <ul class="role-bullets">
-                <li>Remediated custom codebases during enterprise S/4HANA migrations using Custom Code Migration Worklist (CCMW) and ATC checks.</li>
-                <li>Constructed Core Data Services (CDS) analytical view hierarchies and custom OData services consumed by Fiori web applications.</li>
-              </ul>
-            </article>
+                        <div class="profile-title-block">
+                            <h1 class="profile-name">Saibal Das</h1>
+                            <p class="profile-role">SAP ABAP + Fiori Application Developer</p>
+                            <div class="status-pill">
+                                <span class="status-indicator"></span>
+                                <span>Leading Clean Core (Team of 7)</span>
+                            </div>
+                        </div>
+                    </header>
 
-            <!-- TCS -->
-            <article class="timeline-card">
-              <div class="timeline-meta">
-                <span class="company-name">Tata Consultancy Services</span>
-                <span class="time-tag">Nov 2021 &ndash; Jan 2024</span>
-              </div>
-              <h3 class="role-title">Associate System Engineer</h3>
-              <p class="role-location">Kolkata, India</p>
-              <ul class="role-bullets">
-                <li>Delivered standard RICEFW development across SD and MM modules, tuning ABAP SQL statements for in-memory SAP HANA databases.</li>
-                <li>Authored technical design specifications and integrated synchronous REST/OData APIs with non-SAP systems.</li>
-              </ul>
-            </article>
+                    <!-- Bio -->
+                    <p class="sidebar-bio">
+                        Full-Stack SAP developer with <strong>4.7+ years of specialized experience</strong> across
+                        multiple S/4HANA implementations. Expert in
+                        <strong>ABAP Cloud, RAP, Clean Core governance, SAPUI5, Workflow</strong>, and cutting-edge
+                        <strong>Agent-Based development using MCP in VS Code</strong>.
+                    </p>
 
-          </div>
-        </section>
+                    <!-- Verified Credentials -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-label">Official Credentials</h2>
+                        <div class="cert-card-group">
+                            <div class="cert-item">
+                                <div class="cert-badge-icon">🏅</div>
+                                <div class="cert-text">
+                                    <span class="cert-title">SAP Certified - Back-End Developer</span>
+                                    <span class="cert-meta">ABAP Cloud &bull; Jun 2026</span>
+                                </div>
+                            </div>
+                            <div class="cert-item">
+                                <div class="cert-badge-icon">🏅</div>
+                                <div class="cert-text">
+                                    <span class="cert-title">SAP Certified Associate</span>
+                                    <span class="cert-meta">SAP Fiori Application Developer &bull; Apr 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-        <!-- Resume Download Section -->
-        <section class="sidebar-section">
-          <h2 class="sidebar-label">Curriculum Vitae</h2>
-          <div class="resume-box">
-            <div class="resume-header">
-              <div class="pdf-badge">PDF</div>
-              <div class="resume-meta">
-                <span class="resume-title">Saibal_Das_Resume.pdf</span>
-                <span class="resume-sub">S/4HANA &bull; ABAP Cloud &bull; RAP</span>
-              </div>
-            </div>
-            <div class="resume-btn-group">
-              <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">View PDF</a>
-              <a href="resume.pdf" download="Saibal_Das_Resume.pdf" class="btn btn-primary btn-sm">Download</a>
-            </div>
-          </div>
-        </section>
+                    <!-- Education Details -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-label">Education</h2>
+                        <div class="cert-item">
+                            <div class="cert-badge-icon">🎓</div>
+                            <div class="cert-text">
+                                <span class="cert-title">B.Tech &bull; Computer Science &amp; Engineering</span>
+                                <span class="cert-meta"
+                                    >Brainware University (2017 &ndash; 2021) &bull; CGPA: 8.03</span
+                                >
+                            </div>
+                        </div>
+                    </section>
 
-        <!-- Sidebar Contact Action -->
-        <footer class="sidebar-footer">
-          <button class="btn btn-primary full-width" onclick="openContactModal()">
-            <span>Get in Touch &rarr;</span>
-          </button>
-        </footer>
+                    <!-- Experience Timeline -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-label">Career Track Record</h2>
 
-      </div>
-    </aside>
+                        <!-- Continuous Connected Vertical Timeline -->
+                        <div class="timeline-connected-track" id="experienceTimeline">
+                            <!-- 1. Capgemini (Present Role) -->
+                            <article class="timeline-card active-position">
+                                <span class="timeline-node node-present" title="Current Role"></span>
 
-    <!-- ====================================================================
-         RIGHT COLUMN: Dynamic Minimal Landing Stage + Architecture Content
-         ==================================================================== -->
-    <main class="content-col">
+                                <div class="timeline-header-row">
+                                    <div class="timeline-meta-group">
+                                        <div class="timeline-meta">
+                                            <span class="company-name">Capgemini</span>
+                                            <span class="time-tag">03.2025 &ndash; Present</span>
+                                        </div>
+                                        <h3 class="role-title">Consultant &bull; AMGEN S/4HANA Transformation</h3>
+                                        <p class="role-location">Kolkata, India &bull; Full-time</p>
+                                    </div>
 
-      <!-- Minimal Landing Hero -->
-      <section id="landing" class="landing-stage">
-        <canvas id="ambientCanvas"></canvas>
+                                    <!-- Expand/Collapse Button -->
+                                    <button
+                                        class="exp-toggle-btn"
+                                        type="button"
+                                        aria-expanded="false"
+                                        aria-label="Toggle details"
+                                    >
+                                        <span class="toggle-icon">+</span>
+                                    </button>
+                                </div>
 
-        <div class="landing-inner">
-          <div class="landing-badge">
-            <span class="status-indicator"></span>
-            <span>SAP S/4HANA &bull; ABAP Cloud &bull; Clean Core</span>
-          </div>
+                                <!-- Collapsible Drawer (Closed by default) -->
+                                <div class="exp-collapse-wrapper">
+                                    <div class="exp-collapse-inner">
+                                        <ul class="role-bullets">
+                                            <li>
+                                                Currently leading Clean Core development with a team size of 7 on a
+                                                major Greenfield Life Sciences implementation.
+                                            </li>
+                                            <li>
+                                                Architected event-driven side-by-side solutions leveraging standard RAP
+                                                BO events (<code>R_PURCHASEORDERTP</code>, <code>R_SALESORDERTP</code>)
+                                                and CPI Event Binding.
+                                            </li>
+                                            <li>
+                                                Implemented Agent-Based development solutions using Model Context
+                                                Protocol (MCP) in VS Code to accelerate enterprise delivery.
+                                            </li>
+                                            <li>
+                                                Built reusable RAP determination event templates to parse multi-tab XLSX
+                                                files using XCO libraries and update Purchase Info Records.
+                                            </li>
+                                            <li>
+                                                Led custom field development using Custom Fields &amp; Logic (CFL) with
+                                                <code>SCFD_EUI</code>, Cloud BAdIs, and migrated Web Dynpro/classic
+                                                reports to Fiori.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </article>
 
-          <h2 class="landing-headline">
-            Enterprise ERP Built for <span class="gradient-text">Zero Modifications.</span>
-          </h2>
+                            <!-- 2. Accenture (Past Role) -->
+                            <article class="timeline-card">
+                                <span class="timeline-node node-past"></span>
 
-          <p class="landing-tagline">
-            Architecting upgrade-stable business solutions using the <strong>ABAP RESTful Application Programming Model (RAP)</strong> and decoupled extensibility.
-          </p>
+                                <div class="timeline-header-row">
+                                    <div class="timeline-meta-group">
+                                        <div class="timeline-meta">
+                                            <span class="company-name">Accenture Solutions</span>
+                                            <span class="time-tag">12.2023 &ndash; 02.2025</span>
+                                        </div>
+                                        <h3 class="role-title">Package App Development Analyst</h3>
+                                        <p class="role-location">
+                                            Halliburton &amp; BTP Steampunk &bull; Kolkata, India
+                                        </p>
+                                    </div>
 
-          <div class="landing-cta-group">
-            <button class="btn btn-lg btn-primary explore-btn" onclick="scrollToWork()">
-              <span>Explore My Work</span>
-              <span class="btn-arrow">&darr;</span>
-            </button>
-            <button class="btn btn-lg btn-secondary" onclick="openContactModal()">
-              <span>Contact Me</span>
-            </button>
-          </div>
-        </div>
-      </section>
+                                    <!-- Expand/Collapse Button -->
+                                    <button
+                                        class="exp-toggle-btn"
+                                        type="button"
+                                        aria-expanded="false"
+                                        aria-label="Toggle details"
+                                    >
+                                        <span class="toggle-icon">+</span>
+                                    </button>
+                                </div>
 
-      <!-- Architecture Principles Grid -->
-      <section id="principles-section" class="content-block">
-        <div class="block-header">
-          <span class="tag-label">Architecture Philosophy</span>
-          <h3 class="block-title">Core Engineering Standards</h3>
-          <p class="block-subtitle">Governing rules applied across all implementation blueprints.</p>
-        </div>
+                                <!-- Collapsible Drawer -->
+                                <div class="exp-collapse-wrapper">
+                                    <div class="exp-collapse-inner">
+                                        <ul class="role-bullets">
+                                            <li>
+                                                Focused on SAP BTP Steampunk instance RAP developments, Cloud ABAP, Core
+                                                Data Services (CDS) entities, and released Cloud BAdIs.
+                                            </li>
+                                            <li>
+                                                Designed and developed the complete Purchase Order &amp; PR Workflow
+                                                with approval procedures, HTML5 notification emails, and My Inbox Fiori
+                                                integration.
+                                            </li>
+                                            <li>
+                                                Facilitated seamless S/4HANA &amp; Ariba procurement integration
+                                                implementing multiple BAdIs, SRT_MONI error analysis, and web service
+                                                validations.
+                                            </li>
+                                            <li>
+                                                Delivered RAP Fiori applications enabling Excel/CSV uploads with local
+                                                staging modification before EML table postings and PO attachment
+                                                downloads.
+                                            </li>
+                                            <li>
+                                                Engineered ME21N/ME22N/ME23N screen enhancements, BTE function modules
+                                                for auto-release of PO, and extended OData services via CFL Fiori app.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </article>
 
-        <div class="principles-grid">
-          <div class="glass-card">
-            <div class="card-icon">⚡</div>
-            <h4>Tier-1 Interface Standard</h4>
-            <p>Strict limitation to released standard APIs (C1 contract), avoiding unreleased internal tables and raw function modules.</p>
-          </div>
-          <div class="glass-card">
-            <div class="card-icon">🛡️</div>
-            <h4>Draft-First RAP Architecture</h4>
-            <p>Full lifecycle Managed and Unmanaged BOs with EML-governed transactions and multi-level data validation logic.</p>
-          </div>
-          <div class="glass-card">
-            <div class="card-icon">☁️</div>
-            <h4>Side-by-Side Decoupling</h4>
-            <p>Offloading custom workloads to SAP BTP via asynchronous Event Mesh messages and secure OData v4 web endpoints.</p>
-          </div>
-        </div>
-      </section>
+                            <!-- 3. TCS (Past Role) -->
+                            <article class="timeline-card">
+                                <span class="timeline-node node-past"></span>
 
-      <!-- Horizontal Solutions Slider -->
-      <section id="showcase-section" class="content-block">
-        <div class="slider-header-flex">
-          <div class="block-header">
-            <span class="tag-label">Solutions Portfolio</span>
-            <h3 class="block-title">Featured Solutions &amp; POC Demos</h3>
-          </div>
-          <div class="slider-controls">
-            <button class="slider-arrow" onclick="scrollSlider(-1)" aria-label="Previous">&larr;</button>
-            <button class="slider-arrow" onclick="scrollSlider(1)" aria-label="Next">&rarr;</button>
-          </div>
-        </div>
+                                <div class="timeline-header-row">
+                                    <div class="timeline-meta-group">
+                                        <div class="timeline-meta">
+                                            <span class="company-name">Tata Consultancy Services</span>
+                                            <span class="time-tag">11.2021 &ndash; 12.2023</span>
+                                        </div>
+                                        <h3 class="role-title">Associate System Engineer &bull; Coop Sweden</h3>
+                                        <p class="role-location">Kolkata, India &bull; Full-time</p>
+                                    </div>
 
-        <div class="slider-viewport" id="sliderViewport">
-          <div class="slider-canvas">
-            <!-- Slide 1 -->
-            <article class="slide-card">
-              <span class="slide-category">RAP Managed Scenario</span>
-              <h4 class="slide-heading">Automated Order Exception Handling Engine</h4>
-              <p class="slide-text">Custom RAP transactional business object featuring draft state persistence, automatic pricing recalculation determinations, and custom authorization checks.</p>
-              <div class="pill-group">
-                <span class="pill">ABAP Cloud</span>
-                <span class="pill">RAP Draft</span>
-                <span class="pill">Fiori Elements</span>
-              </div>
-              <a href="#sandbox-section" class="slide-action">Inspect Code Logic &rarr;</a>
-            </article>
+                                    <!-- Expand/Collapse Button -->
+                                    <button
+                                        class="exp-toggle-btn"
+                                        type="button"
+                                        aria-expanded="false"
+                                        aria-label="Toggle details"
+                                    >
+                                        <span class="toggle-icon">+</span>
+                                    </button>
+                                </div>
 
-            <!-- Slide 2 -->
-            <article class="slide-card">
-              <span class="slide-category">Clean Core Remediation</span>
-              <h4 class="slide-heading">Legacy User Exit Modernization Blueprint</h4>
-              <p class="slide-text">Step-by-step refactoring pattern converting legacy SD/MM user exits (`MV45AFZZ`) into cloud-ready developer extensibility Business Add-Ins (BAdIs).</p>
-              <div class="pill-group">
-                <span class="pill">Cloud BAdI</span>
-                <span class="pill">Developer Extensibility</span>
-                <span class="pill">S/4HANA</span>
-              </div>
-              <a href="#sandbox-section" class="slide-action">Inspect Code Logic &rarr;</a>
-            </article>
+                                <!-- Collapsible Drawer -->
+                                <div class="exp-collapse-wrapper">
+                                    <div class="exp-collapse-inner">
+                                        <ul class="role-bullets">
+                                            <li>
+                                                Built an end-to-end custom Retail Promotion Fiori solution utilizing RAP
+                                                for backend OData exposure and SAPUI5 for frontend List Report
+                                                extension.
+                                            </li>
+                                            <li>
+                                                Extended standard SAP Fiori applications, including the Order Product
+                                                Standard Fiori App, custom column fragments, filters, and JS-PDF export.
+                                            </li>
+                                            <li>
+                                                Created Web APIs using RAP, modeled high-performance CDS views, and
+                                                applied SQL performance tuning techniques for SAP HANA.
+                                            </li>
+                                            <li>
+                                                Developed OO-ALV reports, BAPIs, RFCs, and managed Fiori tile catalog
+                                                configurations and launchpad role assignments.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
 
-            <!-- Slide 3 -->
-            <article class="slide-card">
-              <span class="slide-category">Side-by-Side Integration</span>
-              <h4 class="slide-heading">Event-Driven Asynchronous SAP BTP Bridge</h4>
-              <p class="slide-text">Publishing native business events upon sales contract creation via RAP Event Definition, routed through SAP Event Mesh to offload analytics.</p>
-              <div class="pill-group">
-                <span class="pill">RAP Events</span>
-                <span class="pill">Event Mesh</span>
-                <span class="pill">SAP BTP</span>
-              </div>
-              <a href="#sandbox-section" class="slide-action">Inspect Code Logic &rarr;</a>
-            </article>
+                    <!-- Resume Download Section -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-label">Curriculum Vitae</h2>
+                        <div class="resume-box">
+                            <div class="resume-header">
+                                <div class="pdf-badge">PDF</div>
+                                <div class="resume-meta">
+                                    <span class="resume-title">Saibal_Das_Resume.pdf</span>
+                                    <span class="resume-sub">4.7+ Yrs &bull; ABAP Cloud &bull; RAP &bull; Fiori</span>
+                                </div>
+                            </div>
+                            <div class="resume-btn-group">
+                                <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm"
+                                    >View PDF</a
+                                >
+                                <a href="resume.pdf" download="Saibal_Das_Resume.pdf" class="btn btn-primary btn-sm"
+                                    >Download</a
+                                >
+                            </div>
+                        </div>
+                    </section>
 
-            <!-- Slide 4 -->
-            <article class="slide-card">
-              <span class="slide-category">Analytics Modeling</span>
-              <h4 class="slide-heading">High-Throughput CDS Projection Hierarchies</h4>
-              <p class="slide-text">Parameterized analytical CDS view entities utilizing transactional query contracts, transient associations, and automated currency conversions.</p>
-              <div class="pill-group">
-                <span class="pill">CDS Entities</span>
-                <span class="pill">OData v4</span>
-                <span class="pill">Analytical Engine</span>
-              </div>
-              <a href="#sandbox-section" class="slide-action">Inspect Code Logic &rarr;</a>
-            </article>
-          </div>
-        </div>
-      </section>
+                    <!-- Sidebar Contact Action -->
+                    <footer class="sidebar-footer">
+                        <button class="btn btn-primary full-width" onclick="openContactModal()">
+                            <span>Get in Touch &rarr;</span>
+                        </button>
+                    </footer>
+                </div>
+            </aside>
 
-      <!-- IDE Code Sandbox -->
-      <section id="sandbox-section" class="content-block">
-        <div class="block-header">
-          <span class="tag-label">Learning Sandbox</span>
-          <h3 class="block-title">Interactive Architectural Code Lab</h3>
-          <p class="block-subtitle">Examine the implementation patterns powering modern Clean Core apps.</p>
-        </div>
+            <!-- ====================================================================
+          RIGHT COLUMN: Dynamic Minimal Landing Stage + Architecture Content
+          ==================================================================== -->
+            <main class="content-col">
+                <!-- Minimal Landing Hero -->
+                <section id="landing" class="landing-stage">
+                    <canvas id="ambientCanvas"></canvas>
 
-        <div class="ide-window">
-          <div class="ide-topbar">
-            <div class="ide-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-            </div>
-            <div class="ide-tabs">
-              <button class="ide-tab-btn active" onclick="selectTab(event, 'code-bdef')">Travel_Processor.bdef</button>
-              <button class="ide-tab-btn" onclick="selectTab(event, 'code-eml')">ValidationLogic.abap</button>
-              <button class="ide-tab-btn" onclick="selectTab(event, 'code-cds')">C_TravelProjection.cds</button>
-            </div>
-            <button class="copy-code-btn" id="copyCodeBtn" onclick="copyActiveCode()">
-              <span id="copyIcon">📋</span> <span id="copyText">Copy</span>
-            </button>
-          </div>
+                    <div class="landing-inner">
+                        <div class="landing-badge">
+                            <span class="status-indicator"></span>
+                            <span>4.7+ Years &bull; S/4HANA Greenfield &bull; Clean Core Lead</span>
+                        </div>
 
-          <!-- Tab 1 -->
-          <div id="code-bdef" class="ide-editor active">
-            <pre><code><span class="tok-kw">managed implementation in class</span> zbp_r_travel_processor <span class="tok-kw">unique</span>;
+                        <h2 class="landing-headline">
+                            Enterprise ERP Built for <span class="gradient-text">Zero Modifications.</span>
+                        </h2>
+
+                        <p class="landing-tagline">
+                            Architecting upgrade-stable business solutions using the
+                            <strong>ABAP RESTful Application Programming Model (RAP)</strong>, side-by-side
+                            extensibility, and modern <strong>Agent-Based development via MCP</strong>.
+                        </p>
+
+                        <div class="landing-cta-group">
+                            <button class="btn btn-lg btn-primary explore-btn" onclick="scrollToWork()">
+                                <span>Explore My Work</span>
+                                <span class="btn-arrow">&darr;</span>
+                            </button>
+                            <button class="btn btn-lg btn-secondary" onclick="openContactModal()">
+                                <span>Contact Me</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Principles Grid -->
+                <section id="principles-section" class="content-block">
+                    <div class="block-header">
+                        <span class="tag-label">Architecture Philosophy</span>
+                        <h3 class="block-title">Core Engineering Standards</h3>
+                        <p class="block-subtitle">Governing rules applied across all implementation blueprints.</p>
+                    </div>
+
+                    <div class="principles-grid">
+                        <div class="glass-card">
+                            <div class="card-icon">⚡</div>
+                            <h4>Tier-1 Interface Standard</h4>
+                            <p>
+                                Restricting all development to released standard APIs (C1 contract), replacing
+                                transparent modifications with Cloud BAdIs and Custom Fields &amp; Logic (CFL).
+                            </p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="card-icon">🛡️</div>
+                            <h4>Draft-First RAP Architecture</h4>
+                            <p>
+                                Full lifecycle Managed and Unmanaged BOs with EML-governed transactions, instance
+                                feature controls, and Determination Events.
+                            </p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="card-icon">☁️</div>
+                            <h4>Side-by-Side Decoupling</h4>
+                            <p>
+                                Offloading custom workloads via standard RAP events (e.g.
+                                <code>R_PURCHASEORDERTP</code>) streamed through SAP Event Mesh &amp; CPI to SAP BTP.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Horizontal Solutions Slider -->
+                <section id="showcase-section" class="content-block">
+                    <div class="slider-header-flex">
+                        <div class="block-header">
+                            <span class="tag-label">Solutions Portfolio</span>
+                            <h3 class="block-title">Featured Solutions &amp; POC Demos</h3>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-arrow" onclick="scrollSlider(-1)" aria-label="Previous">
+                                &larr;
+                            </button>
+                            <button class="slider-arrow" onclick="scrollSlider(1)" aria-label="Next">&rarr;</button>
+                        </div>
+                    </div>
+
+                    <div class="slider-viewport" id="sliderViewport">
+                        <div class="slider-canvas">
+                            <!-- Slide 1 -->
+                            <article class="slide-card">
+                                <span class="slide-category">AMGEN S/4HANA Transformation</span>
+                                <h4 class="slide-heading">RAP Event-Driven Clean Core Architecture</h4>
+                                <p class="slide-text">
+                                    Greenfield enterprise pattern using standard RAP BO events (<code
+                                        >R_PURCHASEORDERTP</code
+                                    >
+                                    &amp; <code>R_SALESORDERTP</code>) in handler classes with Event Binding to trigger
+                                    asynchronous CPI integration.
+                                </p>
+                                <div class="pill-group">
+                                    <span class="pill">RAP Events</span>
+                                    <span class="pill">SAP CPI</span>
+                                    <span class="pill">Clean Core</span>
+                                </div>
+                                <a href="#sandbox-section" class="slide-action">Inspect Architecture &rarr;</a>
+                            </article>
+
+                            <!-- Slide 2 -->
+                            <article class="slide-card">
+                                <span class="slide-category">Halliburton Procurement</span>
+                                <h4 class="slide-heading">PO &amp; SES Workflow Fiori Integration</h4>
+                                <p class="slide-text">
+                                    Complete end-to-end approval framework incorporating PO release strategies, HTML5
+                                    notification triggers, custom Fiori SES approval apps, and seamless SAP Ariba BAdI
+                                    integrations.
+                                </p>
+                                <div class="pill-group">
+                                    <span class="pill">PO Workflow</span>
+                                    <span class="pill">My Inbox</span>
+                                    <span class="pill">Ariba BAdIs</span>
+                                </div>
+                                <a href="#sandbox-section" class="slide-action">Inspect Architecture &rarr;</a>
+                            </article>
+
+                            <!-- Slide 3 -->
+                            <article class="slide-card">
+                                <span class="slide-category">Coop Sweden Retail</span>
+                                <h4 class="slide-heading">Custom Promotion App &amp; Fiori Extension</h4>
+                                <p class="slide-text">
+                                    Custom Retail Promotion application utilizing RAP for transactional OData service
+                                    modeling and customized SAPUI5 Fiori Elements controllers, fragments, and PDF export
+                                    logic.
+                                </p>
+                                <div class="pill-group">
+                                    <span class="pill">RAP OData</span>
+                                    <span class="pill">SAPUI5</span>
+                                    <span class="pill">Fiori Elements</span>
+                                </div>
+                                <a href="#sandbox-section" class="slide-action">Inspect Architecture &rarr;</a>
+                            </article>
+
+                            <!-- Slide 4 -->
+                            <article class="slide-card">
+                                <span class="slide-category">Next-Gen SAP Tooling</span>
+                                <h4 class="slide-heading">AI Agentic Development via MCP</h4>
+                                <p class="slide-text">
+                                    Implemented and demonstrated Agent-Based development architecture in VS Code using
+                                    Model Context Protocol (MCP) to automate S/4HANA Clean Core technical artifacts.
+                                </p>
+                                <div class="pill-group">
+                                    <span class="pill">MCP Protocol</span>
+                                    <span class="pill">VS Code</span>
+                                    <span class="pill">AI Agentic Dev</span>
+                                </div>
+                                <a href="#sandbox-section" class="slide-action">Inspect Architecture &rarr;</a>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- IDE Code Sandbox -->
+                <section id="sandbox-section" class="content-block">
+                    <div class="block-header">
+                        <span class="tag-label">Learning Sandbox</span>
+                        <h3 class="block-title">Architectural Code Lab</h3>
+                        <p class="block-subtitle">
+                            Examine the clean core implementation patterns powering modern enterprise apps.
+                        </p>
+                    </div>
+
+                    <div class="ide-window">
+                        <div class="ide-topbar">
+                            <div class="ide-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <div class="ide-tabs">
+                                <button class="ide-tab-btn active" onclick="selectTab(event, 'code-bdef')">
+                                    PurchaseOrder_Processor.bdef
+                                </button>
+                                <button class="ide-tab-btn" onclick="selectTab(event, 'code-eml')">
+                                    ValidationLogic.abap
+                                </button>
+                                <button class="ide-tab-btn" onclick="selectTab(event, 'code-cds')">
+                                    C_PurchaseOrderProjection.cds
+                                </button>
+                            </div>
+                            <button class="copy-code-btn" id="copyCodeBtn" onclick="copyActiveCode()">
+                                <span id="copyIcon">📋</span> <span id="copyText">Copy</span>
+                            </button>
+                        </div>
+
+                        <!-- Tab 1 -->
+                        <div id="code-bdef" class="ide-editor active">
+                            <pre><code><span class="tok-kw">managed implementation in class</span> zbp_r_po_processor <span class="tok-kw">unique</span>;
 <span class="tok-kw">strict</span> ( 2 );
 <span class="tok-kw">with draft</span>;
 
-<span class="tok-kw">define behavior for</span> ZR_Travel_Processor <span class="tok-kw">alias</span> Travel
-<span class="tok-kw">persistent table</span> ztravel_data
-<span class="tok-kw">draft table</span> ztravel_d
+<span class="tok-kw">define behavior for</span> ZR_PurchaseOrder_TP <span class="tok-kw">alias</span> PurchaseOrder
+<span class="tok-kw">persistent table</span> zpo_header_d
+<span class="tok-kw">draft table</span> zpo_draft_h
 <span class="tok-kw">lock master total etag</span> LastChangedAt
 <span class="tok-kw">authorization master</span> ( <span class="tok-kw">global</span> )
 {
-  <span class="tok-kw">field</span> ( <span class="tok-kw">readonly, numbering : managed</span> ) TravelUUID;
-  <span class="tok-kw">field</span> ( <span class="tok-kw">mandatory</span> ) CustomerID, BeginDate, EndDate;
+  <span class="tok-kw">field</span> ( <span class="tok-kw">readonly, numbering : managed</span> ) POUUID;
+  <span class="tok-kw">field</span> ( <span class="tok-kw">mandatory</span> ) Supplier, PurchaseOrg, TargetValue;
 
   <span class="tok-kw">create</span>; <span class="tok-kw">update</span>; <span class="tok-kw">delete</span>;
 
-  <span class="tok-comment">/* Clean Core Compliance: Validation trigger on transactional save */</span>
-  <span class="tok-kw">validation</span> validateDates <span class="tok-kw">on save</span> { <span class="tok-kw">field</span> BeginDate, EndDate; <span class="tok-kw">create</span>; }
-  <span class="tok-kw">determination</span> setInitialStatus <span class="tok-kw">on modify</span> { <span class="tok-kw">create</span>; }
+  <span class="tok-comment">/* Clean Core Compliance: Validation trigger & event emission */</span>
+  <span class="tok-kw">validation</span> validateSupplier <span class="tok-kw">on save</span> { <span class="tok-kw">field</span> Supplier; <span class="tok-kw">create</span>; }
+  <span class="tok-kw">determination</span> onOrderCreated <span class="tok-kw">on modify</span> { <span class="tok-kw">create</span>; }
 
   <span class="tok-kw">draft action</span> Edit;
   <span class="tok-kw">draft action</span> Activate <span class="tok-kw">optimized</span>;
   <span class="tok-kw">draft action</span> Discard;
-  <span class="tok-kw">draft determine action</span> Prepare { <span class="tok-kw">validation</span> validateDates; }
+  <span class="tok-kw">draft determine action</span> Prepare { <span class="tok-kw">validation</span> validateSupplier; }
 }</code></pre>
-          </div>
+                        </div>
 
-          <!-- Tab 2 -->
-          <div id="code-eml" class="ide-editor">
-            <pre><code><span class="tok-kw">METHOD</span> validateDates.
+                        <!-- Tab 2 -->
+                        <div id="code-eml" class="ide-editor">
+                            <pre><code><span class="tok-kw">METHOD</span> validateSupplier.
   <span class="tok-comment">" Read business object data via Entity Manipulation Language (EML)</span>
-  <span class="tok-kw">READ ENTITIES OF</span> ZR_Travel_Processor <span class="tok-kw">IN LOCAL MODE</span>
-    <span class="tok-kw">ENTITY</span> Travel
-    <span class="tok-kw">FIELDS</span> ( BeginDate EndDate )
+  <span class="tok-kw">READ ENTITIES OF</span> ZR_PurchaseOrder_TP <span class="tok-kw">IN LOCAL MODE</span>
+    <span class="tok-kw">ENTITY</span> PurchaseOrder
+    <span class="tok-kw">FIELDS</span> ( Supplier TargetValue )
     <span class="tok-kw">WITH CORRESPONDING</span> #( keys )
-    <span class="tok-kw">RESULT DATA</span>(lt_travel).
+    <span class="tok-kw">RESULT DATA</span>(lt_po_data).
 
-  <span class="tok-kw">LOOP AT</span> lt_travel <span class="tok-kw">INTO DATA</span>(ls_travel).
-    <span class="tok-kw">IF</span> ls_travel-EndDate &lt; ls_travel-BeginDate.
+  <span class="tok-kw">LOOP AT</span> lt_po_data <span class="tok-kw">INTO DATA</span>(ls_po).
+    <span class="tok-kw">IF</span> ls_po-TargetValue &lt;= 0.
       <span class="tok-comment">" Populate the RAP reported & failed response structures</span>
-      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_travel-%tky ) <span class="tok-kw">TO</span> failed-travel.
-      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_travel-%tky
-                      %msg = new_message( id       = <span class="tok-str">'ZTRAVEL_MSG'</span>
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_po-%tky ) <span class="tok-kw">TO</span> failed-purchaseorder.
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_po-%tky
+                      %msg = new_message( id       = <span class="tok-str">'ZPO_MSG'</span>
                                          number   = 001
                                          severity = if_abap_behv_message=>severity-error )
-                      %element-EndDate = if_abap_behv=>mk-on ) <span class="tok-kw">TO</span> reported-travel.
+                      %element-TargetValue = if_abap_behv=>mk-on ) <span class="tok-kw">TO</span> reported-purchaseorder.
     <span class="tok-kw">ENDIF</span>.
   <span class="tok-kw">ENDLOOP</span>.
 <span class="tok-kw">ENDMETHOD</span>.</code></pre>
-          </div>
+                        </div>
 
-          <!-- Tab 3 -->
-          <div id="code-cds" class="ide-editor">
-            <pre><code>@AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: <span class="tok-str">'Clean Core Projection View for Travel'</span>
+                        <!-- Tab 3 -->
+                        <div id="code-cds" class="ide-editor">
+                            <pre><code>@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: <span class="tok-str">'Clean Core Projection View for Purchase Orders'</span>
 @Metadata.allowExtensions: <span class="tok-kw">true</span>
-<span class="tok-kw">define root view entity</span> ZC_TravelAnalyticsProjection
+<span class="tok-kw">define root view entity</span> ZC_PurchaseOrderProjection
   <span class="tok-kw">provider contract</span> transactional_query
-  <span class="tok-kw">as projection on</span> ZR_Travel_Processor
+  <span class="tok-kw">as projection on</span> ZR_PurchaseOrder_TP
 {
-  <span class="tok-kw">key</span> TravelUUID,
-      TravelID,
-      CustomerID,
-      BeginDate,
-      EndDate,
+  <span class="tok-kw">key</span> POUUID,
+      PurchaseOrderNumber,
+      Supplier,
+      PurchaseOrg,
       @Semantics.amount.currencyCode: <span class="tok-str">'CurrencyCode'</span>
-      BookingFee,
+      TargetValue,
       CurrencyCode,
       OverallStatus,
-      <span class="tok-comment">/* Association resolution conforming to Tier-1 guidelines */</span>
-      _Customer.LastName <span class="tok-kw">as</span> CustomerLastName
+      <span class="tok-comment">/* Tier-1 released association resolution */</span>
+      _Supplier.SupplierName <span class="tok-kw">as</span> SupplierName
 }</code></pre>
-          </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ====================================================================
+            MODERN ABAP 7.5+ SYNTAX COOKBOOK & ROSETTA STONE
+            ==================================================================== -->
+                <section id="cookbook-section" class="content-block">
+                    <div class="block-header">
+                        <span class="tag-label">Modern ABAP 7.5+ &amp; Clean Code</span>
+                        <h3 class="block-title">Modern ABAP Expression Matrix</h3>
+                        <p class="block-subtitle">
+                            Explore how modern 7.5+ constructor operators and iterators replace verbose legacy
+                            procedural blocks.
+                        </p>
+                    </div>
+
+                    <div class="cookbook-wrapper">
+                        <!-- Search & Filter Controls -->
+                        <div class="cookbook-controls">
+                            <!-- Search Input -->
+                            <div class="search-input-box">
+                                <span class="search-icon">🔍</span>
+                                <input
+                                    type="text"
+                                    id="syntaxSearchInput"
+                                    class="syntax-search-input"
+                                    placeholder="Search syntax (e.g., VALUE, REDUCE, FOR, FILTER, COND)..."
+                                    autocomplete="off"
+                                />
+                                <button
+                                    class="clear-search-btn"
+                                    id="clearSearchBtn"
+                                    type="button"
+                                    aria-label="Clear search"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+
+                            <!-- Category Filter Pills -->
+                            <div class="syntax-category-pills" id="syntaxCategoryPills">
+                                <button class="cat-pill active" data-cat="all" type="button">All Syntax</button>
+                                <button class="cat-pill" data-cat="tables" type="button">Internal Tables</button>
+                                <button class="cat-pill" data-cat="constructors" type="button">Constructors</button>
+                                <button class="cat-pill" data-cat="functional" type="button">Functional Logic</button>
+                                <button class="cat-pill" data-cat="types" type="button">Types &amp; Casting</button>
+                            </div>
+                        </div>
+
+                        <!-- Dual-Column Interactive Viewer -->
+                        <div class="cookbook-grid">
+                            <!-- Left: Searchable Snippet Cards List -->
+                            <div class="snippet-cards-list" id="snippetCardsList">
+                                <!-- Dynamically rendered by JavaScript -->
+                            </div>
+
+                            <!-- Right: Interactive Before / After Code Studio -->
+                            <div class="snippet-display-studio">
+                                <div class="studio-header">
+                                    <div class="studio-meta">
+                                        <span class="studio-badge" id="studioBadge">TABLE CONSTRUCTOR</span>
+                                        <h4 class="studio-title" id="studioTitle">VALUE #( ) Operator</h4>
+                                    </div>
+
+                                    <!-- Toggle Mode: Modern 7.5+ vs Legacy -->
+                                    <div class="studio-mode-toggle">
+                                        <button class="mode-btn active" id="btnModernMode" type="button">
+                                            <span class="mode-dot dot-modern"></span> Modern 7.5+
+                                        </button>
+                                        <button class="mode-btn" id="btnLegacyMode" type="button">
+                                            <span class="mode-dot dot-legacy"></span> Classic ABAP
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Explanation & Impact Score Banner -->
+                                <div class="studio-impact-bar">
+                                    <span class="impact-metric" id="studioReduction">-65% Lines of Code</span>
+                                    <span class="impact-desc" id="studioDescription">
+                                        Constructs and populates structures and internal tables directly in memory
+                                        without manual work areas.
+                                    </span>
+                                </div>
+
+                                <!-- Terminal Code Editor Box -->
+                                <div class="studio-code-box">
+                                    <div class="studio-code-topbar">
+                                        <span class="code-tab-name" id="studioFileName">ValueOperator.abap</span>
+                                        <button
+                                            class="copy-code-btn"
+                                            id="copyCookbookBtn"
+                                            type="button"
+                                            onclick="copyCookbookCode()"
+                                        >
+                                            <span id="cbCopyIcon">📋</span> <span id="cbCopyText">Copy Code</span>
+                                        </button>
+                                    </div>
+                                    <div class="studio-code-viewport">
+                                        <pre><code id="studioCodeBlock"><!-- Code dynamically injected --></code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Clean Core Rationale -->
+                                <div class="studio-rationale-box" id="studioRationale">
+                                    <strong>Clean Core Benefit:</strong> Eliminates global state, header lines, and
+                                    implicit memory buffers, making routines thread-safe and stateless.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ====================================================================
+            CLEAN CORE EXTENSIBILITY MATRIX (Hover + Click Interactive Slider)
+            ==================================================================== -->
+                <section class="content-block" id="cleanCoreSection">
+                    <div class="slider-header-flex">
+                        <div class="block-header">
+                            <span class="tag-label">Architectural Guardrails</span>
+                            <h3 class="block-title">Clean Core Extensibility Matrix</h3>
+                            <p class="block-subtitle">
+                                Hover or click across enterprise modernization patterns to inspect decoupling
+                                architectures.
+                            </p>
+                        </div>
+                        <!-- Slider Navigation Arrows -->
+                        <div class="matrix-slider-controls">
+                            <button
+                                class="slider-arrow"
+                                id="matrixPrevBtn"
+                                type="button"
+                                aria-label="Previous scenario"
+                            >
+                                &lsaquo;
+                            </button>
+                            <button class="slider-arrow" id="matrixNextBtn" type="button" aria-label="Next scenario">
+                                &rsaquo;
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="matrix-wrapper">
+                        <!-- Horizontal Scenario Track -->
+                        <div class="matrix-slider-viewport" id="matrixSliderViewport">
+                            <div class="matrix-slider-track" id="matrixSliderTrack">
+                                <button
+                                    class="scenario-btn active"
+                                    data-scenario="sales_exit"
+                                    data-index="0"
+                                    type="button"
+                                >
+                                    <span class="scenario-icon">🔄</span>
+                                    <div class="scenario-info">
+                                        <span class="scenario-name">User Exit Remediation</span>
+                                        <span class="scenario-sub">Refactoring MV45AFZZ</span>
+                                    </div>
+                                </button>
+
+                                <button class="scenario-btn" data-scenario="custom_bo" data-index="1" type="button">
+                                    <span class="scenario-icon">🧩</span>
+                                    <div class="scenario-info">
+                                        <span class="scenario-name">Transactional BO</span>
+                                        <span class="scenario-sub">Custom Business Object</span>
+                                    </div>
+                                </button>
+
+                                <button class="scenario-btn" data-scenario="analytics" data-index="2" type="button">
+                                    <span class="scenario-icon">⚡</span>
+                                    <div class="scenario-info">
+                                        <span class="scenario-name">Operational Analytics</span>
+                                        <span class="scenario-sub">High-Throughput Queries</span>
+                                    </div>
+                                </button>
+
+                                <button class="scenario-btn" data-scenario="btp_event" data-index="3" type="button">
+                                    <span class="scenario-icon">☁️</span>
+                                    <div class="scenario-info">
+                                        <span class="scenario-name">Side-by-Side Bridge</span>
+                                        <span class="scenario-sub">Event Mesh &amp; SAP BTP</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Slide Indicator Dots -->
+                        <div class="matrix-dots" id="matrixDots">
+                            <span class="matrix-dot active" data-index="0"></span>
+                            <span class="matrix-dot" data-index="1"></span>
+                            <span class="matrix-dot" data-index="2"></span>
+                            <span class="matrix-dot" data-index="3"></span>
+                        </div>
+
+                        <!-- Dynamic Blueprint Showcase Card -->
+                        <div class="blueprint-card" id="blueprintCard">
+                            <div class="blueprint-topbar">
+                                <span class="tier-pill" id="bpTier">Tier 2: In-App Developer Extensibility</span>
+                                <span class="contract-pill" id="bpContract">C1 Interface Contract</span>
+                            </div>
+
+                            <div class="blueprint-body">
+                                <h4 class="blueprint-heading animate-cascade" id="bpTitle">
+                                    Legacy User Exit to Cloud BAdI Pattern
+                                </h4>
+                                <p class="blueprint-desc animate-cascade" id="bpDesc">
+                                    Eliminates transparent core table and program modifications. Custom logic is
+                                    isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring
+                                    seamless zero-downtime upgrades.
+                                </p>
+
+                                <!-- Architecture Pipeline Flow -->
+                                <div class="pipeline-flow-container animate-cascade">
+                                    <span class="pipeline-label">Refactoring Pipeline:</span>
+                                    <div class="pipeline-track" id="bpPipeline">
+                                        <div class="pipe-step pipe-legacy">Legacy Hook (MV45AFZZ)</div>
+                                        <div class="pipe-arrow">&rarr;</div>
+                                        <div class="pipe-step pipe-contract">C1 Released APIs</div>
+                                        <div class="pipe-arrow">&rarr;</div>
+                                        <div class="pipe-step pipe-target">Cloud BAdI Implementation</div>
+                                    </div>
+                                </div>
+
+                                <!-- Guardrails Checklist -->
+                                <div class="guardrails-grid animate-cascade" id="bpGuardrails">
+                                    <div class="guardrail-item">
+                                        <span class="check-icon">✓</span>
+                                        <span>100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)</span>
+                                    </div>
+                                    <div class="guardrail-item">
+                                        <span class="check-icon">✓</span>
+                                        <span>Enforced by ABAP Test Cockpit (ATC) Cloud Profile</span>
+                                    </div>
+                                    <div class="guardrail-item">
+                                        <span class="check-icon">✓</span>
+                                        <span>No direct SELECTs on unreleased standard tables</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tech Pills -->
+                                <div class="blueprint-tags animate-cascade" id="bpTags">
+                                    <span class="pill">Cloud BAdI</span>
+                                    <span class="pill">ABAP Cloud</span>
+                                    <span class="pill">ATC Governance</span>
+                                    <span class="pill">Developer Extensibility</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Site Footer -->
+                <footer class="content-footer">
+                    <p>&copy; 2026 Saibal Das &bull; SAP S/4HANA, RAP &amp; Clean Core Architecture Hub.</p>
+                    <a href="#landing" class="back-top">&uarr; Return to Top</a>
+                </footer>
+            </main>
         </div>
-      </section>
-      <!-- ====================================================================
-           MODERN ABAP 7.5+ SYNTAX COOKBOOK & ROSETTA STONE
-           ==================================================================== -->
-      <section id="cookbook-section" class="content-block">
-        <div class="block-header">
-          <span class="tag-label">Modern ABAP 7.5+ &amp; Clean Code</span>
-          <h3 class="block-title">Modern ABAP Expression Matrix</h3>
-          <p class="block-subtitle">Explore how modern 7.5+ constructor operators and iterators replace verbose legacy procedural blocks.</p>
-        </div>
 
-        <div class="cookbook-wrapper">
-          <!-- Search & Filter Controls -->
-          <div class="cookbook-controls">
-            <!-- Search Input -->
-            <div class="search-input-box">
-              <span class="search-icon">🔍</span>
-              <input 
-                type="text" 
-                id="syntaxSearchInput" 
-                class="syntax-search-input" 
-                placeholder="Search syntax (e.g., VALUE, REDUCE, FOR, FILTER, COND)..." 
-                autocomplete="off"
-              />
-              <button class="clear-search-btn" id="clearSearchBtn" type="button" aria-label="Clear search">&times;</button>
-            </div>
-
-            <!-- Category Filter Pills -->
-            <div class="syntax-category-pills" id="syntaxCategoryPills">
-              <button class="cat-pill active" data-cat="all" type="button">All Syntax</button>
-              <button class="cat-pill" data-cat="tables" type="button">Internal Tables</button>
-              <button class="cat-pill" data-cat="constructors" type="button">Constructors</button>
-              <button class="cat-pill" data-cat="functional" type="button">Functional Logic</button>
-              <button class="cat-pill" data-cat="types" type="button">Types &amp; Casting</button>
-            </div>
-          </div>
-
-          <!-- Dual-Column Interactive Viewer -->
-          <div class="cookbook-grid">
-            
-            <!-- Left: Searchable Snippet Cards List -->
-            <div class="snippet-cards-list" id="snippetCardsList">
-              <!-- Dynamically rendered by JavaScript -->
-            </div>
-
-            <!-- Right: Interactive Before / After Code Studio -->
-            <div class="snippet-display-studio">
-              <div class="studio-header">
-                <div class="studio-meta">
-                  <span class="studio-badge" id="studioBadge">TABLE CONSTRUCTOR</span>
-                  <h4 class="studio-title" id="studioTitle">VALUE #( ) Operator</h4>
-                </div>
-
-                <!-- Toggle Mode: Modern 7.5+ vs Legacy -->
-                <div class="studio-mode-toggle">
-                  <button class="mode-btn active" id="btnModernMode" type="button">
-                    <span class="mode-dot dot-modern"></span> Modern 7.5+
-                  </button>
-                  <button class="mode-btn" id="btnLegacyMode" type="button">
-                    <span class="mode-dot dot-legacy"></span> Classic ABAP
-                  </button>
-                </div>
-              </div>
-
-              <!-- Explanation & Impact Score Banner -->
-              <div class="studio-impact-bar">
-                <span class="impact-metric" id="studioReduction">-65% Lines of Code</span>
-                <span class="impact-desc" id="studioDescription">Constructs and populates structures and internal tables directly in memory without manual work areas.</span>
-              </div>
-
-              <!-- Terminal Code Editor Box -->
-              <div class="studio-code-box">
-                <div class="studio-code-topbar">
-                  <span class="code-tab-name" id="studioFileName">ValueOperator.abap</span>
-                  <button class="copy-code-btn" id="copyCookbookBtn" type="button" onclick="copyCookbookCode()">
-                    <span id="cbCopyIcon">📋</span> <span id="cbCopyText">Copy Code</span>
-                  </button>
-                </div>
-                <div class="studio-code-viewport">
-                  <pre><code id="studioCodeBlock"><!-- Code dynamically injected --></code></pre>
-                </div>
-              </div>
-
-              <!-- Clean Core Rationale -->
-              <div class="studio-rationale-box" id="studioRationale">
-                <strong>Clean Core Benefit:</strong> Eliminates global state, header lines, and implicit memory buffers, making routines thread-safe and stateless.
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           CLEAN CORE EXTENSIBILITY MATRIX (Hover + Click Interactive Slider)
-           ==================================================================== -->
-      <section class="content-block" id="cleanCoreSection">
-        <div class="slider-header-flex">
-          <div class="block-header">
-            <span class="tag-label">Architectural Guardrails</span>
-            <h3 class="block-title">Clean Core Extensibility Matrix</h3>
-            <p class="block-subtitle">Hover or click across enterprise modernization patterns to inspect decoupling architectures.</p>
-          </div>
-          <!-- Slider Navigation Arrows -->
-          <div class="matrix-slider-controls">
-            <button class="slider-arrow" id="matrixPrevBtn" type="button" aria-label="Previous scenario">&lsaquo;</button>
-            <button class="slider-arrow" id="matrixNextBtn" type="button" aria-label="Next scenario">&rsaquo;</button>
-          </div>
-        </div>
-
-        <div class="matrix-wrapper">
-          <!-- Horizontal Scenario Track: Explicit data-scenario AND data-index attributes -->
-          <div class="matrix-slider-viewport" id="matrixSliderViewport">
-            <div class="matrix-slider-track" id="matrixSliderTrack">
-
-              <button class="scenario-btn active" data-scenario="sales_exit" data-index="0" type="button">
-                <span class="scenario-icon">🔄</span>
-                <div class="scenario-info">
-                  <span class="scenario-name">User Exit Remediation</span>
-                  <span class="scenario-sub">Refactoring MV45AFZZ</span>
-                </div>
-              </button>
-
-              <button class="scenario-btn" data-scenario="custom_bo" data-index="1" type="button">
-                <span class="scenario-icon">🧩</span>
-                <div class="scenario-info">
-                  <span class="scenario-name">Transactional BO</span>
-                  <span class="scenario-sub">Custom Business Object</span>
-                </div>
-              </button>
-
-              <button class="scenario-btn" data-scenario="analytics" data-index="2" type="button">
-                <span class="scenario-icon">⚡</span>
-                <div class="scenario-info">
-                  <span class="scenario-name">Operational Analytics</span>
-                  <span class="scenario-sub">High-Throughput Queries</span>
-                </div>
-              </button>
-
-              <button class="scenario-btn" data-scenario="btp_event" data-index="3" type="button">
-                <span class="scenario-icon">☁️</span>
-                <div class="scenario-info">
-                  <span class="scenario-name">Side-by-Side Bridge</span>
-                  <span class="scenario-sub">Event Mesh &amp; SAP BTP</span>
-                </div>
-              </button>
-
-            </div>
-          </div>
-
-          <!-- Slide Indicator Dots -->
-          <div class="matrix-dots" id="matrixDots">
-            <span class="matrix-dot active" data-index="0"></span>
-            <span class="matrix-dot" data-index="1"></span>
-            <span class="matrix-dot" data-index="2"></span>
-            <span class="matrix-dot" data-index="3"></span>
-          </div>
-
-          <!-- Dynamic Blueprint Showcase Card -->
-          <div class="blueprint-card" id="blueprintCard">
-            <div class="blueprint-topbar">
-              <span class="tier-pill" id="bpTier">Tier 2: In-App Developer Extensibility</span>
-              <span class="contract-pill" id="bpContract">C1 Interface Contract</span>
-            </div>
-
-            <div class="blueprint-body">
-              <h4 class="blueprint-heading animate-cascade" id="bpTitle">Legacy User Exit to Cloud BAdI Pattern</h4>
-              <p class="blueprint-desc animate-cascade" id="bpDesc">
-                Eliminates transparent core table and program modifications. Custom logic is isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring seamless zero-downtime upgrades.
-              </p>
-
-              <!-- Architecture Pipeline Flow -->
-              <div class="pipeline-flow-container animate-cascade">
-                <span class="pipeline-label">Refactoring Pipeline:</span>
-                <div class="pipeline-track" id="bpPipeline">
-                  <div class="pipe-step pipe-legacy">Legacy Hook (MV45AFZZ)</div>
-                  <div class="pipe-arrow">&rarr;</div>
-                  <div class="pipe-step pipe-contract">C1 Released APIs</div>
-                  <div class="pipe-arrow">&rarr;</div>
-                  <div class="pipe-step pipe-target">Cloud BAdI Implementation</div>
-                </div>
-              </div>
-
-              <!-- Guardrails Checklist -->
-              <div class="guardrails-grid animate-cascade" id="bpGuardrails">
-                <div class="guardrail-item">
-                  <span class="check-icon">✓</span>
-                  <span>100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)</span>
-                </div>
-                <div class="guardrail-item">
-                  <span class="check-icon">✓</span>
-                  <span>Enforced by ABAP Test Cockpit (ATC) Cloud Profile</span>
-                </div>
-                <div class="guardrail-item">
-                  <span class="check-icon">✓</span>
-                  <span>No direct SELECTs on unreleased standard tables</span>
-                </div>
-              </div>
-
-              <!-- Tech Pills -->
-              <div class="blueprint-tags animate-cascade" id="bpTags">
-                <span class="pill">Cloud BAdI</span>
-                <span class="pill">ABAP Cloud</span>
-                <span class="pill">ATC Governance</span>
-                <span class="pill">Developer Extensibility</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Site Footer -->
-      <footer class="content-footer">
-        <p>&copy; 2026 Saibal Das &bull; SAP S/4HANA &amp; Clean Core Architecture Portfolio.</p>
-        <a href="#landing" class="back-top">&uarr; Return to Top</a>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- ====================================================================
+        <!-- ====================================================================
        MODAL: CONTACT & CONNECT POPUP
        ==================================================================== -->
-  <div class="modal-backdrop" id="contactModalBackdrop" onclick="closeContactModal(event)">
-    <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close modal">&times;</button>
-      
-      <div class="modal-header">
-        <span class="tag-label">Get in Touch</span>
-        <h3 class="modal-title">Let's Connect</h3>
-        <p class="modal-sub">Available for SAP S/4HANA advisory, RAP transformations, and clean core migration projects.</p>
-      </div>
+        <div class="modal-backdrop" id="contactModalBackdrop" onclick="closeContactModal(event)">
+            <div class="modal-card">
+                <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close modal">&times;</button>
 
-      <div class="modal-body">
-        <div class="contact-card">
-          <div class="contact-icon">✉️</div>
-          <div class="contact-info">
-            <span class="contact-type">Direct Email</span>
-            <span class="contact-val" id="emailToCopy">saibaldas04@gmail.com</span>
-          </div>
-          <button class="btn btn-sm btn-secondary copy-btn" onclick="copyEmail()">
-            <span id="copyEmailText">Copy</span>
-          </button>
+                <div class="modal-header">
+                    <span class="tag-label">Get in Touch</span>
+                    <h3 class="modal-title">Let's Connect</h3>
+                    <p class="modal-sub">
+                        Available for SAP S/4HANA advisory, RAP transformations, and clean core migration projects.
+                    </p>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Email Card -->
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-info">
+                            <span class="contact-type">Direct Email</span>
+                            <span class="contact-val" id="emailToCopy">saibaldas04@gmail.com</span>
+                        </div>
+                        <button class="btn btn-sm btn-secondary copy-btn" onclick="copyEmail()">
+                            <span id="copyEmailText">Copy</span>
+                        </button>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <a href="tel:+917407147423" class="contact-card contact-link">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-info">
+                            <span class="contact-type">Phone / WhatsApp</span>
+                            <span class="contact-val">+91 7407147423</span>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card contact-link">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-info">
+                            <span class="contact-type">LinkedIn Profile</span>
+                            <span class="contact-val">Connect on LinkedIn &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Location Card -->
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-info">
+                            <span class="contact-type">Location &amp; Engagement</span>
+                            <span class="contact-val">Kolkata, India &bull; Open for Remote / Advisory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="mailto:saibaldas04@gmail.com" class="btn btn-primary full-width">
+                        Open Email App &rarr;
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card contact-link">
-          <div class="contact-icon">💼</div>
-          <div class="contact-info">
-            <span class="contact-type">LinkedIn Profile</span>
-            <span class="contact-val">Connect on LinkedIn &rarr;</span>
-          </div>
-        </a>
-
-        <div class="contact-card">
-          <div class="contact-icon">📍</div>
-          <div class="contact-info">
-            <span class="contact-type">Location &amp; Engagement</span>
-            <span class="contact-val">Kolkata, India &bull; Open for Remote Advisory</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <a href="mailto:saibaldas04@gmail.com" class="btn btn-primary full-width">
-          Open Email App &rarr;
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====================================================================
+        <!-- ====================================================================
        SCRIPTS: Master Interactive Engine
        ==================================================================== -->
-  <script>
-    // 1. Fluid Ambient Canvas
-    const canvas = document.getElementById('ambientCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let width, height;
+        <script>
+            // 1. Fluid Ambient Canvas
+            const canvas = document.getElementById("ambientCanvas");
+            const ctx = canvas.getContext("2d");
+            let particles = [];
+            let width, height;
 
-    function resizeCanvas() {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      width = canvas.width = parent.clientWidth;
-      height = canvas.height = parent.clientHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+            function resizeCanvas() {
+                const parent = canvas.parentElement;
+                if (!parent) return;
+                width = canvas.width = parent.clientWidth;
+                height = canvas.height = parent.clientHeight;
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.alpha = Math.random() * 0.5 + 0.2;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > width) this.x = 0;
-        if (this.x < 0) this.x = width;
-        if (this.y > height) this.y = 0;
-        if (this.y < 0) this.y = height;
-      }
-      draw() {
-        ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.alpha = Math.random() * 0.5 + 0.2;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x > width) this.x = 0;
+                    if (this.x < 0) this.x = width;
+                    if (this.y > height) this.y = 0;
+                    if (this.y < 0) this.y = height;
+                }
+                draw() {
+                    ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
 
-    for (let i = 0; i < 35; i++) {
-      particles.push(new Particle());
-    }
+            for (let i = 0; i < 35; i++) {
+                particles.push(new Particle());
+            }
 
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.12 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 110) {
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${0.12 * (1 - dist / 110)})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                particles.forEach((p) => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
 
-    // 2. Desktop Sidebar Collapse & Expand
-    const siteWrapper = document.getElementById('siteWrapper');
-    const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
-    const desktopCollapseBtn = document.getElementById('desktopCollapseBtn');
-    const desktopToggleText = document.getElementById('desktopToggleText');
+            // 2. Desktop Sidebar Collapse & Expand
+            const siteWrapper = document.getElementById("siteWrapper");
+            const desktopSidebarToggle = document.getElementById("desktopSidebarToggle");
+            const desktopCollapseBtn = document.getElementById("desktopCollapseBtn");
+            const desktopToggleText = document.getElementById("desktopToggleText");
 
-    function toggleDesktopSidebar() {
-      if (!siteWrapper) return;
-      const isCollapsed = siteWrapper.classList.toggle('desktop-collapsed');
-      if (desktopToggleText) {
-        desktopToggleText.innerText = isCollapsed ? 'Show Profile' : 'Hide Profile';
-      }
-      if (desktopSidebarToggle) {
-        desktopSidebarToggle.classList.toggle('active', !isCollapsed);
-      }
-      setTimeout(resizeCanvas, 460);
-    }
+            function toggleDesktopSidebar() {
+                if (!siteWrapper) return;
+                const isCollapsed = siteWrapper.classList.toggle("desktop-collapsed");
+                if (desktopToggleText) {
+                    desktopToggleText.innerText = isCollapsed ? "Show Profile" : "Hide Profile";
+                }
+                if (desktopSidebarToggle) {
+                    desktopSidebarToggle.classList.toggle("active", !isCollapsed);
+                }
+                setTimeout(resizeCanvas, 460);
+            }
 
-    if (desktopSidebarToggle) desktopSidebarToggle.addEventListener('click', toggleDesktopSidebar);
-    if (desktopCollapseBtn) desktopCollapseBtn.addEventListener('click', toggleDesktopSidebar);
+            if (desktopSidebarToggle) desktopSidebarToggle.addEventListener("click", toggleDesktopSidebar);
+            if (desktopCollapseBtn) desktopCollapseBtn.addEventListener("click", toggleDesktopSidebar);
 
-    // 3. Mobile Profile Drawer (<= 1024px)
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebarCol = document.getElementById('sidebarCol');
-    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+            // 3. Mobile Profile Drawer (<= 1024px)
+            const menuToggle = document.getElementById("menuToggle");
+            const sidebarCol = document.getElementById("sidebarCol");
+            const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+            const sidebarCloseBtn = document.getElementById("sidebarCloseBtn");
 
-    function openProfileDrawer() {
-      if (!sidebarCol) return;
-      sidebarCol.classList.add('drawer-open');
-      sidebarBackdrop.classList.add('active');
-      menuToggle.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+            function openProfileDrawer() {
+                if (!sidebarCol) return;
+                sidebarCol.classList.add("drawer-open");
+                sidebarBackdrop.classList.add("active");
+                menuToggle.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
 
-    function closeProfileDrawer() {
-      if (!sidebarCol) return;
-      sidebarCol.classList.remove('drawer-open');
-      sidebarBackdrop.classList.remove('active');
-      menuToggle.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+            function closeProfileDrawer() {
+                if (!sidebarCol) return;
+                sidebarCol.classList.remove("drawer-open");
+                sidebarBackdrop.classList.remove("active");
+                menuToggle.classList.remove("active");
+                document.body.style.overflow = "";
+            }
 
-    if (menuToggle) {
-      menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (sidebarCol.classList.contains('drawer-open')) {
-          closeProfileDrawer();
-        } else {
-          openProfileDrawer();
-        }
-      });
-    }
+            if (menuToggle) {
+                menuToggle.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (sidebarCol.classList.contains("drawer-open")) {
+                        closeProfileDrawer();
+                    } else {
+                        openProfileDrawer();
+                    }
+                });
+            }
 
-    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeProfileDrawer);
-    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeProfileDrawer);
+            if (sidebarBackdrop) sidebarBackdrop.addEventListener("click", closeProfileDrawer);
+            if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", closeProfileDrawer);
 
-    // 4. Scroll To Architecture Principles
-    function scrollToWork() {
-      const target = document.getElementById('principles-section');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    }
+            // 4. Scroll To Architecture Principles
+            function scrollToWork() {
+                const target = document.getElementById("principles-section");
+                if (target) target.scrollIntoView({ behavior: "smooth" });
+            }
 
-    // 5. Contact Modal
-    function openContactModal() {
-      const modal = document.getElementById('contactModalBackdrop');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+            // 5. Contact Modal Controls
+            function openContactModal() {
+                const modal = document.getElementById("contactModalBackdrop");
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
 
-    function closeContactModal(e) {
-      if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
-      const modal = document.getElementById('contactModalBackdrop');
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+            function closeContactModal(e) {
+                if (e && e.target !== e.currentTarget && !e.target.classList.contains("modal-close-btn")) return;
+                const modal = document.getElementById("contactModalBackdrop");
+                modal.classList.remove("active");
+                document.body.style.overflow = "";
+            }
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeContactModal();
-    });
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeContactModal();
+            });
 
-    // 6. Copy Email
-    function copyEmail() {
-      const email = document.getElementById('emailToCopy').innerText;
-      navigator.clipboard.writeText(email).then(() => {
-        const text = document.getElementById('copyEmailText');
-        text.innerText = 'Copied!';
-        setTimeout(() => text.innerText = 'Copy', 2000);
-      });
-    }
+            // 6. Copy Email
+            function copyEmail() {
+                const email = document.getElementById("emailToCopy").innerText;
+                navigator.clipboard.writeText(email).then(() => {
+                    const text = document.getElementById("copyEmailText");
+                    text.innerText = "Copied!";
+                    setTimeout(() => (text.innerText = "Copy"), 2000);
+                });
+            }
 
-    // 7. IDE Code Tabs
-    function selectTab(event, contentId) {
-      document.querySelectorAll('.ide-editor').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.ide-tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(contentId).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
+            // 7. IDE Code Tabs
+            function selectTab(event, contentId) {
+                document.querySelectorAll(".ide-editor").forEach((tab) => tab.classList.remove("active"));
+                document.querySelectorAll(".ide-tab-btn").forEach((btn) => btn.classList.remove("active"));
+                document.getElementById(contentId).classList.add("active");
+                event.currentTarget.classList.add("active");
+            }
 
-    function copyActiveCode() {
-      const activeCode = document.querySelector('.ide-editor.active pre code');
-      if (!activeCode) return;
-      navigator.clipboard.writeText(activeCode.innerText).then(() => {
-        const copyText = document.getElementById('copyText');
-        const copyIcon = document.getElementById('copyIcon');
-        copyText.innerText = 'Copied!';
-        copyIcon.innerText = '✓';
-        setTimeout(() => {
-          copyText.innerText = 'Copy';
-          copyIcon.innerText = '📋';
-        }, 2000);
-      });
-    }
+            function copyActiveCode() {
+                const activeCode = document.querySelector(".ide-editor.active pre code");
+                if (!activeCode) return;
+                navigator.clipboard.writeText(activeCode.innerText).then(() => {
+                    const copyText = document.getElementById("copyText");
+                    const copyIcon = document.getElementById("copyIcon");
+                    copyText.innerText = "Copied!";
+                    copyIcon.innerText = "✓";
+                    setTimeout(() => {
+                        copyText.innerText = "Copy";
+                        copyIcon.innerText = "📋";
+                    }, 2000);
+                });
+            }
 
-    // 8. Showcase Slider
-    function scrollSlider(direction) {
-      const container = document.getElementById('sliderViewport');
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
-    }
+            // 8. Showcase Slider
+            function scrollSlider(direction) {
+                const container = document.getElementById("sliderViewport");
+                const scrollAmount = container.clientWidth * 0.8;
+                container.scrollBy({ left: scrollAmount * direction, behavior: "smooth" });
+            }
 
-    // ==========================================================================
-    // 9. CLEAN CORE MATRIX: Dual-Mode Hover & Click Slider
-    // ==========================================================================
-    const cleanCoreData = [
-      {
-        tier: "Tier 2: In-App Developer Extensibility",
-        contract: "C1 Interface Contract",
-        title: "Legacy User Exit to Cloud BAdI Pattern",
-        desc: "Eliminates transparent core table and program modifications. Custom logic is isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring seamless zero-downtime upgrades.",
-        pipeline: [
-          { name: "Legacy Hook (MV45AFZZ)", type: "pipe-legacy" },
-          { name: "C1 Released APIs", type: "pipe-contract" },
-          { name: "Cloud BAdI Implementation", type: "pipe-target" }
-        ],
-        guardrails: [
-          "100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)",
-          "Enforced by ABAP Test Cockpit (ATC) Cloud Profile",
-          "No direct SELECTs on unreleased standard tables"
-        ],
-        tags: ["Cloud BAdI", "ABAP Cloud", "ATC Governance", "Developer Extensibility"]
-      },
-      {
-        tier: "Tier 1: Cloud-Ready Architecture",
-        contract: "Strict Transactional Contract",
-        title: "Managed RAP Business Object with Draft",
-        desc: "Custom persistence encapsulated cleanly via Core Data Services (CDS) and Behavior Definitions. Provides standard Entity Manipulation Language (EML) boundaries, transactional buffer, locking, and validation logic.",
-        pipeline: [
-          { name: "Persistent Custom Table", type: "pipe-legacy" },
-          { name: "CDS Root Entity", type: "pipe-contract" },
-          { name: "RAP Behavior (BDEF & EML)", type: "pipe-target" }
-        ],
-        guardrails: [
-          "Integrated Draft persistence for stateless web scenarios",
-          "Automatic transactional buffer and ETAG management",
-          "Decoupled from legacy update-task function modules"
-        ],
-        tags: ["RAP Managed", "EML Controls", "Draft BO", "OData v4"]
-      },
-      {
-        tier: "Tier 1: Analytical Query Contract",
-        contract: "CDS View Entity Contract",
-        title: "In-Memory CDS Analytical Projections",
-        desc: "Direct analytical modeling on SAP HANA eliminating redundant extraction tables. Delivers multidimensional slicing and dynamic aggregations straight into SAP Fiori Elements analytical pages.",
-        pipeline: [
-          { name: "Standard Basic View", type: "pipe-legacy" },
-          { name: "Composite CDS Entity", type: "pipe-contract" },
-          { name: "Consumption Analytical Query", type: "pipe-target" }
-        ],
-        guardrails: [
-          "Executed in-memory via SAP HANA analytical engine",
-          "Transient association resolution prevents heavy joins",
-          "Replaces custom ABAP memory tables with SQL View Entities"
-        ],
-        tags: ["CDS View Entities", "Analytical Engine", "HANA Optimized", "Fiori Elements"]
-      },
-      {
-        tier: "Tier 3: Side-by-Side Extensibility",
-        contract: "Async Event Mesh Protocol",
-        title: "Event-Driven Asynchronous BTP Bridge",
-        desc: "Offloads heavy custom workflows out of the core ERP. S/4HANA emits lightweight RAP business events via SAP Event Mesh to serverless runtimes and microservices on SAP BTP.",
-        pipeline: [
-          { name: "S/4HANA Transaction Event", type: "pipe-legacy" },
-          { name: "SAP Event Mesh", type: "pipe-contract" },
-          { name: "SAP BTP Cloud Service", type: "pipe-target" }
-        ],
-        guardrails: [
-          "Zero CPU and memory overhead on the digital core",
-          "Decoupled asynchronous webhook notifications",
-          "Independent cloud lifecycle & autonomous deployments"
-        ],
-        tags: ["SAP BTP", "SAP Event Mesh", "RAP Events", "Side-by-Side"]
-      }
-    ];
+            // ==========================================================================
+            // 9. CLEAN CORE MATRIX: Dual-Mode Hover & Click Slider
+            // ==========================================================================
+            const cleanCoreData = [
+                {
+                    tier: "Tier 2: In-App Developer Extensibility",
+                    contract: "C1 Interface Contract",
+                    title: "Legacy User Exit to Cloud BAdI Pattern",
+                    desc: "Eliminates transparent core table and program modifications. Custom logic is isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring seamless zero-downtime upgrades.",
+                    pipeline: [
+                        { name: "Legacy Hook (MV45AFZZ)", type: "pipe-legacy" },
+                        { name: "C1 Released APIs", type: "pipe-contract" },
+                        { name: "Cloud BAdI Implementation", type: "pipe-target" },
+                    ],
+                    guardrails: [
+                        "100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)",
+                        "Enforced by ABAP Test Cockpit (ATC) Cloud Profile",
+                        "No direct SELECTs on unreleased standard tables",
+                    ],
+                    tags: ["Cloud BAdI", "ABAP Cloud", "ATC Governance", "Developer Extensibility"],
+                },
+                {
+                    tier: "Tier 1: Cloud-Ready Architecture",
+                    contract: "Strict Transactional Contract",
+                    title: "Managed RAP Business Object with Draft",
+                    desc: "Custom persistence encapsulated cleanly via Core Data Services (CDS) and Behavior Definitions. Provides standard Entity Manipulation Language (EML) boundaries, transactional buffer, locking, and validation logic.",
+                    pipeline: [
+                        { name: "Persistent Custom Table", type: "pipe-legacy" },
+                        { name: "CDS Root Entity", type: "pipe-contract" },
+                        { name: "RAP Behavior (BDEF & EML)", type: "pipe-target" },
+                    ],
+                    guardrails: [
+                        "Integrated Draft persistence for stateless web scenarios",
+                        "Automatic transactional buffer and ETAG management",
+                        "Decoupled from legacy update-task function modules",
+                    ],
+                    tags: ["RAP Managed", "EML Controls", "Draft BO", "OData v4"],
+                },
+                {
+                    tier: "Tier 1: Analytical Query Contract",
+                    contract: "CDS View Entity Contract",
+                    title: "In-Memory CDS Analytical Projections",
+                    desc: "Direct analytical modeling on SAP HANA eliminating redundant extraction tables. Delivers multidimensional slicing and dynamic aggregations straight into SAP Fiori Elements analytical pages.",
+                    pipeline: [
+                        { name: "Standard Basic View", type: "pipe-legacy" },
+                        { name: "Composite CDS Entity", type: "pipe-contract" },
+                        { name: "Consumption Analytical Query", type: "pipe-target" },
+                    ],
+                    guardrails: [
+                        "Executed in-memory via SAP HANA analytical engine",
+                        "Transient association resolution prevents heavy joins",
+                        "Replaces custom ABAP memory tables with SQL View Entities",
+                    ],
+                    tags: ["CDS View Entities", "Analytical Engine", "HANA Optimized", "Fiori Elements"],
+                },
+                {
+                    tier: "Tier 3: Side-by-Side Extensibility",
+                    contract: "Async Event Mesh Protocol",
+                    title: "Event-Driven Asynchronous BTP Bridge",
+                    desc: "Offloads heavy custom workflows out of the core ERP. S/4HANA emits lightweight RAP business events via SAP Event Mesh to serverless runtimes and microservices on SAP BTP.",
+                    pipeline: [
+                        { name: "S/4HANA Transaction Event", type: "pipe-legacy" },
+                        { name: "SAP Event Mesh", type: "pipe-contract" },
+                        { name: "SAP BTP Cloud Service", type: "pipe-target" },
+                    ],
+                    guardrails: [
+                        "Zero CPU and memory overhead on the digital core",
+                        "Decoupled asynchronous webhook notifications",
+                        "Independent cloud lifecycle & autonomous deployments",
+                    ],
+                    tags: ["SAP BTP", "SAP Event Mesh", "RAP Events", "Side-by-Side"],
+                },
+            ];
 
-    let currentMatrixIdx = 0;
+            let currentMatrixIdx = 0;
 
-    function renderMatrixScenario(index, shouldScroll = true) {
-      currentMatrixIdx = index;
-      const data = cleanCoreData[index];
-      if (!data) return;
+            function renderMatrixScenario(index, shouldScroll = true) {
+                currentMatrixIdx = index;
+                const data = cleanCoreData[index];
+                if (!data) return;
 
-      // 1. Update Scenario Buttons
-      const buttons = document.querySelectorAll('#cleanCoreSection .scenario-btn');
-      buttons.forEach((btn, idx) => {
-        btn.classList.toggle('active', idx === index);
-      });
+                // 1. Update Scenario Buttons
+                const buttons = document.querySelectorAll("#cleanCoreSection .scenario-btn");
+                buttons.forEach((btn, idx) => {
+                    btn.classList.toggle("active", idx === index);
+                });
 
-      // 2. Update Indicator Dots
-      const dots = document.querySelectorAll('#cleanCoreSection .matrix-dot');
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === index);
-      });
+                // 2. Update Indicator Dots
+                const dots = document.querySelectorAll("#cleanCoreSection .matrix-dot");
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle("active", idx === index);
+                });
 
-      // 3. Smoothly center button in the viewport
-      if (shouldScroll) {
-        const viewport = document.getElementById('matrixSliderViewport');
-        const activeBtn = buttons[index];
-        if (viewport && activeBtn) {
-          const scrollPos = activeBtn.offsetLeft - (viewport.clientWidth / 2) + (activeBtn.clientWidth / 2);
-          viewport.scrollTo({ left: Math.max(0, scrollPos), behavior: 'smooth' });
-        }
-      }
+                // 3. Smoothly center button in the viewport
+                if (shouldScroll) {
+                    const viewport = document.getElementById("matrixSliderViewport");
+                    const activeBtn = buttons[index];
+                    if (viewport && activeBtn) {
+                        const scrollPos = activeBtn.offsetLeft - viewport.clientWidth / 2 + activeBtn.clientWidth / 2;
+                        viewport.scrollTo({ left: Math.max(0, scrollPos), behavior: "smooth" });
+                    }
+                }
 
-      // 4. Trigger Cascading Animation
-      const card = document.getElementById('blueprintCard');
-      if (card) {
-        card.classList.remove('animating-in');
-        void card.offsetWidth; // Force DOM reflow
-        card.classList.add('animating-in');
-      }
+                // 4. Trigger Cascading Animation
+                const card = document.getElementById("blueprintCard");
+                if (card) {
+                    card.classList.remove("animating-in");
+                    void card.offsetWidth; // Force DOM reflow
+                    card.classList.add("animating-in");
+                }
 
-      // 5. Update Elements Safely
-      const tierEl = document.getElementById('bpTier');
-      const contractEl = document.getElementById('bpContract');
-      const titleEl = document.getElementById('bpTitle');
-      const descEl = document.getElementById('bpDesc');
-      const pipelineEl = document.getElementById('bpPipeline');
-      const guardrailsEl = document.getElementById('bpGuardrails');
-      const tagsEl = document.getElementById('bpTags');
+                // 5. Update Elements Safely
+                const tierEl = document.getElementById("bpTier");
+                const contractEl = document.getElementById("bpContract");
+                const titleEl = document.getElementById("bpTitle");
+                const descEl = document.getElementById("bpDesc");
+                const pipelineEl = document.getElementById("bpPipeline");
+                const guardrailsEl = document.getElementById("bpGuardrails");
+                const tagsEl = document.getElementById("bpTags");
 
-      if (tierEl) tierEl.innerText = data.tier;
-      if (contractEl) contractEl.innerText = data.contract;
-      if (titleEl) titleEl.innerText = data.title;
-      if (descEl) descEl.innerText = data.desc;
+                if (tierEl) tierEl.innerText = data.tier;
+                if (contractEl) contractEl.innerText = data.contract;
+                if (titleEl) titleEl.innerText = data.title;
+                if (descEl) descEl.innerText = data.desc;
 
-      if (pipelineEl) {
-        pipelineEl.innerHTML = data.pipeline.map((step, idx) => {
-          const arrow = idx < data.pipeline.length - 1 ? '<div class="pipe-arrow">&rarr;</div>' : '';
-          return `<div class="pipe-step ${step.type}">${step.name}</div>${arrow}`;
-        }).join('');
-      }
+                if (pipelineEl) {
+                    pipelineEl.innerHTML = data.pipeline
+                        .map((step, idx) => {
+                            const arrow = idx < data.pipeline.length - 1 ? '<div class="pipe-arrow">&rarr;</div>' : "";
+                            return `<div class="pipe-step ${step.type}">${step.name}</div>${arrow}`;
+                        })
+                        .join("");
+                }
 
-      if (guardrailsEl) {
-        guardrailsEl.innerHTML = data.guardrails.map(item => 
-          `<div class="guardrail-item"><span class="check-icon">✓</span><span>${item}</span></div>`
-        ).join('');
-      }
+                if (guardrailsEl) {
+                    guardrailsEl.innerHTML = data.guardrails
+                        .map(
+                            (item) =>
+                                `<div class="guardrail-item"><span class="check-icon">✓</span><span>${item}</span></div>`
+                        )
+                        .join("");
+                }
 
-      if (tagsEl) {
-        tagsEl.innerHTML = data.tags.map(t => `<span class="pill">${t}</span>`).join('');
-      }
-    }
+                if (tagsEl) {
+                    tagsEl.innerHTML = data.tags.map((t) => `<span class="pill">${t}</span>`).join("");
+                }
+            }
 
-    // Set up hover and click listeners immediately
-    function setupMatrixEvents() {
-      const buttons = document.querySelectorAll('#cleanCoreSection .scenario-btn');
-      const dots = document.querySelectorAll('#cleanCoreSection .matrix-dot');
-      const prevBtn = document.getElementById('matrixPrevBtn');
-      const nextBtn = document.getElementById('matrixNextBtn');
+            function setupMatrixEvents() {
+                const buttons = document.querySelectorAll("#cleanCoreSection .scenario-btn");
+                const dots = document.querySelectorAll("#cleanCoreSection .matrix-dot");
+                const prevBtn = document.getElementById("matrixPrevBtn");
+                const nextBtn = document.getElementById("matrixNextBtn");
 
-      buttons.forEach(btn => {
-        const idx = parseInt(btn.getAttribute('data-index'), 10);
+                buttons.forEach((btn) => {
+                    const idx = parseInt(btn.getAttribute("data-index"), 10);
 
-        // Click event
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          renderMatrixScenario(idx, true);
-        });
+                    btn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        renderMatrixScenario(idx, true);
+                    });
 
-        // Mouse Hover event
-        btn.addEventListener('mouseenter', () => {
-          renderMatrixScenario(idx, false);
-        });
-      });
+                    btn.addEventListener("mouseenter", () => {
+                        renderMatrixScenario(idx, false);
+                    });
+                });
 
-      dots.forEach(dot => {
-        const idx = parseInt(dot.getAttribute('data-index'), 10);
-        dot.addEventListener('click', () => renderMatrixScenario(idx, true));
-        dot.addEventListener('mouseenter', () => renderMatrixScenario(idx, false));
-      });
+                dots.forEach((dot) => {
+                    const idx = parseInt(dot.getAttribute("data-index"), 10);
+                    dot.addEventListener("click", () => renderMatrixScenario(idx, true));
+                    dot.addEventListener("mouseenter", () => renderMatrixScenario(idx, false));
+                });
 
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          const prev = (currentMatrixIdx - 1 + cleanCoreData.length) % cleanCoreData.length;
-          renderMatrixScenario(prev, true);
-        });
-      }
+                if (prevBtn) {
+                    prevBtn.addEventListener("click", () => {
+                        const prev = (currentMatrixIdx - 1 + cleanCoreData.length) % cleanCoreData.length;
+                        renderMatrixScenario(prev, true);
+                    });
+                }
 
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          const next = (currentMatrixIdx + 1) % cleanCoreData.length;
-          renderMatrixScenario(next, true);
-        });
-      }
-    }
+                if (nextBtn) {
+                    nextBtn.addEventListener("click", () => {
+                        const next = (currentMatrixIdx + 1) % cleanCoreData.length;
+                        renderMatrixScenario(next, true);
+                    });
+                }
+            }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupMatrixEvents);
-    } else {
-      setupMatrixEvents();
-    }
-    
-    
-    // ==========================================================================
-    // MODERN ABAP 7.5+ SYNTAX COOKBOOK DATA & ENGINE
-    // ==========================================================================
-    // ==========================================================================
-    // 10. MODERN ABAP 7.5+ SYNTAX COOKBOOK ENGINE (Hover + Click + Search + Filter)
-    // ==========================================================================
-    const abapCookbookData = [
-      {
-        id: "value",
-        keyword: "VALUE #( )",
-        category: "constructors",
-        categoryName: "Constructors",
-        name: "Inline Structure & Table Constructor",
-        summary: "Constructs structures and populates internal tables without explicit work areas or APPEND loops.",
-        reduction: "-65% Lines of Code",
-        rationale: "Eliminates temp structures, work areas, and CLEAR statements. Thread-safe and cloud-compliant.",
-        fileName: "ValueConstructor.abap",
-        modernCode: `\" Modern ABAP 7.5+: Inline table creation with multiple rows
+            // ==========================================================================
+            // 10. MODERN ABAP 7.5+ SYNTAX COOKBOOK ENGINE
+            // ==========================================================================
+            const abapCookbookData = [
+                {
+                    id: "value",
+                    keyword: "VALUE #( )",
+                    category: "constructors",
+                    categoryName: "Constructors",
+                    name: "Inline Structure & Table Constructor",
+                    summary:
+                        "Constructs structures and populates internal tables without explicit work areas or APPEND loops.",
+                    reduction: "-65% Lines of Code",
+                    rationale:
+                        "Eliminates temp structures, work areas, and CLEAR statements. Thread-safe and cloud-compliant.",
+                    fileName: "ValueConstructor.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Inline table creation with multiple rows
 DATA(lt_flight_schedule) = VALUE ty_flights_tab(
   ( carrier_id = 'LH' conn_id = '0400' city_from = 'FRA' city_to = 'JFK' )
   ( carrier_id = 'SQ' conn_id = '0326' city_from = 'SIN' city_to = 'FRA' )
@@ -1125,7 +1379,7 @@ DATA(ls_booking) = VALUE ty_booking(
   booking_date = cl_abap_context_info=>get_system_date( )
   status       = 'B'
 ).`,
-        legacyCode: `\" Legacy ABAP: Verbose explicit work area & multiple appends
+                    legacyCode: `\" Legacy ABAP: Verbose explicit work area & multiple appends
 DATA: lt_flight_schedule TYPE ty_flights_tab,
       ls_flight          TYPE ty_flight_line,
       ls_booking         TYPE ty_booking.
@@ -1147,19 +1401,21 @@ APPEND ls_flight TO lt_flight_schedule.
 CLEAR ls_booking.
 ls_booking-customer_id  = '000109'.
 ls_booking-booking_date = sy-datum.
-ls_booking-status       = 'B'.`
-      },
-      {
-        id: "reduce",
-        keyword: "REDUCE #( )",
-        category: "functional",
-        categoryName: "Functional Logic",
-        name: "Table Aggregation & Accumulator",
-        summary: "Calculates sums, counters, and concatenated outputs directly from tables in a single functional expression.",
-        reduction: "-70% Lines of Code",
-        rationale: "Functional accumulator pattern. Eliminates explicit accumulator variables, manual loops, and conditional counters.",
-        fileName: "ReduceAggregator.abap",
-        modernCode: `\" Modern ABAP 7.5+: Single expression table accumulation
+ls_booking-status       = 'B'.`,
+                },
+                {
+                    id: "reduce",
+                    keyword: "REDUCE #( )",
+                    category: "functional",
+                    categoryName: "Functional Logic",
+                    name: "Table Aggregation & Accumulator",
+                    summary:
+                        "Calculates sums, counters, and concatenated outputs directly from tables in a single functional expression.",
+                    reduction: "-70% Lines of Code",
+                    rationale:
+                        "Functional accumulator pattern. Eliminates explicit accumulator variables, manual loops, and conditional counters.",
+                    fileName: "ReduceAggregator.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Single expression table accumulation
 DATA(lv_total_amount) = REDUCE bapi_amount(
   INIT total = 0
   FOR wa IN lt_invoice_items WHERE ( tax_rate > 0 )
@@ -1173,7 +1429,7 @@ DATA(lv_csv_carriers) = REDUCE string(
   NEXT csv = COND #( WHEN csv IS INITIAL THEN line-carrier_id
                      ELSE |{ csv }, { line-carrier_id }| )
 ).`,
-        legacyCode: `\" Legacy ABAP: Accumulator variables with LOOP and SUM
+                    legacyCode: `\" Legacy ABAP: Accumulator variables with LOOP and SUM
 DATA: lv_total_amount TYPE bapi_amount,
       lv_csv_carriers TYPE string.
 
@@ -1189,19 +1445,20 @@ LOOP AT lt_flight_schedule INTO DATA(ls_sched).
   ELSE.
     CONCATENATE lv_csv_carriers ls_sched-carrier_id INTO lv_csv_carriers SEPARATED BY ', '.
   ENDIF.
-ENDLOOP.`
-      },
-      {
-        id: "for",
-        keyword: "FOR ... IN",
-        category: "tables",
-        categoryName: "Internal Tables",
-        name: "Table Comprehensions & Mapping",
-        summary: "Projects, transforms, and filters elements from one table to another without nested manual loops.",
-        reduction: "-60% Lines of Code",
-        rationale: "Transforms collections immutably. Eliminates LOOP AT and intermediate work areas.",
-        fileName: "ForComprehension.abap",
-        modernCode: `\" Modern ABAP 7.5+: Extract and transform table fields in 1 line
+ENDLOOP.`,
+                },
+                {
+                    id: "for",
+                    keyword: "FOR ... IN",
+                    category: "tables",
+                    categoryName: "Internal Tables",
+                    name: "Table Comprehensions & Mapping",
+                    summary:
+                        "Projects, transforms, and filters elements from one table to another without nested manual loops.",
+                    reduction: "-60% Lines of Code",
+                    rationale: "Transforms collections immutably. Eliminates LOOP AT and intermediate work areas.",
+                    fileName: "ForComprehension.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Extract and transform table fields in 1 line
 DATA(lt_badi_input) = VALUE ty_badi_target_tab(
   FOR sales_item IN lt_order_items WHERE ( rejected = abap_false )
   ( item_position = sales_item-posnr
@@ -1209,7 +1466,7 @@ DATA(lt_badi_input) = VALUE ty_badi_target_tab(
     net_value     = sales_item-netwr
     currency      = sales_item-waerk )
 ).`,
-        legacyCode: `\" Legacy ABAP: Manual loop, field assignment, and append
+                    legacyCode: `\" Legacy ABAP: Manual loop, field assignment, and append
 DATA: lt_badi_input TYPE ty_badi_target_tab,
       ls_target     TYPE ty_badi_target_line.
 
@@ -1222,19 +1479,20 @@ LOOP AT lt_order_items INTO DATA(ls_source) WHERE rejected = abap_false.
   ls_target-net_value     = ls_source-netwr.
   ls_target-currency      = ls_source-waerk.
   APPEND ls_target TO lt_badi_input.
-ENDLOOP.`
-      },
-      {
-        id: "filter",
-        keyword: "FILTER #( )",
-        category: "tables",
-        categoryName: "Internal Tables",
-        name: "Table Filtering Operator",
-        summary: "Fast sub-table extraction utilizing secondary table keys without full table scans.",
-        reduction: "-75% Lines of Code",
-        rationale: "Direct kernel-level table extraction. Ensures high-throughput processing on in-memory SAP HANA.",
-        fileName: "FilterOperator.abap",
-        modernCode: `\" Modern ABAP 7.5+: Filter internal table using secondary key directly
+ENDLOOP.`,
+                },
+                {
+                    id: "filter",
+                    keyword: "FILTER #( )",
+                    category: "tables",
+                    categoryName: "Internal Tables",
+                    name: "Table Filtering Operator",
+                    summary: "Fast sub-table extraction utilizing secondary table keys without full table scans.",
+                    reduction: "-75% Lines of Code",
+                    rationale:
+                        "Direct kernel-level table extraction. Ensures high-throughput processing on in-memory SAP HANA.",
+                    fileName: "FilterOperator.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Filter internal table using secondary key directly
 \" Requirements: Sorted/Hashed table or Secondary Key defined
 DATA(lt_active_orders) = FILTER #( 
   lt_all_orders USING KEY status_key 
@@ -1246,7 +1504,7 @@ DATA(lt_non_critical) = FILTER #(
   lt_all_orders EXCEPT USING KEY priority_key 
   WHERE priority = 'URGENT' 
 ).`,
-        legacyCode: `\" Legacy ABAP: Linear scan with manual conditional filtering
+                    legacyCode: `\" Legacy ABAP: Linear scan with manual conditional filtering
 DATA lt_active_orders TYPE ty_orders_tab.
 DATA lt_non_critical  TYPE ty_orders_tab.
 
@@ -1259,19 +1517,19 @@ LOOP AT lt_all_orders INTO DATA(ls_order).
   IF ls_order-priority <> 'URGENT'.
     APPEND ls_order TO lt_non_critical.
   ENDIF.
-ENDLOOP.`
-      },
-      {
-        id: "cond",
-        keyword: "COND & SWITCH",
-        category: "functional",
-        categoryName: "Functional Logic",
-        name: "Inline Branching Expressions",
-        summary: "Evaluates condition ladders inline during variable declaration or parameter passing.",
-        reduction: "-55% Lines of Code",
-        rationale: "Enables functional programming composition. Avoids sprawling nested IF/CASE branching.",
-        fileName: "ConditionalBranching.abap",
-        modernCode: `\" Modern ABAP 7.5+: COND operator in functional assignment
+ENDLOOP.`,
+                },
+                {
+                    id: "cond",
+                    keyword: "COND & SWITCH",
+                    category: "functional",
+                    categoryName: "Functional Logic",
+                    name: "Inline Branching Expressions",
+                    summary: "Evaluates condition ladders inline during variable declaration or parameter passing.",
+                    reduction: "-55% Lines of Code",
+                    rationale: "Enables functional programming composition. Avoids sprawling nested IF/CASE branching.",
+                    fileName: "ConditionalBranching.abap",
+                    modernCode: `\" Modern ABAP 7.5+: COND operator in functional assignment
 DATA(lv_urgency) = COND string(
   WHEN lv_delivery_days <= 1  THEN 'CRITICAL'
   WHEN lv_delivery_days <= 3  THEN 'URGENT'
@@ -1286,7 +1544,7 @@ DATA(lv_status_text) = SWITCH string( ls_doc-status
   WHEN 'C' THEN 'Archived'
   ELSE THROW cx_invalid_status( )
 ).`,
-        legacyCode: `\" Legacy ABAP: Multi-line procedural IF/CASE trees
+                    legacyCode: `\" Legacy ABAP: Multi-line procedural IF/CASE trees
 DATA: lv_urgency     TYPE string,
       lv_status_text TYPE string.
 
@@ -1311,26 +1569,27 @@ CASE ls_doc-status.
     lv_status_text = 'Archived'.
   WHEN OTHERS.
     RAISE EXCEPTION TYPE cx_invalid_status.
-ENDCASE.`
-      },
-      {
-        id: "conv",
-        keyword: "CONV #( )",
-        category: "types",
-        categoryName: "Types & Casting",
-        name: "Type Casting & Conversions",
-        summary: "Cast data elements and types inline directly within method calls without temporary variables.",
-        reduction: "-50% Lines of Code",
-        rationale: "Prevents clutter of single-use helper variables in class implementations.",
-        fileName: "ConvCasting.abap",
-        modernCode: `\" Modern ABAP 7.5+: Inline type conversion directly in method call
+ENDCASE.`,
+                },
+                {
+                    id: "conv",
+                    keyword: "CONV #( )",
+                    category: "types",
+                    categoryName: "Types & Casting",
+                    name: "Type Casting & Conversions",
+                    summary:
+                        "Cast data elements and types inline directly within method calls without temporary variables.",
+                    reduction: "-50% Lines of Code",
+                    rationale: "Prevents clutter of single-use helper variables in class implementations.",
+                    fileName: "ConvCasting.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Inline type conversion directly in method call
 lo_service->execute_pricing(
   EXPORTING
     iv_rate     = CONV #( ls_input-discount_pct )
     iv_currency = CONV #( ls_input-currency_code )
     iv_timestamp = CONV #( utclong_current( ) )
 ).`,
-        legacyCode: `\" Legacy ABAP: Helper variables created just to satisfy parameter types
+                    legacyCode: `\" Legacy ABAP: Helper variables created just to satisfy parameter types
 DATA: lv_temp_rate      TYPE decfloat34,
       lv_temp_currency  TYPE waers,
       lv_temp_timestamp TYPE timestampl.
@@ -1344,19 +1603,20 @@ lo_service->execute_pricing(
     iv_rate      = lv_temp_rate
     iv_currency  = lv_temp_currency
     iv_timestamp = lv_temp_timestamp
-).`
-      },
-      {
-        id: "corr",
-        keyword: "CORRESPONDING #( )",
-        category: "constructors",
-        categoryName: "Constructors",
-        name: "Dynamic Deep Structure Mapping",
-        summary: "Maps structures with MAPPING and EXCEPT options in one safe expression without losing unmapped fields.",
-        reduction: "-60% Lines of Code",
-        rationale: "Strict typing and compile-time validation. Replaces runtime MOVE-CORRESPONDING risks.",
-        fileName: "CorrespondingMapping.abap",
-        modernCode: `\" Modern ABAP 7.5+: Explicit mapping & excluding in one statement
+).`,
+                },
+                {
+                    id: "corr",
+                    keyword: "CORRESPONDING #( )",
+                    category: "constructors",
+                    categoryName: "Constructors",
+                    name: "Dynamic Deep Structure Mapping",
+                    summary:
+                        "Maps structures with MAPPING and EXCEPT options in one safe expression without losing unmapped fields.",
+                    reduction: "-60% Lines of Code",
+                    rationale: "Strict typing and compile-time validation. Replaces runtime MOVE-CORRESPONDING risks.",
+                    fileName: "CorrespondingMapping.abap",
+                    modernCode: `\" Modern ABAP 7.5+: Explicit mapping & excluding in one statement
 ls_target = CORRESPONDING #( ls_source 
   EXCEPT internal_id created_at
   MAPPING target_partner = source_kunnr
@@ -1365,200 +1625,233 @@ ls_target = CORRESPONDING #( ls_source
 
 \" Table-level mapping
 lt_target_table = CORRESPONDING #( DEEP lt_source_table ).`,
-        legacyCode: `\" Legacy ABAP: MOVE-CORRESPONDING followed by manual overrides
+                    legacyCode: `\" Legacy ABAP: MOVE-CORRESPONDING followed by manual overrides
 MOVE-CORRESPONDING ls_source TO ls_target.
 ls_target-target_partner = ls_source-source_kunnr.
 ls_target-target_date    = ls_source-source_vdatu.
-CLEAR: ls_target-internal_id, ls_target-created_at.`
-      }
-    ];
+CLEAR: ls_target-internal_id, ls_target-created_at.`,
+                },
+            ];
 
-    let currentSnippet = abapCookbookData[0];
-    let currentMode = 'modern'; // 'modern' or 'legacy'
+            let currentSnippet = abapCookbookData[0];
+            let currentMode = "modern"; // 'modern' or 'legacy'
 
-    function selectSnippet(id) {
-      if (currentSnippet && currentSnippet.id === id) return;
+            function selectSnippet(id) {
+                if (currentSnippet && currentSnippet.id === id) return;
 
-      const found = abapCookbookData.find(s => s.id === id);
-      if (!found) return;
+                const found = abapCookbookData.find((s) => s.id === id);
+                if (!found) return;
 
-      currentSnippet = found;
+                currentSnippet = found;
 
-      document.querySelectorAll('.snippet-card-item').forEach(card => {
-        card.classList.toggle('active', card.getAttribute('data-id') === id);
-      });
+                document.querySelectorAll(".snippet-card-item").forEach((card) => {
+                    card.classList.toggle("active", card.getAttribute("data-id") === id);
+                });
 
-      const studio = document.querySelector('.snippet-display-studio');
-      if (studio) {
-        studio.classList.remove('animating-in');
-        void studio.offsetWidth; // Force DOM reflow
-        studio.classList.add('animating-in');
-      }
+                const studio = document.querySelector(".snippet-display-studio");
+                if (studio) {
+                    studio.classList.remove("animating-in");
+                    void studio.offsetWidth; // Force DOM reflow
+                    studio.classList.add("animating-in");
+                }
 
-      updateStudioView();
-    }
+                updateStudioView();
+            }
 
-    function renderSnippetList(snippets) {
-      const listContainer = document.getElementById('snippetCardsList');
-      if (!listContainer) return;
+            function renderSnippetList(snippets) {
+                const listContainer = document.getElementById("snippetCardsList");
+                if (!listContainer) return;
 
-      if (snippets.length === 0) {
-        listContainer.innerHTML = '<div class="no-snippets-msg">No syntax matches found. Try searching "FOR", "VALUE", or "REDUCE".</div>';
-        return;
-      }
+                if (snippets.length === 0) {
+                    listContainer.innerHTML =
+                        '<div class="no-snippets-msg">No syntax matches found. Try searching "FOR", "VALUE", or "REDUCE".</div>';
+                    return;
+                }
 
-      listContainer.innerHTML = snippets.map(item => `
-        <div class="snippet-card-item ${item.id === currentSnippet.id ? 'active' : ''}" data-id="${item.id}">
+                listContainer.innerHTML = snippets
+                    .map(
+                        (item) => `
+        <div class="snippet-card-item ${item.id === currentSnippet.id ? "active" : ""}" data-id="${item.id}">
           <div class="snippet-item-header">
             <span class="snippet-keyword">${item.keyword}</span>
             <span class="snippet-category-tag">${item.categoryName}</span>
           </div>
           <div class="snippet-item-summary">${item.name}</div>
         </div>
-      `).join('');
+      `
+                    )
+                    .join("");
 
-      // Attach BOTH click and mouseenter (hover) handlers
-      document.querySelectorAll('.snippet-card-item').forEach(card => {
-        const id = card.getAttribute('data-id');
+                document.querySelectorAll(".snippet-card-item").forEach((card) => {
+                    const id = card.getAttribute("data-id");
 
-        card.addEventListener('mouseenter', () => {
-          selectSnippet(id);
-        });
+                    card.addEventListener("mouseenter", () => {
+                        selectSnippet(id);
+                    });
 
-        card.addEventListener('click', (e) => {
-          e.preventDefault();
-          selectSnippet(id);
-        });
-      });
-    }
+                    card.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        selectSnippet(id);
+                    });
+                });
+            }
 
-    function updateStudioView() {
-      if (!currentSnippet) return;
+            function updateStudioView() {
+                if (!currentSnippet) return;
 
-      const badgeEl = document.getElementById('studioBadge');
-      const titleEl = document.getElementById('studioTitle');
-      const reductionEl = document.getElementById('studioReduction');
-      const descEl = document.getElementById('studioDescription');
-      const fileEl = document.getElementById('studioFileName');
-      const rationaleEl = document.getElementById('studioRationale');
-      const codeContainer = document.getElementById('studioCodeBlock');
+                const badgeEl = document.getElementById("studioBadge");
+                const titleEl = document.getElementById("studioTitle");
+                const reductionEl = document.getElementById("studioReduction");
+                const descEl = document.getElementById("studioDescription");
+                const fileEl = document.getElementById("studioFileName");
+                const rationaleEl = document.getElementById("studioRationale");
+                const codeContainer = document.getElementById("studioCodeBlock");
 
-      if (badgeEl) badgeEl.innerText = currentSnippet.categoryName.toUpperCase();
-      if (titleEl) titleEl.innerText = `${currentSnippet.keyword} - ${currentSnippet.name}`;
-      if (reductionEl) reductionEl.innerText = currentSnippet.reduction;
-      if (descEl) descEl.innerText = currentSnippet.summary;
-      if (fileEl) fileEl.innerText = currentSnippet.fileName;
-      if (rationaleEl) rationaleEl.innerHTML = `<strong>Clean Core Benefit:</strong> ${currentSnippet.rationale}`;
+                if (badgeEl) badgeEl.innerText = currentSnippet.categoryName.toUpperCase();
+                if (titleEl) titleEl.innerText = `${currentSnippet.keyword} - ${currentSnippet.name}`;
+                if (reductionEl) reductionEl.innerText = currentSnippet.reduction;
+                if (descEl) descEl.innerText = currentSnippet.summary;
+                if (fileEl) fileEl.innerText = currentSnippet.fileName;
+                if (rationaleEl)
+                    rationaleEl.innerHTML = `<strong>Clean Core Benefit:</strong> ${currentSnippet.rationale}`;
 
-      if (codeContainer) {
-        const rawCode = currentMode === 'modern' ? currentSnippet.modernCode : currentSnippet.legacyCode;
-        codeContainer.innerHTML = highlightAbapSyntax(rawCode);
-      }
-    }
+                if (codeContainer) {
+                    const rawCode = currentMode === "modern" ? currentSnippet.modernCode : currentSnippet.legacyCode;
+                    codeContainer.innerHTML = highlightAbapSyntax(rawCode);
+                }
+            }
 
-    function highlightAbapSyntax(code) {
-      const escaped = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+            function highlightAbapSyntax(code) {
+                const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-      return escaped
-        .replace(/(\".*?$)/gm, '<span class="tok-comment">$1</span>')
-        .replace(/\b(DATA|VALUE|REDUCE|FOR|IN|FILTER|COND|SWITCH|CONV|CORRESPONDING|EXCEPT|MAPPING|INIT|NEXT|WHERE|WHEN|THEN|ELSE|CLEAR|APPEND|LOOP|AT|INTO|ENDLOOP|IF|ELSEIF|ENDIF|CASE|WHEN|ENDCASE|THROW|TYPE|TABLE|OF)\b/g, '<span class="tok-kw">$1</span>')
-        .replace(/(\'.*?\'|\|.*?\|)/g, '<span class="tok-str">$1</span>');
-    }
+                return escaped
+                    .replace(/(\".*?$)/gm, '<span class="tok-comment">$1</span>')
+                    .replace(
+                        /\b(DATA|VALUE|REDUCE|FOR|IN|FILTER|COND|SWITCH|CONV|CORRESPONDING|EXCEPT|MAPPING|INIT|NEXT|WHERE|WHEN|THEN|ELSE|CLEAR|APPEND|LOOP|AT|INTO|ENDLOOP|IF|ELSEIF|ENDIF|CASE|WHEN|ENDCASE|THROW|TYPE|TABLE|OF)\b/g,
+                        '<span class="tok-kw">$1</span>'
+                    )
+                    .replace(/(\'.*?\'|\|.*?\|)/g, '<span class="tok-str">$1</span>');
+            }
 
-    function copyCookbookCode() {
-      if (!currentSnippet) return;
-      const rawCode = currentMode === 'modern' ? currentSnippet.modernCode : currentSnippet.legacyCode;
-      navigator.clipboard.writeText(rawCode).then(() => {
-        const text = document.getElementById('cbCopyText');
-        const icon = document.getElementById('cbCopyIcon');
-        text.innerText = 'Copied!';
-        icon.innerText = '✓';
-        setTimeout(() => {
-          text.innerText = 'Copy Code';
-          icon.innerText = '📋';
-        }, 2000);
-      });
-    }
+            function copyCookbookCode() {
+                if (!currentSnippet) return;
+                const rawCode = currentMode === "modern" ? currentSnippet.modernCode : currentSnippet.legacyCode;
+                navigator.clipboard.writeText(rawCode).then(() => {
+                    const text = document.getElementById("cbCopyText");
+                    const icon = document.getElementById("cbCopyIcon");
+                    text.innerText = "Copied!";
+                    icon.innerText = "✓";
+                    setTimeout(() => {
+                        text.innerText = "Copy Code";
+                        icon.innerText = "📋";
+                    }, 2000);
+                });
+            }
 
-    function setupCookbookEvents() {
-      const searchInput = document.getElementById('syntaxSearchInput');
-      const clearBtn = document.getElementById('clearSearchBtn');
-      const categoryPills = document.querySelectorAll('.cat-pill');
-      const btnModern = document.getElementById('btnModernMode');
-      const btnLegacy = document.getElementById('btnLegacyMode');
+            function setupCookbookEvents() {
+                const searchInput = document.getElementById("syntaxSearchInput");
+                const clearBtn = document.getElementById("clearSearchBtn");
+                const categoryPills = document.querySelectorAll(".cat-pill");
+                const btnModern = document.getElementById("btnModernMode");
+                const btnLegacy = document.getElementById("btnLegacyMode");
 
-      let activeCategory = 'all';
+                let activeCategory = "all";
 
-      function applyFilter() {
-        const query = searchInput.value.toLowerCase().trim();
-        clearBtn.classList.toggle('active', query.length > 0);
+                function applyFilter() {
+                    const query = searchInput.value.toLowerCase().trim();
+                    clearBtn.classList.toggle("active", query.length > 0);
 
-        const filtered = abapCookbookData.filter(item => {
-          const matchCat = activeCategory === 'all' || item.category === activeCategory;
-          const matchQuery = !query || 
-            item.keyword.toLowerCase().includes(query) ||
-            item.name.toLowerCase().includes(query) ||
-            item.summary.toLowerCase().includes(query);
-          return matchCat && matchQuery;
-        });
+                    const filtered = abapCookbookData.filter((item) => {
+                        const matchCat = activeCategory === "all" || item.category === activeCategory;
+                        const matchQuery =
+                            !query ||
+                            item.keyword.toLowerCase().includes(query) ||
+                            item.name.toLowerCase().includes(query) ||
+                            item.summary.toLowerCase().includes(query);
+                        return matchCat && matchQuery;
+                    });
 
-        renderSnippetList(filtered);
+                    renderSnippetList(filtered);
 
-        if (filtered.length > 0 && !filtered.some(f => f.id === currentSnippet.id)) {
-          currentSnippet = filtered[0];
-          updateStudioView();
-        }
-      }
+                    if (filtered.length > 0 && !filtered.some((f) => f.id === currentSnippet.id)) {
+                        currentSnippet = filtered[0];
+                        updateStudioView();
+                    }
+                }
 
-      if (searchInput) searchInput.addEventListener('input', applyFilter);
+                if (searchInput) searchInput.addEventListener("input", applyFilter);
 
-      if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-          searchInput.value = '';
-          applyFilter();
-          searchInput.focus();
-        });
-      }
+                if (clearBtn) {
+                    clearBtn.addEventListener("click", () => {
+                        searchInput.value = "";
+                        applyFilter();
+                        searchInput.focus();
+                    });
+                }
 
-      categoryPills.forEach(pill => {
-        pill.addEventListener('click', function() {
-          categoryPills.forEach(p => p.classList.remove('active'));
-          this.classList.add('active');
-          activeCategory = this.getAttribute('data-cat');
-          applyFilter();
-        });
-      });
+                categoryPills.forEach((pill) => {
+                    pill.addEventListener("click", function () {
+                        categoryPills.forEach((p) => p.classList.remove("active"));
+                        this.classList.add("active");
+                        activeCategory = this.getAttribute("data-cat");
+                        applyFilter();
+                    });
+                });
 
-      if (btnModern) {
-        btnModern.addEventListener('click', () => {
-          currentMode = 'modern';
-          btnModern.classList.add('active');
-          btnLegacy.classList.remove('active');
-          updateStudioView();
-        });
-      }
+                if (btnModern) {
+                    btnModern.addEventListener("click", () => {
+                        currentMode = "modern";
+                        btnModern.classList.add("active");
+                        btnLegacy.classList.remove("active");
+                        updateStudioView();
+                    });
+                }
 
-      if (btnLegacy) {
-        btnLegacy.addEventListener('click', () => {
-          currentMode = 'legacy';
-          btnLegacy.classList.add('active');
-          btnModern.classList.remove('active');
-          updateStudioView();
-        });
-      }
+                if (btnLegacy) {
+                    btnLegacy.addEventListener("click", () => {
+                        currentMode = "legacy";
+                        btnLegacy.classList.add("active");
+                        btnModern.classList.remove("active");
+                        updateStudioView();
+                    });
+                }
 
-      renderSnippetList(abapCookbookData);
-      updateStudioView();
-    }
+                renderSnippetList(abapCookbookData);
+                updateStudioView();
+            }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupCookbookEvents);
-    } else {
-      setupCookbookEvents();
-    }
-  </script>
-</body>
+            // ==========================================================================
+            // Connected Experience Accordion (+ / - Toggle)
+            // ==========================================================================
+            function setupExperienceAccordion() {
+                const toggleButtons = document.querySelectorAll(".exp-toggle-btn");
+
+                toggleButtons.forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const card = btn.closest(".timeline-card");
+                        const wrapper = card.querySelector(".exp-collapse-wrapper");
+                        const isCurrentlyOpen = wrapper.classList.contains("is-open");
+
+                        wrapper.classList.toggle("is-open", !isCurrentlyOpen);
+                        btn.classList.toggle("is-open", !isCurrentlyOpen);
+                        btn.setAttribute("aria-expanded", !isCurrentlyOpen);
+                    });
+                });
+            }
+
+            // Master Initialization Handler
+            function initializeEngine() {
+                setupMatrixEvents();
+                setupCookbookEvents();
+                setupExperienceAccordion();
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initializeEngine);
+            } else {
+                initializeEngine();
+            }
+        </script>
+    </body>
 </html>
