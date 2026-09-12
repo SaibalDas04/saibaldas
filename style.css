@@ -1706,18 +1706,23 @@ pre {
 /* ==========================================================================
    MODERN ABAP 7.5+ COOKBOOK & ROSETTA STONE STYLING
    ========================================================================== */
+/* ==========================================================================
+   MODERN ABAP 7.5+ COOKBOOK & ROSETTA STONE STYLING (Mobile-Optimized)
+   ========================================================================== */
 .cookbook-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
   width: 100%;
+  min-width: 0;
 }
 
-/* Search & Filter Bar */
+/* Search & Filter Controls */
 .cookbook-controls {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  width: 100%;
 }
 
 .search-input-box {
@@ -1730,7 +1735,7 @@ pre {
 .search-icon {
   position: absolute;
   left: 16px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
   pointer-events: none;
 }
@@ -1740,10 +1745,10 @@ pre {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 14px 44px 14px 48px;
+  padding: 13px 42px 13px 46px;
   color: var(--text-main);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px prevents iOS Safari auto-zoom on tap */
   outline: none;
   transition: var(--transition-fluid);
 }
@@ -1756,7 +1761,7 @@ pre {
 
 .clear-search-btn {
   position: absolute;
-  right: 14px;
+  right: 12px;
   background: none;
   border: none;
   color: var(--text-muted);
@@ -1770,11 +1775,18 @@ pre {
   display: block;
 }
 
-/* Category Filter Pills */
+/* Category Filter: Swipeable chip rail on mobile */
 .syntax-category-pills {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.syntax-category-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .cat-pill {
@@ -1782,10 +1794,12 @@ pre {
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   padding: 6px 14px;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: var(--transition-fluid);
 }
 
@@ -1800,22 +1814,24 @@ pre {
   color: var(--text-accent);
 }
 
-/* Main Cookbook Layout */
+/* Grid Layout */
 .cookbook-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 22px;
   align-items: flex-start;
+  width: 100%;
+  min-width: 0;
 }
 
-/* Left: Snippet Cards List */
+/* Desktop Vertical List */
 .snippet-cards-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
   max-height: 600px;
   overflow-y: auto;
-  padding-right: 6px;
+  padding-right: 4px;
   scrollbar-width: thin;
   scrollbar-color: var(--border-subtle) transparent;
 }
@@ -1832,13 +1848,18 @@ pre {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 14px 16px;
+  padding: 13px 16px;
   cursor: pointer;
   text-align: left;
   transition: var(--transition-fluid);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
+  user-select: none;
+}
+
+.snippet-card-item * {
+  pointer-events: none;
 }
 
 .snippet-card-item:hover {
@@ -1862,7 +1883,7 @@ pre {
 
 .snippet-keyword {
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-accent);
 }
@@ -1877,20 +1898,14 @@ pre {
 .snippet-item-summary {
   font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
-.no-snippets-msg {
-  padding: 30px;
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-}
-
-/* Right: Studio Viewer */
+/* Studio Viewer */
 .snippet-display-studio {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-md);
   padding: 24px;
@@ -1898,7 +1913,8 @@ pre {
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  min-width: 0;
+  width: 100%;
 }
 
 .studio-header {
@@ -1911,6 +1927,12 @@ pre {
   padding-bottom: 14px;
 }
 
+.studio-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .studio-badge {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1918,26 +1940,29 @@ pre {
   text-transform: uppercase;
   color: var(--text-accent);
   background: rgba(56, 189, 248, 0.1);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 9999px;
   border: 1px solid rgba(56, 189, 248, 0.3);
+  display: inline-block;
+  width: fit-content;
 }
 
 .studio-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
   margin-top: 4px;
   color: var(--text-main);
+  word-break: break-word;
 }
 
-/* Mode Switcher: Modern vs Legacy */
 .studio-mode-toggle {
   display: inline-flex;
   background: var(--bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 4px;
+  padding: 3px;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .mode-btn {
@@ -1945,21 +1970,19 @@ pre {
   border: none;
   color: var(--text-muted);
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   transition: var(--transition-fluid);
 }
 
-.mode-btn:hover {
-  color: var(--text-main);
-}
-
+.mode-btn:hover { color: var(--text-main); }
 .mode-btn.active {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-main);
@@ -1973,36 +1996,37 @@ pre {
 .dot-modern { background-color: var(--text-emerald); box-shadow: 0 0 6px var(--text-emerald); }
 .dot-legacy { background-color: #f87171; box-shadow: 0 0 6px #f87171; }
 
-/* Impact Metrics Banner */
 .studio-impact-bar {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   background: rgba(52, 211, 153, 0.06);
   border: 1px solid rgba(52, 211, 153, 0.25);
   border-radius: var(--radius-sm);
-  padding: 10px 16px;
+  padding: 10px 14px;
 }
 
 .impact-metric {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: var(--text-emerald);
   flex-shrink: 0;
 }
 
 .impact-desc {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
+  line-height: 1.45;
 }
 
-/* Studio Code Box */
 .studio-code-box {
   background-color: var(--bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   overflow: hidden;
+  width: 100%;
+  min-width: 0;
 }
 
 .studio-code-topbar {
@@ -2011,30 +2035,32 @@ pre {
   align-items: center;
   background: rgba(13, 18, 31, 0.95);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 16px;
+  padding: 8px 14px;
 }
 
 .code-tab-name {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
 }
 
 .studio-code-viewport {
-  padding: 18px;
+  padding: 14px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   max-width: 100%;
+  min-width: 0;
 }
 
 .studio-code-viewport pre {
   font-family: var(--font-mono);
-  font-size: clamp(0.74rem, 1.8vw, 0.84rem);
-  line-height: 1.65;
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  line-height: 1.6;
   white-space: pre;
 }
 
 .studio-rationale-box {
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
   border-left: 3px solid var(--text-accent);
   padding-left: 12px;
@@ -2045,47 +2071,81 @@ pre {
   color: var(--text-main);
 }
 
-/* Responsive Breakpoint */
+/* ==========================================================================
+   MOBILE BREAKPOINTS (<= 960px & <= 480px)
+   ========================================================================== */
 @media screen and (max-width: 960px) {
   .cookbook-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
+
+  /* Converts vertical list into a horizontal swipe track (no scroll trap) */
   .snippet-cards-list {
-    max-height: 280px;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    max-height: none;
+    padding-bottom: 8px;
+    padding-right: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  .snippet-card-item {
+    flex: 0 0 250px;
+    scroll-snap-align: start;
+    transform: none !important;
+  }
+
+  .snippet-card-item.active {
+    border-color: var(--text-accent);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+  }
+
+  /* Full-width toggle controls for thumb navigation */
+  .studio-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .studio-mode-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .mode-btn {
+    width: 100%;
+    padding: 8px;
   }
 }
 
-/* Ensure smooth hover without mouse jitter */
-.snippet-card-item {
-  pointer-events: auto;
-  user-select: none;
-}
+@media screen and (max-width: 480px) {
+  .snippet-display-studio {
+    padding: 16px 14px;
+    gap: 14px;
+  }
 
-.snippet-card-item * {
-  pointer-events: none; /* Prevents child elements from flickering mouseenter events */
-}
+  .studio-title {
+    font-size: 1.15rem;
+  }
 
-/* Studio Cascading Animation on Hover/Click */
-.snippet-display-studio.animating-in {
-  animation: studioPulse 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
+  .studio-impact-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
 
-.snippet-display-studio.animating-in .studio-impact-bar {
-  animation: cascadeFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  animation-delay: 0.03s;
-}
+  .studio-code-viewport {
+    padding: 12px 10px;
+  }
 
-.snippet-display-studio.animating-in .studio-code-box {
-  animation: cascadeFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  animation-delay: 0.07s;
-}
-
-.snippet-display-studio.animating-in .studio-rationale-box {
-  animation: cascadeFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  animation-delay: 0.11s;
-}
-
-@keyframes studioPulse {
-  0% { transform: scale(0.99); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
+  .studio-code-viewport pre {
+    font-size: 0.72rem;
+  }
 }
