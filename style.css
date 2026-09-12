@@ -411,18 +411,200 @@ body {
   color: var(--text-muted);
 }
 
-.timeline-container {
+/* ==========================================================================
+   CONNECTED VERTICAL TIMELINE WITH EXPANDABLE DRAWERS
+   ========================================================================== */
+.timeline-connected-track {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  padding-left: 18px; /* Space for the continuous left connecting line */
 }
 
+/* The Continuous Connecting Spine */
+.timeline-connected-track::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: 18px;
+  left: 5px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--text-emerald) 0%,
+    var(--text-accent) 45%,
+    rgba(56, 189, 248, 0.15) 100%
+  );
+  border-radius: 2px;
+}
+
+/* Experience Card */
 .timeline-card {
+  position: relative;
   background: var(--bg-card);
-  border-left: 3px solid var(--border-subtle);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 12px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
   transition: var(--transition-fluid);
+}
+
+.timeline-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateX(3px);
+}
+
+.timeline-card.active-position {
+  border-color: rgba(52, 211, 153, 0.35);
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.04) 0%, var(--bg-card) 100%);
+}
+
+/* Connecting Milestone Nodes */
+.timeline-node {
+  position: absolute;
+  left: -19px;
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-sidebar);
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Active Present Node (Glowing Emerald Radar) */
+.node-present {
+  background-color: var(--text-emerald);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.25), 0 0 10px var(--text-emerald);
+}
+
+/* Past Roles Nodes */
+.node-past {
+  background-color: var(--text-accent);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.timeline-card:hover .timeline-node {
+  transform: scale(1.25);
+}
+
+/* Header & Toggle Layout */
+.timeline-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.timeline-meta-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.company-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-accent);
+}
+
+.timeline-card.active-position .company-name {
+  color: var(--text-emerald);
+}
+
+.time-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.role-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.role-location {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Expand / Collapse Button (+ / -) */
+.exp-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: var(--transition-bounce);
+}
+
+.exp-toggle-btn:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: var(--border-accent);
+  color: var(--text-accent);
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Rotates the + icon smoothly into an × when expanded */
+.exp-toggle-btn.is-open .toggle-icon {
+  transform: rotate(45deg);
+  color: var(--text-accent);
+}
+
+/* Smooth 0-Height CSS Grid Accordion */
+.exp-collapse-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exp-collapse-wrapper.is-open {
+  grid-template-rows: 1fr;
+}
+
+.exp-collapse-inner {
+  overflow: hidden;
+}
+
+/* Detail Bullets (Revealed when open) */
+.role-bullets {
+  list-style: disc;
+  padding-left: 14px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
 }
 
 .timeline-card.active-position {
