@@ -955,7 +955,7 @@
                                     <span class="step-phase-tag" id="stepPhaseTag">Preparation Phase</span>
                                 </div>
                                 <h4 class="display-step-title animate-cascade" id="stepTitle">
-                                    Execute Global Dependency &amp; Usage Audit
+                                    Execute Program FGL_MIG_REGENERATE CDS_BCF - select reset to delivery.
                                 </h4>
                                 <p class="display-step-desc animate-cascade" id="stepDescription">
                                     Verify whether the custom field is currently actively referenced in posting
@@ -970,15 +970,13 @@
                                         >
                                     </div>
                                     <div class="console-body">
-                                        <pre><code id="stepCommand">1. Open Custom Fields app &gt; Locate target Coding Block field
-2. Trigger "Where-Used List" to inspect downstream bindings
-3. Verify zero unposted parked documents or draft financial batches hold this field</code></pre>
+                                        <pre><code id="stepCommand">1. Go to SE38 and execute the program FGL_MIG_REGENERATE
+2. Select reset to delivery check box in selection screen.
+3. Verify program executed successfully</code></pre>
                                     </div>
                                 </div>
                                 <div class="step-guardrail-alert animate-cascade" id="stepAlert">
-                                    <strong>Critical Check:</strong> Do not proceed to deletion without un-publishing
-                                    from active interfaces; doing so causes inconsistent SAP HANA active dictionary
-                                    entries.
+                                    <strong>Critical Check:</strong> Do not execute the program without selecting reset to delivery check box in selection screen.
                                 </div>
                                 <div class="step-action-footer">
                                     <button
