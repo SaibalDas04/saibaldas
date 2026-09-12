@@ -2011,12 +2011,12 @@ CLEAR: ls_target-internal_id, ls_target-created_at.`,
             const codingBlockSteps = [
                 {
                     counter: "Step 01 of 08",
-                    phase: "Audit & Analysis",
-                    title: "Execute Global Dependency & Where-Used Audit",
+                    phase: "Reset To Delivery",
+                    title: "Execute Program FGL_MIG_REGENERATE CDS_BCF",
                     desc: "Inspect all active runtime references. Confirm the field is not actively referenced in posted financial batches, analytical CDS query hierarchies, or external web APIs.",
-                    tcode: "App: Custom Fields & Logic",
-                    command: `1. Open Custom Fields and Logic Fiori App\n2. Select context: "Accounting: Coding Block"\n3. Choose the target field -> Click "Where-Used List"\n4. Record all active CDS views, BAdIs, and Reports linked to this field`,
-                    alert: "Critical Check: Deleting before completing un-publish steps will trigger active HANA dictionary inconsistency errors.",
+                    tcode: "SE38",
+                    command: `1. Go to SE38 and execute the program FGL_MIG_REGENERATE\n2. Select reset to delivery check box in selection screen."\n3. Verify program executed successfully"`,
+                    alert: "Do not execute the program without selecting reset to delivery check box in selection screen.",
                 },
                 {
                     counter: "Step 02 of 08",
