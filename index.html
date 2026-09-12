@@ -7,7 +7,8 @@
   <title>Saibal Das | SAP ABAP Cloud & Clean Core Architect</title>
   
   <!-- Note: Ensure this filename matches your css file name (style.css or index.css) -->
-  <link rel="stylesheet" href="index.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=7" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -44,6 +45,7 @@
       <!-- Desktop Navigation Links -->
       <nav class="desktop-nav">
         <a href="#principles-section" class="nav-link">Architecture</a>
+        <a href="#cookbook-section" class="nav-link">Modern ABAP</a>
         <a href="#showcase-section" class="nav-link">Solutions</a>
         <a href="#sandbox-section" class="nav-link">Code Lab</a>
         <a href="#cleanCoreSection" class="nav-link">Clean Core</a>
@@ -437,6 +439,97 @@
       <span class="tok-comment">/* Association resolution conforming to Tier-1 guidelines */</span>
       _Customer.LastName <span class="tok-kw">as</span> CustomerLastName
 }</code></pre>
+          </div>
+        </div>
+      </section>
+      <!-- ====================================================================
+           MODERN ABAP 7.5+ SYNTAX COOKBOOK & ROSETTA STONE
+           ==================================================================== -->
+      <section id="cookbook-section" class="content-block">
+        <div class="block-header">
+          <span class="tag-label">Modern ABAP 7.5+ &amp; Clean Code</span>
+          <h3 class="block-title">Modern ABAP Expression Matrix</h3>
+          <p class="block-subtitle">Explore how modern 7.5+ constructor operators and iterators replace verbose legacy procedural blocks.</p>
+        </div>
+
+        <div class="cookbook-wrapper">
+          <!-- Search & Filter Controls -->
+          <div class="cookbook-controls">
+            <!-- Search Input -->
+            <div class="search-input-box">
+              <span class="search-icon">🔍</span>
+              <input 
+                type="text" 
+                id="syntaxSearchInput" 
+                class="syntax-search-input" 
+                placeholder="Search syntax (e.g., VALUE, REDUCE, FOR, FILTER, COND)..." 
+                autocomplete="off"
+              />
+              <button class="clear-search-btn" id="clearSearchBtn" type="button" aria-label="Clear search">&times;</button>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="syntax-category-pills" id="syntaxCategoryPills">
+              <button class="cat-pill active" data-cat="all" type="button">All Syntax</button>
+              <button class="cat-pill" data-cat="tables" type="button">Internal Tables</button>
+              <button class="cat-pill" data-cat="constructors" type="button">Constructors</button>
+              <button class="cat-pill" data-cat="functional" type="button">Functional Logic</button>
+              <button class="cat-pill" data-cat="types" type="button">Types &amp; Casting</button>
+            </div>
+          </div>
+
+          <!-- Dual-Column Interactive Viewer -->
+          <div class="cookbook-grid">
+            
+            <!-- Left: Searchable Snippet Cards List -->
+            <div class="snippet-cards-list" id="snippetCardsList">
+              <!-- Dynamically rendered by JavaScript -->
+            </div>
+
+            <!-- Right: Interactive Before / After Code Studio -->
+            <div class="snippet-display-studio">
+              <div class="studio-header">
+                <div class="studio-meta">
+                  <span class="studio-badge" id="studioBadge">TABLE CONSTRUCTOR</span>
+                  <h4 class="studio-title" id="studioTitle">VALUE #( ) Operator</h4>
+                </div>
+
+                <!-- Toggle Mode: Modern 7.5+ vs Legacy -->
+                <div class="studio-mode-toggle">
+                  <button class="mode-btn active" id="btnModernMode" type="button">
+                    <span class="mode-dot dot-modern"></span> Modern 7.5+
+                  </button>
+                  <button class="mode-btn" id="btnLegacyMode" type="button">
+                    <span class="mode-dot dot-legacy"></span> Classic ABAP
+                  </button>
+                </div>
+              </div>
+
+              <!-- Explanation & Impact Score Banner -->
+              <div class="studio-impact-bar">
+                <span class="impact-metric" id="studioReduction">-65% Lines of Code</span>
+                <span class="impact-desc" id="studioDescription">Constructs and populates structures and internal tables directly in memory without manual work areas.</span>
+              </div>
+
+              <!-- Terminal Code Editor Box -->
+              <div class="studio-code-box">
+                <div class="studio-code-topbar">
+                  <span class="code-tab-name" id="studioFileName">ValueOperator.abap</span>
+                  <button class="copy-code-btn" id="copyCookbookBtn" type="button" onclick="copyCookbookCode()">
+                    <span id="cbCopyIcon">📋</span> <span id="cbCopyText">Copy Code</span>
+                  </button>
+                </div>
+                <div class="studio-code-viewport">
+                  <pre><code id="studioCodeBlock"><!-- Code dynamically injected --></code></pre>
+                </div>
+              </div>
+
+              <!-- Clean Core Rationale -->
+              <div class="studio-rationale-box" id="studioRationale">
+                <strong>Clean Core Benefit:</strong> Eliminates global state, header lines, and implicit memory buffers, making routines thread-safe and stateless.
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -999,6 +1092,472 @@
       document.addEventListener('DOMContentLoaded', setupMatrixEvents);
     } else {
       setupMatrixEvents();
+    }
+    
+    
+    // ==========================================================================
+    // MODERN ABAP 7.5+ SYNTAX COOKBOOK DATA & ENGINE
+    // ==========================================================================
+    // ==========================================================================
+    // 10. MODERN ABAP 7.5+ SYNTAX COOKBOOK ENGINE (Hover + Click + Search + Filter)
+    // ==========================================================================
+    const abapCookbookData = [
+      {
+        id: "value",
+        keyword: "VALUE #( )",
+        category: "constructors",
+        categoryName: "Constructors",
+        name: "Inline Structure & Table Constructor",
+        summary: "Constructs structures and populates internal tables without explicit work areas or APPEND loops.",
+        reduction: "-65% Lines of Code",
+        rationale: "Eliminates temp structures, work areas, and CLEAR statements. Thread-safe and cloud-compliant.",
+        fileName: "ValueConstructor.abap",
+        modernCode: `\" Modern ABAP 7.5+: Inline table creation with multiple rows
+DATA(lt_flight_schedule) = VALUE ty_flights_tab(
+  ( carrier_id = 'LH' conn_id = '0400' city_from = 'FRA' city_to = 'JFK' )
+  ( carrier_id = 'SQ' conn_id = '0326' city_from = 'SIN' city_to = 'FRA' )
+  ( carrier_id = 'AI' conn_id = '0142' city_from = 'DEL' city_to = 'CDG' )
+).
+
+\" Direct structure construction with default type inference
+DATA(ls_booking) = VALUE ty_booking(
+  customer_id = '000109'
+  booking_date = cl_abap_context_info=>get_system_date( )
+  status       = 'B'
+).`,
+        legacyCode: `\" Legacy ABAP: Verbose explicit work area & multiple appends
+DATA: lt_flight_schedule TYPE ty_flights_tab,
+      ls_flight          TYPE ty_flight_line,
+      ls_booking         TYPE ty_booking.
+
+CLEAR ls_flight.
+ls_flight-carrier_id = 'LH'.
+ls_flight-conn_id    = '0400'.
+ls_flight-city_from  = 'FRA'.
+ls_flight-city_to    = 'JFK'.
+APPEND ls_flight TO lt_flight_schedule.
+
+CLEAR ls_flight.
+ls_flight-carrier_id = 'SQ'.
+ls_flight-conn_id    = '0326'.
+ls_flight-city_from  = 'SIN'.
+ls_flight-city_to    = 'FRA'.
+APPEND ls_flight TO lt_flight_schedule.
+
+CLEAR ls_booking.
+ls_booking-customer_id  = '000109'.
+ls_booking-booking_date = sy-datum.
+ls_booking-status       = 'B'.`
+      },
+      {
+        id: "reduce",
+        keyword: "REDUCE #( )",
+        category: "functional",
+        categoryName: "Functional Logic",
+        name: "Table Aggregation & Accumulator",
+        summary: "Calculates sums, counters, and concatenated outputs directly from tables in a single functional expression.",
+        reduction: "-70% Lines of Code",
+        rationale: "Functional accumulator pattern. Eliminates explicit accumulator variables, manual loops, and conditional counters.",
+        fileName: "ReduceAggregator.abap",
+        modernCode: `\" Modern ABAP 7.5+: Single expression table accumulation
+DATA(lv_total_amount) = REDUCE bapi_amount(
+  INIT total = 0
+  FOR wa IN lt_invoice_items WHERE ( tax_rate > 0 )
+  NEXT total = total + ( wa-quantity * wa-unit_price )
+).
+
+\" String accumulation with condition
+DATA(lv_csv_carriers) = REDUCE string(
+  INIT csv = ''
+  FOR line IN lt_flight_schedule
+  NEXT csv = COND #( WHEN csv IS INITIAL THEN line-carrier_id
+                     ELSE |{ csv }, { line-carrier_id }| )
+).`,
+        legacyCode: `\" Legacy ABAP: Accumulator variables with LOOP and SUM
+DATA: lv_total_amount TYPE bapi_amount,
+      lv_csv_carriers TYPE string.
+
+CLEAR: lv_total_amount, lv_csv_carriers.
+
+LOOP AT lt_invoice_items INTO DATA(ls_item) WHERE tax_rate > 0.
+  lv_total_amount = lv_total_amount + ( ls_item-quantity * ls_item-unit_price ).
+ENDLOOP.
+
+LOOP AT lt_flight_schedule INTO DATA(ls_sched).
+  IF lv_csv_carriers IS INITIAL.
+    lv_csv_carriers = ls_sched-carrier_id.
+  ELSE.
+    CONCATENATE lv_csv_carriers ls_sched-carrier_id INTO lv_csv_carriers SEPARATED BY ', '.
+  ENDIF.
+ENDLOOP.`
+      },
+      {
+        id: "for",
+        keyword: "FOR ... IN",
+        category: "tables",
+        categoryName: "Internal Tables",
+        name: "Table Comprehensions & Mapping",
+        summary: "Projects, transforms, and filters elements from one table to another without nested manual loops.",
+        reduction: "-60% Lines of Code",
+        rationale: "Transforms collections immutably. Eliminates LOOP AT and intermediate work areas.",
+        fileName: "ForComprehension.abap",
+        modernCode: `\" Modern ABAP 7.5+: Extract and transform table fields in 1 line
+DATA(lt_badi_input) = VALUE ty_badi_target_tab(
+  FOR sales_item IN lt_order_items WHERE ( rejected = abap_false )
+  ( item_position = sales_item-posnr
+    product_id    = sales_item-matnr
+    net_value     = sales_item-netwr
+    currency      = sales_item-waerk )
+).`,
+        legacyCode: `\" Legacy ABAP: Manual loop, field assignment, and append
+DATA: lt_badi_input TYPE ty_badi_target_tab,
+      ls_target     TYPE ty_badi_target_line.
+
+CLEAR lt_badi_input.
+
+LOOP AT lt_order_items INTO DATA(ls_source) WHERE rejected = abap_false.
+  CLEAR ls_target.
+  ls_target-item_position = ls_source-posnr.
+  ls_target-product_id    = ls_source-matnr.
+  ls_target-net_value     = ls_source-netwr.
+  ls_target-currency      = ls_source-waerk.
+  APPEND ls_target TO lt_badi_input.
+ENDLOOP.`
+      },
+      {
+        id: "filter",
+        keyword: "FILTER #( )",
+        category: "tables",
+        categoryName: "Internal Tables",
+        name: "Table Filtering Operator",
+        summary: "Fast sub-table extraction utilizing secondary table keys without full table scans.",
+        reduction: "-75% Lines of Code",
+        rationale: "Direct kernel-level table extraction. Ensures high-throughput processing on in-memory SAP HANA.",
+        fileName: "FilterOperator.abap",
+        modernCode: `\" Modern ABAP 7.5+: Filter internal table using secondary key directly
+\" Requirements: Sorted/Hashed table or Secondary Key defined
+DATA(lt_active_orders) = FILTER #( 
+  lt_all_orders USING KEY status_key 
+  WHERE status = 'RELEASED' 
+).
+
+\" Negative filtering (EXCEPT)
+DATA(lt_non_critical) = FILTER #( 
+  lt_all_orders EXCEPT USING KEY priority_key 
+  WHERE priority = 'URGENT' 
+).`,
+        legacyCode: `\" Legacy ABAP: Linear scan with manual conditional filtering
+DATA lt_active_orders TYPE ty_orders_tab.
+DATA lt_non_critical  TYPE ty_orders_tab.
+
+CLEAR: lt_active_orders, lt_non_critical.
+
+LOOP AT lt_all_orders INTO DATA(ls_order).
+  IF ls_order-status = 'RELEASED'.
+    APPEND ls_order TO lt_active_orders.
+  ENDIF.
+  IF ls_order-priority <> 'URGENT'.
+    APPEND ls_order TO lt_non_critical.
+  ENDIF.
+ENDLOOP.`
+      },
+      {
+        id: "cond",
+        keyword: "COND & SWITCH",
+        category: "functional",
+        categoryName: "Functional Logic",
+        name: "Inline Branching Expressions",
+        summary: "Evaluates condition ladders inline during variable declaration or parameter passing.",
+        reduction: "-55% Lines of Code",
+        rationale: "Enables functional programming composition. Avoids sprawling nested IF/CASE branching.",
+        fileName: "ConditionalBranching.abap",
+        modernCode: `\" Modern ABAP 7.5+: COND operator in functional assignment
+DATA(lv_urgency) = COND string(
+  WHEN lv_delivery_days <= 1  THEN 'CRITICAL'
+  WHEN lv_delivery_days <= 3  THEN 'URGENT'
+  WHEN lv_delivery_days <= 7  THEN 'STANDARD'
+  ELSE 'BACKLOG'
+).
+
+\" SWITCH operator on discrete values
+DATA(lv_status_text) = SWITCH string( ls_doc-status
+  WHEN 'A' THEN 'Draft Pending'
+  WHEN 'B' THEN 'Approved'
+  WHEN 'C' THEN 'Archived'
+  ELSE THROW cx_invalid_status( )
+).`,
+        legacyCode: `\" Legacy ABAP: Multi-line procedural IF/CASE trees
+DATA: lv_urgency     TYPE string,
+      lv_status_text TYPE string.
+
+CLEAR: lv_urgency, lv_status_text.
+
+IF lv_delivery_days <= 1.
+  lv_urgency = 'CRITICAL'.
+ELSEIF lv_delivery_days <= 3.
+  lv_urgency = 'URGENT'.
+ELSEIF lv_delivery_days <= 7.
+  lv_urgency = 'STANDARD'.
+ELSE.
+  lv_urgency = 'BACKLOG'.
+ENDIF.
+
+CASE ls_doc-status.
+  WHEN 'A'.
+    lv_status_text = 'Draft Pending'.
+  WHEN 'B'.
+    lv_status_text = 'Approved'.
+  WHEN 'C'.
+    lv_status_text = 'Archived'.
+  WHEN OTHERS.
+    RAISE EXCEPTION TYPE cx_invalid_status.
+ENDCASE.`
+      },
+      {
+        id: "conv",
+        keyword: "CONV #( )",
+        category: "types",
+        categoryName: "Types & Casting",
+        name: "Type Casting & Conversions",
+        summary: "Cast data elements and types inline directly within method calls without temporary variables.",
+        reduction: "-50% Lines of Code",
+        rationale: "Prevents clutter of single-use helper variables in class implementations.",
+        fileName: "ConvCasting.abap",
+        modernCode: `\" Modern ABAP 7.5+: Inline type conversion directly in method call
+lo_service->execute_pricing(
+  EXPORTING
+    iv_rate     = CONV #( ls_input-discount_pct )
+    iv_currency = CONV #( ls_input-currency_code )
+    iv_timestamp = CONV #( utclong_current( ) )
+).`,
+        legacyCode: `\" Legacy ABAP: Helper variables created just to satisfy parameter types
+DATA: lv_temp_rate      TYPE decfloat34,
+      lv_temp_currency  TYPE waers,
+      lv_temp_timestamp TYPE timestampl.
+
+lv_temp_rate      = ls_input-discount_pct.
+lv_temp_currency  = ls_input-currency_code.
+GET TIME STAMP FIELD lv_temp_timestamp.
+
+lo_service->execute_pricing(
+  EXPORTING
+    iv_rate      = lv_temp_rate
+    iv_currency  = lv_temp_currency
+    iv_timestamp = lv_temp_timestamp
+).`
+      },
+      {
+        id: "corr",
+        keyword: "CORRESPONDING #( )",
+        category: "constructors",
+        categoryName: "Constructors",
+        name: "Dynamic Deep Structure Mapping",
+        summary: "Maps structures with MAPPING and EXCEPT options in one safe expression without losing unmapped fields.",
+        reduction: "-60% Lines of Code",
+        rationale: "Strict typing and compile-time validation. Replaces runtime MOVE-CORRESPONDING risks.",
+        fileName: "CorrespondingMapping.abap",
+        modernCode: `\" Modern ABAP 7.5+: Explicit mapping & excluding in one statement
+ls_target = CORRESPONDING #( ls_source 
+  EXCEPT internal_id created_at
+  MAPPING target_partner = source_kunnr
+          target_date    = source_vdatu 
+).
+
+\" Table-level mapping
+lt_target_table = CORRESPONDING #( DEEP lt_source_table ).`,
+        legacyCode: `\" Legacy ABAP: MOVE-CORRESPONDING followed by manual overrides
+MOVE-CORRESPONDING ls_source TO ls_target.
+ls_target-target_partner = ls_source-source_kunnr.
+ls_target-target_date    = ls_source-source_vdatu.
+CLEAR: ls_target-internal_id, ls_target-created_at.`
+      }
+    ];
+
+    let currentSnippet = abapCookbookData[0];
+    let currentMode = 'modern'; // 'modern' or 'legacy'
+
+    function selectSnippet(id) {
+      if (currentSnippet && currentSnippet.id === id) return;
+
+      const found = abapCookbookData.find(s => s.id === id);
+      if (!found) return;
+
+      currentSnippet = found;
+
+      document.querySelectorAll('.snippet-card-item').forEach(card => {
+        card.classList.toggle('active', card.getAttribute('data-id') === id);
+      });
+
+      const studio = document.querySelector('.snippet-display-studio');
+      if (studio) {
+        studio.classList.remove('animating-in');
+        void studio.offsetWidth; // Force DOM reflow
+        studio.classList.add('animating-in');
+      }
+
+      updateStudioView();
+    }
+
+    function renderSnippetList(snippets) {
+      const listContainer = document.getElementById('snippetCardsList');
+      if (!listContainer) return;
+
+      if (snippets.length === 0) {
+        listContainer.innerHTML = '<div class="no-snippets-msg">No syntax matches found. Try searching "FOR", "VALUE", or "REDUCE".</div>';
+        return;
+      }
+
+      listContainer.innerHTML = snippets.map(item => `
+        <div class="snippet-card-item ${item.id === currentSnippet.id ? 'active' : ''}" data-id="${item.id}">
+          <div class="snippet-item-header">
+            <span class="snippet-keyword">${item.keyword}</span>
+            <span class="snippet-category-tag">${item.categoryName}</span>
+          </div>
+          <div class="snippet-item-summary">${item.name}</div>
+        </div>
+      `).join('');
+
+      // Attach BOTH click and mouseenter (hover) handlers
+      document.querySelectorAll('.snippet-card-item').forEach(card => {
+        const id = card.getAttribute('data-id');
+
+        card.addEventListener('mouseenter', () => {
+          selectSnippet(id);
+        });
+
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          selectSnippet(id);
+        });
+      });
+    }
+
+    function updateStudioView() {
+      if (!currentSnippet) return;
+
+      const badgeEl = document.getElementById('studioBadge');
+      const titleEl = document.getElementById('studioTitle');
+      const reductionEl = document.getElementById('studioReduction');
+      const descEl = document.getElementById('studioDescription');
+      const fileEl = document.getElementById('studioFileName');
+      const rationaleEl = document.getElementById('studioRationale');
+      const codeContainer = document.getElementById('studioCodeBlock');
+
+      if (badgeEl) badgeEl.innerText = currentSnippet.categoryName.toUpperCase();
+      if (titleEl) titleEl.innerText = `${currentSnippet.keyword} - ${currentSnippet.name}`;
+      if (reductionEl) reductionEl.innerText = currentSnippet.reduction;
+      if (descEl) descEl.innerText = currentSnippet.summary;
+      if (fileEl) fileEl.innerText = currentSnippet.fileName;
+      if (rationaleEl) rationaleEl.innerHTML = `<strong>Clean Core Benefit:</strong> ${currentSnippet.rationale}`;
+
+      if (codeContainer) {
+        const rawCode = currentMode === 'modern' ? currentSnippet.modernCode : currentSnippet.legacyCode;
+        codeContainer.innerHTML = highlightAbapSyntax(rawCode);
+      }
+    }
+
+    function highlightAbapSyntax(code) {
+      const escaped = code
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+      return escaped
+        .replace(/(\".*?$)/gm, '<span class="tok-comment">$1</span>')
+        .replace(/\b(DATA|VALUE|REDUCE|FOR|IN|FILTER|COND|SWITCH|CONV|CORRESPONDING|EXCEPT|MAPPING|INIT|NEXT|WHERE|WHEN|THEN|ELSE|CLEAR|APPEND|LOOP|AT|INTO|ENDLOOP|IF|ELSEIF|ENDIF|CASE|WHEN|ENDCASE|THROW|TYPE|TABLE|OF)\b/g, '<span class="tok-kw">$1</span>')
+        .replace(/(\'.*?\'|\|.*?\|)/g, '<span class="tok-str">$1</span>');
+    }
+
+    function copyCookbookCode() {
+      if (!currentSnippet) return;
+      const rawCode = currentMode === 'modern' ? currentSnippet.modernCode : currentSnippet.legacyCode;
+      navigator.clipboard.writeText(rawCode).then(() => {
+        const text = document.getElementById('cbCopyText');
+        const icon = document.getElementById('cbCopyIcon');
+        text.innerText = 'Copied!';
+        icon.innerText = '✓';
+        setTimeout(() => {
+          text.innerText = 'Copy Code';
+          icon.innerText = '📋';
+        }, 2000);
+      });
+    }
+
+    function setupCookbookEvents() {
+      const searchInput = document.getElementById('syntaxSearchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const categoryPills = document.querySelectorAll('.cat-pill');
+      const btnModern = document.getElementById('btnModernMode');
+      const btnLegacy = document.getElementById('btnLegacyMode');
+
+      let activeCategory = 'all';
+
+      function applyFilter() {
+        const query = searchInput.value.toLowerCase().trim();
+        clearBtn.classList.toggle('active', query.length > 0);
+
+        const filtered = abapCookbookData.filter(item => {
+          const matchCat = activeCategory === 'all' || item.category === activeCategory;
+          const matchQuery = !query || 
+            item.keyword.toLowerCase().includes(query) ||
+            item.name.toLowerCase().includes(query) ||
+            item.summary.toLowerCase().includes(query);
+          return matchCat && matchQuery;
+        });
+
+        renderSnippetList(filtered);
+
+        if (filtered.length > 0 && !filtered.some(f => f.id === currentSnippet.id)) {
+          currentSnippet = filtered[0];
+          updateStudioView();
+        }
+      }
+
+      if (searchInput) searchInput.addEventListener('input', applyFilter);
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          applyFilter();
+          searchInput.focus();
+        });
+      }
+
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          categoryPills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          activeCategory = this.getAttribute('data-cat');
+          applyFilter();
+        });
+      });
+
+      if (btnModern) {
+        btnModern.addEventListener('click', () => {
+          currentMode = 'modern';
+          btnModern.classList.add('active');
+          btnLegacy.classList.remove('active');
+          updateStudioView();
+        });
+      }
+
+      if (btnLegacy) {
+        btnLegacy.addEventListener('click', () => {
+          currentMode = 'legacy';
+          btnLegacy.classList.add('active');
+          btnModern.classList.remove('active');
+          updateStudioView();
+        });
+      }
+
+      renderSnippetList(abapCookbookData);
+      updateStudioView();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupCookbookEvents);
+    } else {
+      setupCookbookEvents();
     }
   </script>
 </body>
