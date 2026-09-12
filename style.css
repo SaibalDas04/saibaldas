@@ -2626,3 +2626,370 @@ pre {
   0% { opacity: 0.5; transform: translateY(4px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================================================
+   INTERACTIVE EVENT MESH ARCHITECTURE DIAGRAM (Node Flow)
+   ========================================================================== */
+.mesh-diagram-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Horizontal Flow Rail */
+.mesh-flow-viewport {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 4px 14px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mesh-flow-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.mesh-flow-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  margin: 0 auto;
+}
+
+/* Individual Node Cards */
+.mesh-node-card {
+  flex: 0 0 215px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-fluid);
+  user-select: none;
+  position: relative;
+  z-index: 2;
+}
+
+.mesh-node-card * {
+  pointer-events: none;
+}
+
+.mesh-node-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mesh-node-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* Status Radar Beacons */
+.mesh-status-beacon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+}
+
+.beacon-emerald { background-color: var(--text-emerald); box-shadow: 0 0 8px var(--text-emerald); }
+.beacon-blue    { background-color: var(--text-accent);  box-shadow: 0 0 8px var(--text-accent); }
+.beacon-amber   { background-color: #f59e0b;            box-shadow: 0 0 8px #f59e0b; }
+.beacon-purple  { background-color: #c084fc;            box-shadow: 0 0 8px #c084fc; }
+
+.mesh-node-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 4px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mesh-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.mesh-node-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.mesh-node-sub code {
+  color: var(--text-accent);
+  background: rgba(56, 189, 248, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Hover & Active States */
+.mesh-node-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.mesh-node-card:hover .mesh-node-icon {
+  transform: scale(1.18);
+}
+
+.mesh-node-card.active {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.22) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border-color: var(--text-accent);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.mesh-node-card.active .mesh-node-title {
+  color: var(--text-accent);
+}
+
+/* Connecting Pulse Pipes */
+.mesh-connector-pipe {
+  position: relative;
+  width: 48px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pipe-pulse {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--text-accent), transparent);
+  animation: pipeFlow 2.2s infinite linear;
+}
+
+@keyframes pipeFlow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Dynamic Inspector Console */
+.mesh-inspector-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+}
+
+.inspector-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inspector-phase-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-accent);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  width: fit-content;
+}
+
+.inspector-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.inspector-protocol {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-emerald);
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.inspector-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* Inspector Details Dual Column */
+.inspector-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.inspector-spec-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.spec-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.inspector-spec-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inspector-spec-list li {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 14px;
+  line-height: 1.45;
+}
+
+.inspector-spec-list li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: var(--text-accent);
+}
+
+.inspector-spec-list strong {
+  color: var(--text-main);
+}
+
+.inspector-clean-core {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  border-left: 3px solid var(--text-accent);
+  background: rgba(56, 189, 248, 0.04);
+  padding: 10px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  line-height: 1.5;
+}
+
+.inspector-clean-core strong {
+  color: var(--text-main);
+}
+
+.inspector-clean-core code {
+  font-family: var(--font-mono);
+  color: var(--text-accent);
+}
+
+/* Payload Console */
+.inspector-payload-box {
+  background: #05080e;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.payload-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: rgba(13, 18, 31, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.payload-filename {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.payload-body {
+  padding: 14px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.payload-body pre code {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+  color: #cbd5e1;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+/* Responsive Stacking for Tablets & Mobile */
+@media screen and (max-width: 960px) {
+  .inspector-details-grid {
+    grid-template-columns: 100%;
+  }
+
+  .mesh-flow-track {
+    margin: 0;
+  }
+
+  .mesh-node-card {
+    flex: 0 0 185px;
+    padding: 14px;
+  }
+
+  .mesh-connector-pipe {
+    width: 32px;
+  }
+}
+
+/* Cascading Animation */
+.mesh-inspector-card.animating-in {
+  animation: meshCardFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes meshCardFade {
+  0% { opacity: 0.5; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
