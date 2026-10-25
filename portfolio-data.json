@@ -1,0 +1,356 @@
+{
+  "meshNodeData": [
+    {
+      "phase": "STAGE 01: SAP S/4HANA DIGITAL CORE",
+      "title": "RAP Business Object Event Emission",
+      "protocol": "Protocol: ABAP Cloud EML Trigger",
+      "desc": "Upon transactional COMMIT in S/4HANA, the RAP transactional buffer triggers native business events defined in the Behavior Definition (BDEF) of standard business objects (e.g. R_PURCHASEORDERTP). Custom logic executes without transparent core modifications.",
+      "specs": [
+        "<strong>Trigger:</strong> RAP BDEF Event Definition (e.g. <code>event Created parameter ZD_PurchaseOrderEvent</code>).",
+        "<strong>Contract:</strong> Governed by Tier-1 Released API (C1 Contract) standards.",
+        "<strong>Zero Core Lockup:</strong> Event execution is decoupled from synchronous database commit phases."
+      ],
+      "cleanCore": "<strong>Clean Core Impact:</strong> Replaces legacy transparent user exits (<code>MV45AFZZ</code>) with cloud-ready asynchronous event emissions.",
+      "filename": "PurchaseOrder.bdef",
+      "payload": "define behavior for ZR_PurchaseOrder_TP alias PurchaseOrder\n{\n  /* Clean Core Native Event Definition */\n  event Created parameter ZD_PO_Event_Payload;\n  event Changed parameter ZD_PO_Event_Payload;\n\n  determination publishEvent on modify { create; }\n}"
+    },
+    {
+      "phase": "STAGE 02: SAP EVENT BINDING",
+      "title": "Outbound Event Topic Mapping",
+      "protocol": "Standard: SAP Enterprise Event Enablement",
+      "desc": "The RAP event is routed through an Event Binding object in ADT, mapping the internal ABAP event to an external CloudEvents-compliant outbound topic namespace.",
+      "specs": [
+        "<strong>Topic Space:</strong> <code>sap/s4/beh/purchaseorder/v1/PurchaseOrder/Created/v1</code>.",
+        "<strong>Standardization:</strong> Encapsulates business keys into standard CloudEvents 1.0 JSON format.",
+        "<strong>Security:</strong> OAuth 2.0 mTLS handshake with SAP Integration Suite / Event Mesh."
+      ],
+      "cleanCore": "<strong>Clean Core Impact:</strong> Decouples internal DDIC dictionary structures from external API consumer schemas.",
+      "filename": "EventBinding.json",
+      "payload": "{\n  \"specversion\": \"1.0\",\n  \"type\": \"sap.s4.beh.purchaseorder.v1.PurchaseOrder.Created.v1\",\n  \"source\": \"/default/sap.s4.beh/0050568ABC01\",\n  \"id\": \"a90b41cf-14c1-4b12-b5e1-88407f1a2380\",\n  \"time\": \"2026-09-12T13:48:29Z\",\n  \"datacontenttype\": \"application/json\"\n}"
+    },
+    {
+      "phase": "STAGE 03: SAP EVENT MESH (BTP)",
+      "title": "Reliable Message Routing & Queuing",
+      "protocol": "Protocol: AMQP 1.0 / MQTT / Webhook",
+      "desc": "SAP Event Mesh receives the outbound event with Guaranteed Delivery (QoS 1). Events are held securely in persistent queues until target consumers acknowledge processing.",
+      "specs": [
+        "<strong>Reliability:</strong> At-least-once delivery with automatic exponential retry queues.",
+        "<strong>Integration:</strong> Seamless routing via SAP Integration Suite (CPI) to multiple endpoints.",
+        "<strong>Throughput:</strong> High-volume event streaming with zero CPU burden on S/4HANA."
+      ],
+      "cleanCore": "<strong>Clean Core Impact:</strong> Shields the digital ERP core from high-frequency external polling and distributed spikes.",
+      "filename": "EventMesh_Queue.json",
+      "payload": "{\n  \"queueName\": \"s4/amgen/po/created/queue\",\n  \"maxQueueSizeInBytes\": 104857600,\n  \"deadLetterQueue\": \"s4/amgen/po/created/dlq\",\n  \"respectTTL\": true,\n  \"maxDeliveryCount\": 5\n}"
+    },
+    {
+      "phase": "STAGE 04: SIDE-BY-SIDE CONSUMER",
+      "title": "Serverless SAP BTP Cloud Extensions",
+      "protocol": "Runtime: Node.js / SAP CAP / Cloud Foundry",
+      "desc": "Side-by-side microservices running on SAP BTP consume the event, perform auxiliary processing (e.g. analytics, Workday/HCM sync, or 3rd-party logistics notifications), and acknowledge the broker.",
+      "specs": [
+        "<strong>Runtime:</strong> Cloud Application Programming Model (CAP) or Serverless Functions.",
+        "<strong>Data Retrieval:</strong> Performs callback via released OData v4 APIs only if deeper payload is needed.",
+        "<strong>Independent Deployments:</strong> Updated without touching or restarting the S/4HANA ERP instance."
+      ],
+      "cleanCore": "<strong>Clean Core Impact:</strong> 100% cloud-compliant side-by-side extensibility (Tier 3) with zero core footprint.",
+      "filename": "eventHandler.js",
+      "payload": "// SAP CAP Event Handler (BTP Runtime)\nmessaging.on('sap.s4.beh.purchaseorder.v1.PurchaseOrder.Created.v1', async (msg) => {\n  const { PurchaseOrder, Supplier } = msg.data;\n  console.log(`[BTP Service] Processing PO ${PurchaseOrder} from Supplier ${Supplier}`);\n  await triggerLogisticsSync(PurchaseOrder);\n  msg.ack();\n});"
+    }
+  ],
+  "abapCookbookData": [
+    {
+      "id": "value",
+      "keyword": "VALUE #( )",
+      "category": "constructors",
+      "categoryName": "Constructors",
+      "name": "Inline Structure & Table Constructor",
+      "summary": "Constructs structures and populates internal tables without explicit work areas or APPEND loops.",
+      "reduction": "-65% Lines of Code",
+      "rationale": "Eliminates temp structures, work areas, and CLEAR statements. Thread-safe and cloud-compliant.",
+      "fileName": "ValueConstructor.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Inline table creation with multiple rows\nDATA(lt_flight_schedule) = VALUE ty_flights_tab(\n  ( carrier_id = 'LH' conn_id = '0400' city_from = 'FRA' city_to = 'JFK' )\n  ( carrier_id = 'SQ' conn_id = '0326' city_from = 'SIN' city_to = 'FRA' )\n  ( carrier_id = 'AI' conn_id = '0142' city_from = 'DEL' city_to = 'CDG' )\n).\n\n\" Direct structure construction with default type inference\nDATA(ls_booking) = VALUE ty_booking(\n  customer_id  = '000109'\n  booking_date = cl_abap_context_info=>get_system_date( )\n  status       = 'B'\n).",
+      "legacyCode": "\" Legacy ABAP: Verbose explicit work area & multiple appends\nDATA: lt_flight_schedule TYPE ty_flights_tab,\n      ls_flight          TYPE ty_flight_line,\n      ls_booking         TYPE ty_booking.\n\nCLEAR ls_flight.\nls_flight-carrier_id = 'LH'.\nls_flight-conn_id    = '0400'.\nls_flight-city_from  = 'FRA'.\nls_flight-city_to    = 'JFK'.\nAPPEND ls_flight TO lt_flight_schedule.\n\nCLEAR ls_booking.\nls_booking-customer_id  = '000109'.\nls_booking-booking_date = sy-datum.\nls_booking-status       = 'B'."
+    },
+    {
+      "id": "reduce",
+      "keyword": "REDUCE #( )",
+      "category": "functional",
+      "categoryName": "Functional Logic",
+      "name": "Table Aggregation & Accumulator",
+      "summary": "Calculates sums, counters, and concatenated outputs directly from tables in a single functional expression.",
+      "reduction": "-70% Lines of Code",
+      "rationale": "Functional accumulator pattern. Eliminates explicit accumulator variables, manual loops, and conditional counters.",
+      "fileName": "ReduceAggregator.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Single expression table accumulation\nDATA(lv_total_amount) = REDUCE bapi_amount(\n  INIT total = 0\n  FOR wa IN lt_invoice_items WHERE ( tax_rate > 0 )\n  NEXT total = total + ( wa-quantity * wa-unit_price )\n).",
+      "legacyCode": "\" Legacy ABAP: Accumulator variables with LOOP and SUM\nDATA: lv_total_amount TYPE bapi_amount.\nCLEAR: lv_total_amount.\n\nLOOP AT lt_invoice_items INTO DATA(ls_item) WHERE tax_rate > 0.\n  lv_total_amount = lv_total_amount + ( ls_item-quantity * ls_item-unit_price ).\nENDLOOP."
+    },
+    {
+      "id": "for",
+      "keyword": "FOR ... IN",
+      "category": "tables",
+      "categoryName": "Internal Tables",
+      "name": "Table Comprehensions & Mapping",
+      "summary": "Projects, transforms, and filters elements from one table to another without nested manual loops.",
+      "reduction": "-60% Lines of Code",
+      "rationale": "Transforms collections immutably. Eliminates LOOP AT and intermediate work areas.",
+      "fileName": "ForComprehension.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Extract and transform table fields in 1 line\nDATA(lt_badi_input) = VALUE ty_badi_target_tab(\n  FOR sales_item IN lt_order_items WHERE ( rejected = abap_false )\n  ( item_position = sales_item-posnr\n    product_id    = sales_item-matnr\n    net_value     = sales_item-netwr\n    currency      = sales_item-waerk )\n).",
+      "legacyCode": "\" Legacy ABAP: Manual loop, field assignment, and append\nDATA: lt_badi_input TYPE ty_badi_target_tab,\n      ls_target     TYPE ty_badi_target_line.\n\nCLEAR lt_badi_input.\n\nLOOP AT lt_order_items INTO DATA(ls_source) WHERE rejected = abap_false.\n  CLEAR ls_target.\n  ls_target-item_position = ls_source-posnr.\n  ls_target-product_id    = ls_source-matnr.\n  ls_target-net_value     = ls_source-netwr.\n  ls_target-currency      = ls_source-waerk.\n  APPEND ls_target TO lt_badi_input.\nENDLOOP."
+    },
+    {
+      "id": "filter",
+      "keyword": "FILTER #( )",
+      "category": "tables",
+      "categoryName": "Internal Tables",
+      "name": "Table Filtering Operator",
+      "summary": "Fast sub-table extraction utilizing secondary table keys without full table scans.",
+      "reduction": "-75% Lines of Code",
+      "rationale": "Direct kernel-level table extraction. Ensures high-throughput processing on in-memory SAP HANA.",
+      "fileName": "FilterOperator.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Filter internal table using secondary key directly\nDATA(lt_active_orders) = FILTER #( \n  lt_all_orders USING KEY status_key \n  WHERE status = 'RELEASED' \n).",
+      "legacyCode": "\" Legacy ABAP: Linear scan with manual conditional filtering\nDATA lt_active_orders TYPE ty_orders_tab.\nCLEAR: lt_active_orders.\n\nLOOP AT lt_all_orders INTO DATA(ls_order).\n  IF ls_order-status = 'RELEASED'.\n    APPEND ls_order TO lt_active_orders.\n  ENDIF.\nENDLOOP."
+    },
+    {
+      "id": "cond",
+      "keyword": "COND & SWITCH",
+      "category": "functional",
+      "categoryName": "Functional Logic",
+      "name": "Inline Branching Expressions",
+      "summary": "Evaluates condition ladders inline during variable declaration or parameter passing.",
+      "reduction": "-55% Lines of Code",
+      "rationale": "Enables functional programming composition. Avoids sprawling nested IF/CASE branching.",
+      "fileName": "ConditionalBranching.abap",
+      "modernCode": "\" Modern ABAP 7.5+: COND operator in functional assignment\nDATA(lv_urgency) = COND string(\n  WHEN lv_delivery_days <= 1  THEN 'CRITICAL'\n  WHEN lv_delivery_days <= 3  THEN 'URGENT'\n  WHEN lv_delivery_days <= 7  THEN 'STANDARD'\n  ELSE 'BACKLOG'\n).",
+      "legacyCode": "\" Legacy ABAP: Multi-line procedural IF/CASE trees\nDATA lv_urgency TYPE string.\nCLEAR lv_urgency.\n\nIF lv_delivery_days <= 1.\n  lv_urgency = 'CRITICAL'.\nELSEIF lv_delivery_days <= 3.\n  lv_urgency = 'URGENT'.\nELSE.\n  lv_urgency = 'BACKLOG'.\nENDIF."
+    },
+    {
+      "id": "conv",
+      "keyword": "CONV #( )",
+      "category": "types",
+      "categoryName": "Types & Casting",
+      "name": "Type Casting & Conversions",
+      "summary": "Cast data elements and types inline directly within method calls without temporary variables.",
+      "reduction": "-50% Lines of Code",
+      "rationale": "Prevents clutter of single-use helper variables in class implementations.",
+      "fileName": "ConvCasting.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Inline type conversion directly in method call\nlo_service->execute_pricing(\n  EXPORTING\n    iv_rate     = CONV #( ls_input-discount_pct )\n    iv_currency = CONV #( ls_input-currency_code )\n).",
+      "legacyCode": "\" Legacy ABAP: Helper variables created just to satisfy parameter types\nDATA: lv_temp_rate     TYPE decfloat34,\n      lv_temp_currency TYPE waers.\n\nlv_temp_rate     = ls_input-discount_pct.\nlv_temp_currency = ls_input-currency_code.\n\nlo_service->execute_pricing(\n  EXPORTING\n    iv_rate     = lv_temp_rate\n    iv_currency = lv_temp_currency\n)."
+    },
+    {
+      "id": "corr",
+      "keyword": "CORRESPONDING #( )",
+      "category": "constructors",
+      "categoryName": "Constructors",
+      "name": "Dynamic Deep Structure Mapping",
+      "summary": "Maps structures with MAPPING and EXCEPT options in one safe expression without losing unmapped fields.",
+      "reduction": "-60% Lines of Code",
+      "rationale": "Strict typing and compile-time validation. Replaces runtime MOVE-CORRESPONDING risks.",
+      "fileName": "CorrespondingMapping.abap",
+      "modernCode": "\" Modern ABAP 7.5+: Explicit mapping & excluding in one statement\nls_target = CORRESPONDING #( ls_source \n  EXCEPT internal_id created_at\n  MAPPING target_partner = source_kunnr\n          target_date    = source_vdatu \n).",
+      "legacyCode": "\" Legacy ABAP: MOVE-CORRESPONDING followed by manual overrides\nMOVE-CORRESPONDING ls_source TO ls_target.\nls_target-target_partner = ls_source-source_kunnr.\nls_target-target_date    = ls_source-source_vdatu.\nCLEAR: ls_target-internal_id, ls_target-created_at."
+    }
+  ],
+  "cflLifecycleData": {
+    "enable": {
+      "badge": "LIFECYCLE PHASE: ENABLEMENT",
+      "tool": "App: Custom Fields and Logic",
+      "title": "1. Field Creation & Business Context Allocation",
+      "desc": "Create custom fields directly in targeted SAP business contexts (e.g. Accounting: Coding Block, Sales Document Item). The platform automatically generates the underlying database append tables and dictionary structures transparently.",
+      "steps": [
+        "Open the <strong>Custom Fields and Logic</strong> Fiori app and select <strong>Create (+)</strong>.",
+        "Assign targeted <strong>Business Context</strong> (e.g. <code>Accounting: Coding Block</code> or <code>Sales Document Item</code>).",
+        "Provide Field Label, Identifier, and Data Type (Text, Amount, Code List, or Date).",
+        "Save and trigger backend dictionary persistence generation."
+      ],
+      "guardrail": "<strong>Clean Core Standard:</strong> Key User Extensibility manages physical DDIC enhancement append tables automatically, preserving core upgrade stability."
+    },
+    "publish": {
+      "badge": "LIFECYCLE PHASE: UI & API PUBLISHING",
+      "tool": "Tool: Adapt UI & CDS Extension",
+      "title": "2. Exposing to Standard Fiori Elements Apps",
+      "desc": "Extend standard SAP Fiori Elements apps with zero custom ABAP code by publishing the field into released Standard Core Data Services (CDS) view entities and OData v2/v4 services.",
+      "steps": [
+        "In the CFL app, open the field and navigate to the <strong>UIs and Reports</strong> tab.",
+        "Enable usage across required standard services and click <strong>Publish</strong>.",
+        "Launch the target standard Fiori app as a Key User and select <strong>Adapt UI</strong> from user settings.",
+        "Drag & drop the custom field into the desired Header or Object Page facet, then click <strong>Save & Publish</strong>."
+      ],
+      "guardrail": "<strong>Clean Core Standard:</strong> Generates automated OData annotations without modifying SAP standard Fiori codebases."
+    },
+    "disable": {
+      "badge": "LIFECYCLE PHASE: DEPRECATION & DECOMMISSION",
+      "tool": "App: Custom Fields and Logic",
+      "title": "3. Safe Disabling & Deprecation Workflow",
+      "desc": "Safely withdraw fields from standard user interfaces and consumer APIs without deleting underlying database columns, ensuring historical postings remain intact.",
+      "steps": [
+        "Open the standard Fiori app in <strong>Adapt UI</strong> mode and remove the field from visible sections.",
+        "In the CFL app under <strong>UIs and Reports</strong>, toggle usage from <em>Enabled</em> to <em>Disabled</em>.",
+        "Click <strong>Publish</strong> to re-compile the CDS and OData metadata without the custom binding.",
+        "Change field status to <strong>Deprecated</strong> to block further usage in new development."
+      ],
+      "guardrail": "<strong>Clean Core Standard:</strong> Decouples consumer interfaces safely while preserving historic database entries and financial consistency."
+    }
+  },
+  "codingBlockSteps": [
+    {
+      "counter": "Step 01 of 10",
+      "phase": "Reset To Delivery",
+      "title": "Execute Program FGL_MIG_REGENERATE_CDS_BCF",
+      "desc": "Temporarily reset generated compatibility and migration CDS views back to SAP standard delivery state so they release dictionary locks on the custom field.",
+      "tcode": "SAP GUI: SE38",
+      "command": "1. Go to SE38 and execute program FGL_MIG_REGENERATE_CDS_BCF\n2. Select \"Reset to delivery\" checkbox on the selection screen\n3. Verify program executed successfully",
+      "alert": "Do not execute the program without selecting the 'Reset to delivery' checkbox in the selection screen."
+    },
+    {
+      "counter": "Step 02 of 10",
+      "phase": "Dependency Audit",
+      "title": "Strip All Field Dependencies & Where-Used References",
+      "desc": "Analyze all objects referencing the Coding Block field and remove them from custom UIs, OData services, and BAdIs before disabling.",
+      "tcode": "TCODE: SCFD_FIELDVIEWER / Fiori CFL",
+      "command": "1. Execute TCODE SCFD_FIELDVIEWER and search for the custom field\n2. Go to the 'Where-Used' tab and inspect all dependent objects\n3. Remove the field from all active usages (UIs, reports, forms)\n4. Without removing usages, the system will block field disabling",
+      "alert": "Notice: System-generated standard CDS Views are handled automatically; do not delete them manually."
+    },
+    {
+      "counter": "Step 03 of 10",
+      "phase": "Decouple via SCFD_EUI",
+      "title": "Disable & Decouple Custom Field in Extensibility Registry",
+      "desc": "Sever the metadata generation between the Coding Block persistence structure and standard OData/CDS endpoints.",
+      "tcode": "TCODE: SCFD_EUI / Custom Fields App",
+      "command": "1. Open TCODE SCFD_FIELDVIEWER and verify the origin of the custom field\n2. If source is ABAP/DDIC, open TCODE SCFD_EUI and disable the field\n3. If created via CFL, disable all services and click 'Save' & 'Publish'\n4. Wait for background status to complete",
+      "alert": "Wait for background job status to transition from 'Publishing' before proceeding to CI_COBL removal."
+    },
+    {
+      "counter": "Step 04 of 10",
+      "phase": "DDIC Structure Edit",
+      "title": "Remove Custom Field from CI_COBL Structure",
+      "desc": "Delete the custom field component from the customer include structure CI_COBL in the ABAP Dictionary without activating yet.",
+      "tcode": "SAP GUI: SE11 (CI_COBL)",
+      "command": "1. Open transaction SE11 -> Data Type: CI_COBL -> Click Change\n2. Select the target ZZ1_* custom field line item and delete it\n3. Click 'Save' (Ctrl+S) to save CI_COBL in an inactive/saved state\n4. Proceed immediately to CDS regeneration before full activation",
+      "alert": "Saving first and regenerating dependent FCO/GL views prevents mass dictionary activation lockups."
+    },
+    {
+      "counter": "Step 05 of 10",
+      "phase": "Controlling CDS Sync",
+      "title": "Regenerate Controlling (FCO) CDS Views",
+      "desc": "Execute the Controlling CDS view generator so Controlling compatibility views drop the removed Coding Block field reference.",
+      "tcode": "SAP GUI: SE38 (FCO_CDS_VIEW_GENERATE)",
+      "command": "1. Go to SE38 and run program FCO_CDS_VIEW_GENERATE\n2. Execute regeneration for Controlling compatibility CDS views\n3. Verify log output shows green status for all generated views",
+      "alert": "Ensures Controlling views no longer point to the removed field in CI_COBL."
+    },
+    {
+      "counter": "Step 06 of 10",
+      "phase": "General Ledger CDS Sync",
+      "title": "Regenerate GL & GLPOS CDS Views",
+      "desc": "Re-compile General Ledger and GL Posting CDS view hierarchies so financial line-item views match the updated Coding Block definition.",
+      "tcode": "SAP GUI: SE38 (FGL_MIG_REGENERATE_CDS)",
+      "command": "1. Open SE38 and execute GL & GLPOS CDS generation reports\n2. Regenerate views linked to ACDOCA, BSEG, and GLPOS_C_CT\n3. Confirm zero DDL syntax errors in the generation log",
+      "alert": "Critical for preventing DDL dictionary mismatches on universal journal table ACDOCA."
+    },
+    {
+      "counter": "Step 07 of 10",
+      "phase": "Secondary FCO Sync",
+      "title": "Verify & Re-Sync Dependent FCO Analytical Views",
+      "desc": "Perform a secondary pass on FCO analytical and allocation CDS views to ensure no residual metadata pointers remain.",
+      "tcode": "SAP GUI: SE38 / RUTDDLSACT",
+      "command": "1. Re-verify FCO CDS view generation status in SE38\n2. If any dependent view is marked inactive, activate via RUTDDLSACT\n3. Confirm clean DDIC consistency check",
+      "alert": "Guarantees all dependent analytical queries are aligned prior to CI_COBL activation."
+    },
+    {
+      "counter": "Step 08 of 10",
+      "phase": "CI_COBL Reactivation",
+      "title": "Activate CI_COBL Structure in ABAP Dictionary",
+      "desc": "Now that dependent CDS views are decoupled, perform the full dictionary activation of structure CI_COBL.",
+      "tcode": "SAP GUI: SE11 (CI_COBL)",
+      "command": "1. Return to transaction SE11 -> Data Type: CI_COBL\n2. Click 'Activate' (Ctrl+F3)\n3. Monitor activation log and verify dependent tables (COBL, ACDOCA, BSEG) activate cleanly",
+      "alert": "Run during a quiet system window so dependent financial tables activate without lock contention."
+    },
+    {
+      "counter": "Step 09 of 10",
+      "phase": "Set To Delivery",
+      "title": "Restore FGL_MIG_REGENERATE_CDS_BCF to Delivery State",
+      "desc": "Re-enable the generated financial migration and compatibility CDS views now that CI_COBL is active and clean.",
+      "tcode": "SAP GUI: SE38",
+      "command": "1. Go to SE38 and execute program FGL_MIG_REGENERATE_CDS_BCF\n2. Uncheck 'Reset to delivery' (select normal generation / set to delivery)\n3. Execute and verify all compatibility views are regenerated cleanly",
+      "alert": "Restores full runtime analytical and posting view coverage across Finance."
+    },
+    {
+      "counter": "Step 10 of 10",
+      "phase": "Generate COBL",
+      "title": "Final Coding Block Subscreen & Buffer Generation",
+      "desc": "Regenerate Coding Block subscreens, validation rules (RGUGBR00), and flush OData/Gateway caches before transport release.",
+      "tcode": "SAP GUI: OXK1 / RGUGBR00 / /IWFND/CACHE_CLEANUP",
+      "command": "1. Regenerate Coding Block subscreens and run RGUGBR00 for FI/CO\n2. Flush Gateway metadata caches via /IWFND/CACHE_CLEANUP\n3. Post a test Journal Entry in Fiori to verify ACDOCA persistence",
+      "alert": "Sign-Off: Complete regression test on Journal Entry and PO creation before releasing transport."
+    }
+  ],
+  "cleanCoreData": [
+    {
+      "tier": "Tier 2: In-App Developer Extensibility",
+      "contract": "C1 Interface Contract",
+      "title": "Legacy User Exit to Cloud BAdI Pattern",
+      "desc": "Eliminates transparent core table and program modifications. Custom logic is isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring seamless zero-downtime upgrades.",
+      "pipeline": [
+        { "name": "Legacy Hook (MV45AFZZ)", "type": "pipe-legacy" },
+        { "name": "C1 Released APIs", "type": "pipe-contract" },
+        { "name": "Cloud BAdI Implementation", "type": "pipe-target" }
+      ],
+      "guardrails": [
+        "100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)",
+        "Enforced by ABAP Test Cockpit (ATC) Cloud Profile",
+        "No direct SELECTs on unreleased standard tables"
+      ],
+      "tags": ["Cloud BAdI", "ABAP Cloud", "ATC Governance", "Developer Extensibility"]
+    },
+    {
+      "tier": "Tier 1: Cloud-Ready Architecture",
+      "contract": "Strict Transactional Contract",
+      "title": "Managed RAP Business Object with Draft",
+      "desc": "Custom persistence encapsulated cleanly via Core Data Services (CDS) and Behavior Definitions. Provides standard Entity Manipulation Language (EML) boundaries, transactional buffer, locking, and validation logic.",
+      "pipeline": [
+        { "name": "Persistent Custom Table", "type": "pipe-legacy" },
+        { "name": "CDS Root Entity", "type": "pipe-contract" },
+        { "name": "RAP Behavior (BDEF & EML)", "type": "pipe-target" }
+      ],
+      "guardrails": [
+        "Integrated Draft persistence for stateless web scenarios",
+        "Automatic transactional buffer and ETAG management",
+        "Decoupled from legacy update-task function modules"
+      ],
+      "tags": ["RAP Managed", "EML Controls", "Draft BO", "OData v4"]
+    },
+    {
+      "tier": "Tier 1: Analytical Query Contract",
+      "contract": "CDS View Entity Contract",
+      "title": "In-Memory CDS Analytical Projections",
+      "desc": "Direct analytical modeling on SAP HANA eliminating redundant extraction tables. Delivers multidimensional slicing and dynamic aggregations straight into SAP Fiori Elements analytical pages.",
+      "pipeline": [
+        { "name": "Standard Basic View", "type": "pipe-legacy" },
+        { "name": "Composite CDS Entity", "type": "pipe-contract" },
+        { "name": "Consumption Analytical Query", "type": "pipe-target" }
+      ],
+      "guardrails": [
+        "Executed in-memory via SAP HANA analytical engine",
+        "Transient association resolution prevents heavy joins",
+        "Replaces custom ABAP memory tables with SQL View Entities"
+      ],
+      "tags": ["CDS View Entities", "Analytical Engine", "HANA Optimized", "Fiori Elements"]
+    },
+    {
+      "tier": "Tier 3: Side-by-Side Extensibility",
+      "contract": "Async Event Mesh Protocol",
+      "title": "Event-Driven Asynchronous BTP Bridge",
+      "desc": "Offloads heavy custom workflows out of the core ERP. S/4HANA emits lightweight RAP business events via SAP Event Mesh to serverless runtimes and microservices on SAP BTP.",
+      "pipeline": [
+        { "name": "S/4HANA Transaction Event", "type": "pipe-legacy" },
+        { "name": "SAP Event Mesh", "type": "pipe-contract" },
+        { "name": "SAP BTP Cloud Service", "type": "pipe-target" }
+      ],
+      "guardrails": [
+        "Zero CPU and memory overhead on the digital core",
+        "Decoupled asynchronous webhook notifications",
+        "Independent cloud lifecycle & autonomous deployments"
+      ],
+      "tags": ["SAP BTP", "SAP Event Mesh", "RAP Events", "Side-by-Side"]
+    }
+  ]
+}
