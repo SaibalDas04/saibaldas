@@ -1,4 +1,1112 @@
-<!-- ====================================================================
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Saibal Das | SAP ABAP + Fiori Application Developer, ABAP Cloud, RAP & Clean Core Architecture Lead"
+    />
+    <title>Saibal Das | SAP ABAP Cloud, RAP & Clean Core Architect</title>
+
+    <link rel="stylesheet" href="style.css?v=9" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Reading Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- ====================================================================
+         TOP NAVIGATION BAR
+         ==================================================================== -->
+    <header class="master-header">
+      <div class="header-container">
+        <div class="header-left">
+          <!-- Mobile Hamburger Button -->
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle Profile Drawer">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+
+          <!-- Desktop Sidebar Toggle -->
+          <button
+            class="desktop-sidebar-toggle"
+            id="desktopSidebarToggle"
+            type="button"
+            aria-label="Toggle Profile Sidebar"
+          >
+            <svg
+              class="sidebar-svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="23"></line>
+            </svg>
+            <span id="desktopToggleText">Profile</span>
+          </button>
+
+          <a href="#landing" class="brand-logo">
+            <span class="logo-accent">&lt;</span>Saibal<span class="highlight">::Das</span><span class="logo-accent"> /&gt;</span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Pill Bar -->
+        <nav class="desktop-nav">
+          <a href="#principles-section" class="nav-link">Standards</a>
+          <a href="#showcase-section" class="nav-link">Projects</a>
+          <a href="#sandbox-section" class="nav-link">Code Lab</a>
+          <a href="#cookbook-section" class="nav-link">ABAP 7.5+</a>
+          <a href="#eventmesh-section" class="nav-link">Event Mesh</a>
+          <a href="#cfl-section" class="nav-link">CFL &amp; COBL</a>
+          <a href="#cleanCoreSection" class="nav-link">Clean Core</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Command Palette Trigger -->
+          <button class="cmd-trigger-btn" type="button" onclick="openCmdModal()" title="Quick Jump (Ctrl+K)">
+            <span>🔍</span>
+            <span class="cmd-shortcut">⌘K</span>
+          </button>
+
+          <!-- Theme Switcher (Dark / Light) -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle Theme" title="Switch Theme">
+            <span id="themeIcon">☀️</span>
+          </button>
+
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-nav btn-secondary hide-sm">
+            <span>Resume</span>
+          </a>
+          <button class="btn btn-nav btn-primary" type="button" onclick="openContactModal()">
+            <span>Contact</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Master Layout -->
+    <div class="site-wrapper desktop-collapsed" id="siteWrapper">
+      <!-- ====================================================================
+           LEFT SIDEBAR: Profile, Credentials & Experience
+           ==================================================================== -->
+      <aside class="sidebar-col" id="sidebarCol">
+        <div class="sidebar-inner">
+          <button
+            class="desktop-collapse-btn"
+            id="desktopCollapseBtn"
+            type="button"
+            title="Hide Profile Sidebar"
+            aria-label="Hide Profile"
+          >
+            <span>&lsaquo;</span>
+          </button>
+
+          <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Close Profile">
+            &times;
+          </button>
+
+          <header class="profile-header">
+            <div class="avatar-wrapper">
+              <div class="avatar-ring-glow"></div>
+              <img
+                src="saibal.jpg"
+                alt="Saibal Das"
+                class="avatar-image"
+                onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'"
+              />
+            </div>
+
+            <div class="profile-title-block">
+              <h1 class="profile-name">Saibal Das</h1>
+              <p class="profile-role">SAP ABAP + Fiori Application Developer</p>
+              <div class="status-pill">
+                <span class="status-indicator"></span>
+                <span>Leading Clean Core (Team of 7)</span>
+              </div>
+            </div>
+          </header>
+
+          <p class="sidebar-bio">
+            Full-Stack SAP developer with <strong>4.7+ years of specialized experience</strong> across multiple S/4HANA implementations. Expert in <strong>ABAP Cloud, RAP, Clean Core governance, SAPUI5, Workflow</strong>, and <strong>Agent-Based development using MCP in VS Code</strong>.
+          </p>
+
+          <section class="sidebar-section">
+            <h2 class="sidebar-label">Official Credentials</h2>
+            <div class="cert-card-group">
+              <div class="cert-item">
+                <div class="cert-badge-icon">🏅</div>
+                <div class="cert-text">
+                  <span class="cert-title">SAP Certified - Back-End Developer</span>
+                  <span class="cert-meta">ABAP Cloud &bull; Jun 2026</span>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge-icon">🏅</div>
+                <div class="cert-text">
+                  <span class="cert-title">SAP Certified Associate</span>
+                  <span class="cert-meta">SAP Fiori Application Developer &bull; Apr 2024</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <h2 class="sidebar-label">Education</h2>
+            <div class="cert-item">
+              <div class="cert-badge-icon">🎓</div>
+              <div class="cert-text">
+                <span class="cert-title">B.Tech &bull; Computer Science &amp; Engineering</span>
+                <span class="cert-meta">Brainware University (2017 &ndash; 2021) &bull; CGPA: 8.03</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Connected Experience Timeline -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-label">Career Track Record</h2>
+            <div class="timeline-connected-track" id="experienceTimeline">
+              <!-- Capgemini -->
+              <article class="timeline-card active-position">
+                <span class="timeline-node node-present" title="Current Role"></span>
+                <div class="timeline-header-row">
+                  <div class="timeline-meta-group">
+                    <div class="timeline-meta">
+                      <span class="company-name">Capgemini</span>
+                      <span class="time-tag">03.2025 &ndash; Present</span>
+                    </div>
+                    <h3 class="role-title">Consultant &bull; AMGEN S/4HANA Transformation</h3>
+                    <p class="role-location">Kolkata, India &bull; Full-time</p>
+                  </div>
+                  <button class="exp-toggle-btn" type="button" aria-expanded="false" aria-label="Toggle details">
+                    <span class="toggle-icon">+</span>
+                  </button>
+                </div>
+                <div class="exp-collapse-wrapper">
+                  <div class="exp-collapse-inner">
+                    <ul class="role-bullets">
+                      <li>Leading Clean Core development with a team size of 7 on a major Greenfield Life Sciences implementation.</li>
+                      <li>Architected event-driven side-by-side solutions leveraging standard RAP BO events (<code>R_PURCHASEORDERTP</code>, <code>R_SALESORDERTP</code>) and CPI Event Binding.</li>
+                      <li>Implemented Agent-Based development solutions using Model Context Protocol (MCP) in VS Code to accelerate enterprise delivery.</li>
+                      <li>Built reusable RAP determination event templates to parse multi-tab XLSX files using XCO libraries and update Purchase Info Records.</li>
+                      <li>Led custom field development using Custom Fields &amp; Logic (CFL) with <code>SCFD_EUI</code>, Cloud BAdIs, and migrated Web Dynpro/classic reports to Fiori.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Accenture -->
+              <article class="timeline-card">
+                <span class="timeline-node node-past"></span>
+                <div class="timeline-header-row">
+                  <div class="timeline-meta-group">
+                    <div class="timeline-meta">
+                      <span class="company-name">Accenture Solutions</span>
+                      <span class="time-tag">12.2023 &ndash; 02.2025</span>
+                    </div>
+                    <h3 class="role-title">Package App Development Analyst</h3>
+                    <p class="role-location">Halliburton &amp; BTP Steampunk &bull; Kolkata, India</p>
+                  </div>
+                  <button class="exp-toggle-btn" type="button" aria-expanded="false" aria-label="Toggle details">
+                    <span class="toggle-icon">+</span>
+                  </button>
+                </div>
+                <div class="exp-collapse-wrapper">
+                  <div class="exp-collapse-inner">
+                    <ul class="role-bullets">
+                      <li>Focused on SAP BTP Steampunk instance RAP developments, Cloud ABAP, Core Data Services (CDS) entities, and released Cloud BAdIs.</li>
+                      <li>Designed and developed the complete Purchase Order &amp; PR Workflow with approval procedures, HTML5 notification emails, and My Inbox Fiori integration.</li>
+                      <li>Facilitated S/4HANA &amp; Ariba procurement integration implementing multiple BAdIs, SRT_MONI error analysis, and web service validations.</li>
+                      <li>Delivered RAP Fiori apps enabling Excel/CSV uploads with local staging modification before EML table postings and PO attachment downloads.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <!-- TCS -->
+              <article class="timeline-card">
+                <span class="timeline-node node-past"></span>
+                <div class="timeline-header-row">
+                  <div class="timeline-meta-group">
+                    <div class="timeline-meta">
+                      <span class="company-name">Tata Consultancy Services</span>
+                      <span class="time-tag">11.2021 &ndash; 12.2023</span>
+                    </div>
+                    <h3 class="role-title">Associate System Engineer &bull; Coop Sweden</h3>
+                    <p class="role-location">Kolkata, India &bull; Full-time</p>
+                  </div>
+                  <button class="exp-toggle-btn" type="button" aria-expanded="false" aria-label="Toggle details">
+                    <span class="toggle-icon">+</span>
+                  </button>
+                </div>
+                <div class="exp-collapse-wrapper">
+                  <div class="exp-collapse-inner">
+                    <ul class="role-bullets">
+                      <li>Built an end-to-end custom Retail Promotion Fiori solution utilizing RAP for backend OData exposure and SAPUI5 for frontend List Report extension.</li>
+                      <li>Extended standard SAP Fiori applications, including the Order Product Standard Fiori App, custom column fragments, filters, and JS-PDF export.</li>
+                      <li>Created Web APIs using RAP, modeled high-performance CDS views, and applied SQL performance tuning for SAP HANA.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="sidebar-section">
+            <h2 class="sidebar-label">Curriculum Vitae</h2>
+            <div class="resume-box">
+              <div class="resume-header">
+                <div class="pdf-badge">PDF</div>
+                <div class="resume-meta">
+                  <span class="resume-title">Saibal_Das_Resume.pdf</span>
+                  <span class="resume-sub">4.7+ Yrs &bull; ABAP Cloud &bull; RAP &bull; Fiori</span>
+                </div>
+              </div>
+              <div class="resume-btn-group">
+                <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">View PDF</a>
+                <a href="resume.pdf" download="Saibal_Das_Resume.pdf" class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </section>
+
+          <footer class="sidebar-footer">
+            <button class="btn btn-primary full-width" type="button" onclick="openContactModal()">
+              <span>Get in Touch &rarr;</span>
+            </button>
+          </footer>
+        </div>
+      </aside>
+
+      <!-- ====================================================================
+           RIGHT COLUMN: Main Content Stream
+           ==================================================================== -->
+      <main class="content-col">
+        <!-- Hero Stage -->
+        <section id="landing" class="landing-stage">
+          <canvas id="ambientCanvas"></canvas>
+          <div class="landing-inner">
+            <div class="landing-badge">
+              <span class="status-indicator"></span>
+              <span>4.7+ Years &bull; S/4HANA Greenfield &bull; Clean Core Lead</span>
+            </div>
+            <h2 class="landing-headline">
+              Enterprise ERP Built for <span class="gradient-text">Zero Modifications.</span>
+            </h2>
+            <p class="landing-tagline">
+              Architecting upgrade-stable business solutions using the
+              <strong>ABAP RESTful Application Programming Model (RAP)</strong>, side-by-side
+              extensibility, and <strong>Agent-Based development via MCP</strong>.
+            </p>
+
+            <!-- Key Impact Metrics Strip -->
+            <div class="hero-metrics-strip">
+              <div class="metric-pill"><strong>4.7+ Yrs</strong><span>SAP S/4HANA</span></div>
+              <div class="metric-pill"><strong>Team of 7</strong><span>Clean Core Lead</span></div>
+              <div class="metric-pill"><strong>2x Certified</strong><span>ABAP Cloud &amp; Fiori</span></div>
+            </div>
+
+            <div class="landing-cta-group">
+              <button class="btn btn-lg btn-primary explore-btn" type="button" onclick="scrollToWork()">
+                <span>Explore Architecture</span>
+                <span class="btn-arrow">&darr;</span>
+              </button>
+              <button class="btn btn-lg btn-secondary" type="button" onclick="toggleDesktopSidebar()">
+                <span>👤 View Experience</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1. Principles Grid -->
+        <section id="principles-section" class="content-block">
+          <div class="block-header">
+            <span class="tag-label">01 / Architecture Philosophy</span>
+            <h3 class="block-title">Core Engineering Standards</h3>
+            <p class="block-subtitle">Governing rules applied across all enterprise implementation blueprints.</p>
+          </div>
+          <div class="principles-grid">
+            <div class="glass-card">
+              <div class="card-icon">⚡</div>
+              <h4>Tier-1 Interface Standard</h4>
+              <p>Restricting all development to released standard APIs (C1 contract), replacing transparent modifications with Cloud BAdIs and Custom Fields &amp; Logic (CFL).</p>
+            </div>
+            <div class="glass-card">
+              <div class="card-icon">🛡️</div>
+              <h4>Draft-First RAP Architecture</h4>
+              <p>Full lifecycle Managed and Unmanaged BOs with EML-governed transactions, instance feature controls, and Determination Events.</p>
+            </div>
+            <div class="glass-card">
+              <div class="card-icon">☁️</div>
+              <h4>Side-by-Side Decoupling</h4>
+              <p>Offloading custom workloads via standard RAP events (e.g. <code>R_PURCHASEORDERTP</code>) streamed through SAP Event Mesh &amp; CPI to SAP BTP.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Solutions Slider -->
+        <section id="showcase-section" class="content-block">
+          <div class="slider-header-flex">
+            <div class="block-header">
+              <span class="tag-label">02 / Solutions Portfolio</span>
+              <h3 class="block-title">Featured Client Deliveries &amp; POCs</h3>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-arrow" type="button" onclick="scrollSlider(-1)" aria-label="Previous">&larr;</button>
+              <button class="slider-arrow" type="button" onclick="scrollSlider(1)" aria-label="Next">&rarr;</button>
+            </div>
+          </div>
+          <div class="slider-viewport" id="sliderViewport">
+            <div class="slider-canvas">
+              <article class="slide-card">
+                <div>
+                  <span class="slide-category">AMGEN S/4HANA Transformation</span>
+                  <h4 class="slide-heading">RAP Event-Driven Clean Core Architecture</h4>
+                  <p class="slide-text">Greenfield enterprise pattern using standard RAP BO events (<code>R_PURCHASEORDERTP</code> &amp; <code>R_SALESORDERTP</code>) in handler classes with Event Binding to trigger asynchronous CPI integration.</p>
+                </div>
+                <div>
+                  <div class="pill-group">
+                    <span class="pill">RAP Events</span>
+                    <span class="pill">SAP CPI</span>
+                    <span class="pill">Clean Core</span>
+                  </div>
+                  <a href="#eventmesh-section" class="slide-action">Inspect Pipeline &rarr;</a>
+                </div>
+              </article>
+              <article class="slide-card">
+                <div>
+                  <span class="slide-category">Halliburton Procurement</span>
+                  <h4 class="slide-heading">PO &amp; SES Workflow Fiori Integration</h4>
+                  <p class="slide-text">Complete end-to-end approval framework incorporating PO release strategies, HTML5 notification triggers, custom Fiori SES approval apps, and seamless SAP Ariba BAdI integrations.</p>
+                </div>
+                <div>
+                  <div class="pill-group">
+                    <span class="pill">PO Workflow</span>
+                    <span class="pill">My Inbox</span>
+                    <span class="pill">Ariba BAdIs</span>
+                  </div>
+                  <a href="#sandbox-section" class="slide-action">Inspect Code Logic &rarr;</a>
+                </div>
+              </article>
+              <article class="slide-card">
+                <div>
+                  <span class="slide-category">Coop Sweden Retail</span>
+                  <h4 class="slide-heading">Custom Promotion App &amp; Fiori Extension</h4>
+                  <p class="slide-text">Custom Retail Promotion application utilizing RAP for transactional OData service modeling and customized SAPUI5 Fiori Elements controllers, fragments, and PDF export logic.</p>
+                </div>
+                <div>
+                  <div class="pill-group">
+                    <span class="pill">RAP OData</span>
+                    <span class="pill">SAPUI5</span>
+                    <span class="pill">Fiori Elements</span>
+                  </div>
+                  <a href="#cookbook-section" class="slide-action">Inspect Syntax &rarr;</a>
+                </div>
+              </article>
+              <article class="slide-card">
+                <div>
+                  <span class="slide-category">Next-Gen SAP Tooling</span>
+                  <h4 class="slide-heading">AI Agentic Development via MCP</h4>
+                  <p class="slide-text">Implemented and demonstrated Agent-Based development architecture in VS Code using Model Context Protocol (MCP) to automate S/4HANA Clean Core technical artifacts.</p>
+                </div>
+                <div>
+                  <div class="pill-group">
+                    <span class="pill">MCP Protocol</span>
+                    <span class="pill">VS Code</span>
+                    <span class="pill">AI Agentic Dev</span>
+                  </div>
+                  <a href="#cfl-section" class="slide-action">Inspect Runbook &rarr;</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Code Sandbox Section -->
+        <section id="sandbox-section" class="content-block">
+          <div class="block-header">
+            <span class="tag-label">03 / Learning Sandbox</span>
+            <h3 class="block-title">Architectural Code Lab</h3>
+            <p class="block-subtitle">Examine the implementation patterns powering modern Clean Core apps.</p>
+          </div>
+          <div class="ide-window">
+            <div class="ide-topbar">
+              <div class="ide-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="ide-tabs">
+                <button class="ide-tab-btn active" type="button" onclick="selectTab(event, 'code-bdef')">
+                  PurchaseOrder_Processor.bdef
+                </button>
+                <button class="ide-tab-btn" type="button" onclick="selectTab(event, 'code-eml')">
+                  ValidationLogic.abap
+                </button>
+                <button class="ide-tab-btn" type="button" onclick="selectTab(event, 'code-cds')">
+                  C_PurchaseOrderProjection.cds
+                </button>
+              </div>
+              <button class="copy-code-btn" id="copyCodeBtn" type="button" onclick="copyActiveCode()">
+                <span id="copyIcon">📋</span> <span id="copyText">Copy</span>
+              </button>
+            </div>
+            <div id="code-bdef" class="ide-editor active">
+              <pre><code><span class="tok-kw">managed implementation in class</span> zbp_r_po_processor <span class="tok-kw">unique</span>;
+<span class="tok-kw">strict</span> ( 2 );
+<span class="tok-kw">with draft</span>;
+
+<span class="tok-kw">define behavior for</span> ZR_PurchaseOrder_TP <span class="tok-kw">alias</span> PurchaseOrder
+<span class="tok-kw">persistent table</span> zpo_header_d
+<span class="tok-kw">draft table</span> zpo_draft_h
+<span class="tok-kw">lock master total etag</span> LastChangedAt
+<span class="tok-kw">authorization master</span> ( <span class="tok-kw">global</span> )
+{
+  <span class="tok-kw">field</span> ( <span class="tok-kw">readonly, numbering : managed</span> ) POUUID;
+  <span class="tok-kw">field</span> ( <span class="tok-kw">mandatory</span> ) Supplier, PurchaseOrg, TargetValue;
+
+  <span class="tok-kw">create</span>; <span class="tok-kw">update</span>; <span class="tok-kw">delete</span>;
+
+  <span class="tok-comment">/* Clean Core Compliance: Validation trigger &amp; event emission */</span>
+  <span class="tok-kw">validation</span> validateSupplier <span class="tok-kw">on save</span> { <span class="tok-kw">field</span> Supplier; <span class="tok-kw">create</span>; }
+  <span class="tok-kw">determination</span> onOrderCreated <span class="tok-kw">on modify</span> { <span class="tok-kw">create</span>; }
+
+  <span class="tok-kw">draft action</span> Edit;
+  <span class="tok-kw">draft action</span> Activate <span class="tok-kw">optimized</span>;
+  <span class="tok-kw">draft action</span> Discard;
+  <span class="tok-kw">draft determine action</span> Prepare { <span class="tok-kw">validation</span> validateSupplier; }
+}</code></pre>
+            </div>
+            <div id="code-eml" class="ide-editor">
+              <pre><code><span class="tok-kw">METHOD</span> validateSupplier.
+  <span class="tok-comment">" Read business object data via Entity Manipulation Language (EML)</span>
+  <span class="tok-kw">READ ENTITIES OF</span> ZR_PurchaseOrder_TP <span class="tok-kw">IN LOCAL MODE</span>
+    <span class="tok-kw">ENTITY</span> PurchaseOrder
+    <span class="tok-kw">FIELDS</span> ( Supplier TargetValue )
+    <span class="tok-kw">WITH CORRESPONDING</span> #( keys )
+    <span class="tok-kw">RESULT DATA</span>(lt_po_data).
+
+  <span class="tok-kw">LOOP AT</span> lt_po_data <span class="tok-kw">INTO DATA</span>(ls_po).
+    <span class="tok-kw">IF</span> ls_po-TargetValue &lt;= 0.
+      <span class="tok-comment">" Populate the RAP reported &amp; failed response structures</span>
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_po-%tky ) <span class="tok-kw">TO</span> failed-purchaseorder.
+      <span class="tok-kw">APPEND VALUE</span> #( %tky = ls_po-%tky
+                      %msg = new_message( id       = <span class="tok-str">'ZPO_MSG'</span>
+                                         number   = 001
+                                         severity = if_abap_behv_message=&gt;severity-error )
+                      %element-TargetValue = if_abap_behv=&gt;mk-on ) <span class="tok-kw">TO</span> reported-purchaseorder.
+    <span class="tok-kw">ENDIF</span>.
+  <span class="tok-kw">ENDLOOP</span>.
+<span class="tok-kw">ENDMETHOD</span>.</code></pre>
+            </div>
+            <div id="code-cds" class="ide-editor">
+              <pre><code>@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: <span class="tok-str">'Clean Core Projection View for Purchase Orders'</span>
+@Metadata.allowExtensions: <span class="tok-kw">true</span>
+<span class="tok-kw">define root view entity</span> ZC_PurchaseOrderProjection
+  <span class="tok-kw">provider contract</span> transactional_query
+  <span class="tok-kw">as projection on</span> ZR_PurchaseOrder_TP
+{
+  <span class="tok-kw">key</span> POUUID,
+      PurchaseOrderNumber,
+      Supplier,
+      PurchaseOrg,
+      @Semantics.amount.currencyCode: <span class="tok-str">'CurrencyCode'</span>
+      TargetValue,
+      CurrencyCode,
+      OverallStatus,
+      <span class="tok-comment">/* Tier-1 released association resolution */</span>
+      _Supplier.SupplierName <span class="tok-kw">as</span> SupplierName
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Modern ABAP 7.5+ Syntax Cookbook (Unified Split-Pane UI) -->
+        <section id="cookbook-section" class="content-block">
+          <div class="block-header">
+            <span class="tag-label">04 / Modern ABAP 7.5+ &amp; Clean Code</span>
+            <h3 class="block-title">Modern ABAP Expression Matrix</h3>
+            <p class="block-subtitle">
+              Explore how modern 7.5+ constructor operators and iterators replace verbose legacy procedural blocks.
+            </p>
+          </div>
+          <div class="cookbook-wrapper">
+            <div class="cookbook-controls">
+              <div class="search-input-box">
+                <span class="search-icon">🔍</span>
+                <input
+                  type="text"
+                  id="syntaxSearchInput"
+                  class="syntax-search-input"
+                  placeholder="Filter expressions (e.g., VALUE, REDUCE, FOR, FILTER, COND)..."
+                  autocomplete="off"
+                />
+                <button class="clear-search-btn" id="clearSearchBtn" type="button" aria-label="Clear search">
+                  &times;
+                </button>
+              </div>
+              <div class="syntax-category-pills" id="syntaxCategoryPills">
+                <button class="cat-pill active" data-cat="all" type="button">All Syntax</button>
+                <button class="cat-pill" data-cat="tables" type="button">Internal Tables</button>
+                <button class="cat-pill" data-cat="constructors" type="button">Constructors</button>
+                <button class="cat-pill" data-cat="functional" type="button">Functional Logic</button>
+                <button class="cat-pill" data-cat="types" type="button">Types &amp; Casting</button>
+              </div>
+            </div>
+
+            <!-- Unified Split Container -->
+            <div class="cookbook-grid unified-surface">
+              <div class="snippet-cards-list" id="snippetCardsList"></div>
+              <div class="snippet-display-studio">
+                <div class="studio-header">
+                  <div class="studio-meta">
+                    <div class="studio-badge-row">
+                      <span class="studio-badge" id="studioBadge">CONSTRUCTORS</span>
+                      <span class="impact-metric" id="studioReduction">-65% Lines of Code</span>
+                    </div>
+                    <h4 class="studio-title" id="studioTitle">VALUE #( ) Operator</h4>
+                  </div>
+                  <div class="studio-mode-toggle">
+                    <button class="mode-btn active" id="btnModernMode" type="button">
+                      <span class="mode-dot dot-modern"></span> Modern 7.5+
+                    </button>
+                    <button class="mode-btn" id="btnLegacyMode" type="button">
+                      <span class="mode-dot dot-legacy"></span> Classic ABAP
+                    </button>
+                  </div>
+                </div>
+                <p class="impact-desc" id="studioDescription">
+                  Constructs and populates structures and internal tables directly in memory without manual work areas.
+                </p>
+                <div class="studio-code-box">
+                  <div class="studio-code-topbar">
+                    <span class="code-tab-name" id="studioFileName">ValueOperator.abap</span>
+                    <button class="copy-code-btn" id="copyCookbookBtn" type="button" onclick="copyCookbookCode()">
+                      <span id="cbCopyIcon">📋</span> <span id="cbCopyText">Copy Code</span>
+                    </button>
+                  </div>
+                  <div class="studio-code-viewport">
+                    <pre><code id="studioCodeBlock"></code></pre>
+                  </div>
+                </div>
+                <div class="studio-rationale-box" id="studioRationale">
+                  <strong>Clean Core Benefit:</strong> Eliminates global state, header lines, and implicit memory buffers, making routines thread-safe and stateless.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Interactive Event Mesh Architecture Diagram -->
+        <section id="eventmesh-section" class="content-block">
+          <div class="block-header">
+            <span class="tag-label">05 / Event-Driven Architecture</span>
+            <h3 class="block-title">Asynchronous Clean Core Decoupling Pipeline</h3>
+            <p class="block-subtitle">
+              Hover or click across architectural nodes to inspect event bindings, CloudEvents 1.0 payloads, and side-by-side processing on SAP BTP.
+            </p>
+          </div>
+          <div class="mesh-diagram-wrapper">
+            <div class="mesh-flow-viewport" id="meshFlowViewport">
+              <div class="mesh-flow-track" id="meshFlowTrack">
+                <div class="mesh-node-card active" data-node="0">
+                  <div class="mesh-node-top">
+                    <span class="mesh-node-badge">01 &bull; Producer</span>
+                    <span class="mesh-status-beacon beacon-emerald"></span>
+                  </div>
+                  <div class="mesh-node-icon">🏢</div>
+                  <h4 class="mesh-node-title">S/4HANA RAP Core</h4>
+                  <span class="mesh-node-sub"><code>R_PURCHASEORDERTP</code></span>
+                </div>
+                <div class="mesh-connector-pipe"><div class="pipe-pulse"></div></div>
+                <div class="mesh-node-card" data-node="1">
+                  <div class="mesh-node-top">
+                    <span class="mesh-node-badge">02 &bull; Contract</span>
+                    <span class="mesh-status-beacon beacon-blue"></span>
+                  </div>
+                  <div class="mesh-node-icon">⚡</div>
+                  <h4 class="mesh-node-title">RAP Event Binding</h4>
+                  <span class="mesh-node-sub">Outbound Event Topic</span>
+                </div>
+                <div class="mesh-connector-pipe"><div class="pipe-pulse"></div></div>
+                <div class="mesh-node-card" data-node="2">
+                  <div class="mesh-node-top">
+                    <span class="mesh-node-badge">03 &bull; Broker</span>
+                    <span class="mesh-status-beacon beacon-amber"></span>
+                  </div>
+                  <div class="mesh-node-icon">☁️</div>
+                  <h4 class="mesh-node-title">SAP Event Mesh</h4>
+                  <span class="mesh-node-sub">BTP Message Router</span>
+                </div>
+                <div class="mesh-connector-pipe"><div class="pipe-pulse"></div></div>
+                <div class="mesh-node-card" data-node="3">
+                  <div class="mesh-node-top">
+                    <span class="mesh-node-badge">04 &bull; Consumer</span>
+                    <span class="mesh-status-beacon beacon-purple"></span>
+                  </div>
+                  <div class="mesh-node-icon">🚀</div>
+                  <h4 class="mesh-node-title">BTP Microservice</h4>
+                  <span class="mesh-node-sub">Node.js / CAP Runtime</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mesh-inspector-card unified-surface" id="meshInspectorCard">
+              <div class="inspector-header">
+                <div class="inspector-meta">
+                  <span class="inspector-phase-pill" id="meshPhasePill">STAGE 01: SAP S/4HANA DIGITAL CORE</span>
+                  <h4 class="inspector-title" id="meshTitle">RAP Business Object Event Emission</h4>
+                </div>
+                <span class="inspector-protocol" id="meshProtocol">Protocol: ABAP Cloud EML Trigger</span>
+              </div>
+              <p class="inspector-desc" id="meshDesc">
+                Upon transactional COMMIT in S/4HANA, the RAP buffer triggers native business events defined in the Behavior Definition (BDEF). Custom logic executes with zero transparent modifications to the standard database.
+              </p>
+              <div class="inspector-details-grid">
+                <div class="inspector-spec-box">
+                  <span class="spec-label">Technical Governance Specifications:</span>
+                  <ul class="inspector-spec-list" id="meshSpecList">
+                    <li><strong>Trigger:</strong> RAP Behavior Definition determination on save.</li>
+                    <li><strong>Interface:</strong> C1 released standard business object contract.</li>
+                    <li><strong>Zero Lockup:</strong> Asynchronous dispatch avoids blocking database locks.</li>
+                  </ul>
+                  <div class="inspector-clean-core" id="meshCleanCore">
+                    <strong>Clean Core Impact:</strong> Replaces legacy transparent user exits (<code>MV45AFZZ</code>) with cloud-ready asynchronous event emissions.
+                  </div>
+                </div>
+                <div class="inspector-payload-box">
+                  <div class="payload-topbar">
+                    <span class="payload-filename" id="meshPayloadFilename">PurchaseOrder.bdef</span>
+                    <button class="copy-code-btn" id="copyMeshPayloadBtn" type="button" onclick="copyMeshPayload()">
+                      <span id="meshCopyIcon">📋</span> <span id="meshCopyText">Copy Payload</span>
+                    </button>
+                  </div>
+                  <div class="payload-body">
+                    <pre><code id="meshPayloadBlock"></code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Custom Fields & Logic (CFL) & 10-Step Coding Block Runbook -->
+        <section id="cfl-section" class="content-block">
+          <div class="block-header">
+            <span class="tag-label">06 / Key User Extensibility</span>
+            <h3 class="block-title">Custom Fields &amp; Logic (CFL) &amp; Coding Block Runbook</h3>
+            <p class="block-subtitle">
+              Hover or click across lifecycle phases and the 10-step Coding Block (<code>CI_COBL</code>) decommission procedure.
+            </p>
+          </div>
+
+          <div class="cfl-lifecycle-grid" id="cflLifecycleGrid">
+            <button class="cfl-card active" data-cfl="enable" type="button">
+              <div class="cfl-card-header">
+                <span class="card-icon">⚡</span>
+                <span class="cfl-card-tag">Phase 01</span>
+              </div>
+              <h4>Field Enablement</h4>
+              <p class="cfl-phase-desc">Create typed custom fields in standard SAP business contexts.</p>
+              <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+            </button>
+            <button class="cfl-card" data-cfl="publish" type="button">
+              <div class="cfl-card-header">
+                <span class="card-icon">🚀</span>
+                <span class="cfl-card-tag">Phase 02</span>
+              </div>
+              <h4>Publish to Standard Fiori</h4>
+              <p class="cfl-phase-desc">Expose fields to OData APIs and place them using UI Adaptation.</p>
+              <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+            </button>
+            <button class="cfl-card" data-cfl="disable" type="button">
+              <div class="cfl-card-header">
+                <span class="card-icon">🛑</span>
+                <span class="cfl-card-tag">Phase 03</span>
+              </div>
+              <h4>Field Disabling</h4>
+              <p class="cfl-phase-desc">Safely decouple metadata without corrupting persistent database storage.</p>
+              <span class="cfl-action-hint">Inspect Walkthrough &rarr;</span>
+            </button>
+          </div>
+
+          <div class="cfl-detail-panel unified-surface" id="cflDetailPanel">
+            <div class="cfl-panel-topbar">
+              <span class="cfl-panel-badge" id="cflPanelBadge">LIFECYCLE PHASE: ENABLEMENT</span>
+              <span class="cfl-panel-tool" id="cflPanelTool">App: Custom Fields and Logic</span>
+            </div>
+            <h4 class="cfl-panel-title" id="cflPanelTitle">1. Field Creation &amp; Business Context Allocation</h4>
+            <p class="cfl-panel-desc" id="cflPanelDesc">
+              Create fields directly in target SAP business contexts (e.g. Accounting: Coding Block, Sales Document Item). SAP automatically generates the underlying database append tables and dictionary structures transparently.
+            </p>
+            <div class="cfl-steps-box">
+              <span class="cfl-box-label">Execution Blueprint:</span>
+              <ol class="cfl-instructions-list" id="cflInstructionsList">
+                <li>Open the <strong>Custom Fields and Logic</strong> Fiori app and select <strong>Create (+)</strong>.</li>
+                <li>Assign targeted <strong>Business Context</strong> (e.g., <code>Accounting: Coding Block</code> or <code>Sales Document Item</code>).</li>
+                <li>Provide Field Label, Identifier, and Data Type (Text, Amount, Code List, or Date).</li>
+                <li>Save and trigger backend dictionary persistence generation.</li>
+              </ol>
+            </div>
+            <div class="cfl-guardrail-note" id="cflGuardrailNote">
+              <strong>Clean Core Standard:</strong> Key User Extensibility manages physical DDIC enhancement append tables automatically, preserving core upgrade stability.
+            </div>
+          </div>
+
+          <!-- 10-Step Coding Block Removal Runbook -->
+          <div class="coding-block-runbook-wrapper unified-surface">
+            <div class="runbook-header">
+              <div class="runbook-title-row">
+                <div class="runbook-badge">10-Step Production Procedure</div>
+                <span class="runbook-progress-label" id="runbookProgressText">10% Complete</span>
+              </div>
+              <h4 class="runbook-title">Coding Block (<code>CI_COBL</code>) Custom Field Removal Pipeline</h4>
+              <p class="runbook-desc">
+                Decommissioning fields from the <strong>Accounting: Coding Block</strong> context (<code>COBL</code> / <code>ACDOCA</code>) requires exact program execution sequence to regenerate CDS views and prevent DDIC lockups.
+              </p>
+              <!-- Visual Progress Track -->
+              <div class="runbook-progress-track">
+                <div class="runbook-progress-fill" id="runbookProgressFill" style="width: 10%"></div>
+              </div>
+            </div>
+
+            <div class="runbook-stepper-container">
+              <div class="stepper-nav-rail" id="runbookNavRail">
+                <button class="step-nav-btn active" data-step="0" type="button">
+                  <span class="step-num">01</span>
+                  <span class="step-nav-title">Reset to Delivery</span>
+                </button>
+                <button class="step-nav-btn" data-step="1" type="button">
+                  <span class="step-num">02</span>
+                  <span class="step-nav-title">Dependency Audit</span>
+                </button>
+                <button class="step-nav-btn" data-step="2" type="button">
+                  <span class="step-num">03</span>
+                  <span class="step-nav-title">Decouple via SCFD_EUI</span>
+                </button>
+                <button class="step-nav-btn" data-step="3" type="button">
+                  <span class="step-num">04</span>
+                  <span class="step-nav-title">Remove from CI_COBL</span>
+                </button>
+                <button class="step-nav-btn" data-step="4" type="button">
+                  <span class="step-num">05</span>
+                  <span class="step-nav-title">Regen FCO CDS Views</span>
+                </button>
+                <button class="step-nav-btn" data-step="5" type="button">
+                  <span class="step-num">06</span>
+                  <span class="step-nav-title">Regen GL &amp; GLPOS CDS</span>
+                </button>
+                <button class="step-nav-btn" data-step="6" type="button">
+                  <span class="step-num">07</span>
+                  <span class="step-nav-title">Sync FCO Hierarchies</span>
+                </button>
+                <button class="step-nav-btn" data-step="7" type="button">
+                  <span class="step-num">08</span>
+                  <span class="step-nav-title">CI_COBL Reactivation</span>
+                </button>
+                <button class="step-nav-btn" data-step="8" type="button">
+                  <span class="step-num">09</span>
+                  <span class="step-nav-title">Set to Delivery</span>
+                </button>
+                <button class="step-nav-btn" data-step="9" type="button">
+                  <span class="step-num">10</span>
+                  <span class="step-nav-title">Generate COBL</span>
+                </button>
+              </div>
+
+              <div class="stepper-display-card" id="runbookDisplayCard">
+                <div class="display-card-top">
+                  <span class="step-counter" id="stepCounter">Step 01 of 10</span>
+                  <span class="step-phase-tag" id="stepPhaseTag">Reset To Delivery</span>
+                </div>
+                <h4 class="display-step-title" id="stepTitle">
+                  Execute Program FGL_MIG_REGENERATE_CDS_BCF
+                </h4>
+                <p class="display-step-desc" id="stepDescription">
+                  Temporarily reset the generated compatibility and migration CDS views back to SAP standard delivery state so they release their dictionary locks on the custom field.
+                </p>
+                <div class="step-console-box">
+                  <div class="console-topbar">
+                    <span>SAP Execution Scope</span>
+                    <span class="console-tcode" id="stepTCode">T-Code: SE38</span>
+                  </div>
+                  <div class="console-body">
+                    <pre><code id="stepCommand">1. Go to SE38 and execute program FGL_MIG_REGENERATE_CDS_BCF
+2. Select "Reset to delivery" checkbox on the selection screen
+3. Execute and verify program finishes without errors</code></pre>
+                  </div>
+                </div>
+                <div class="step-guardrail-alert" id="stepAlert">
+                  <strong>Rule:</strong> Do not execute the program without selecting the "Reset to delivery" checkbox on the selection screen.
+                </div>
+                <div class="step-action-footer">
+                  <button class="btn btn-secondary btn-sm" id="prevStepBtn" type="button" onclick="navigateRunbook(-1)">
+                    &larr; Previous Step
+                  </button>
+                  <button class="btn btn-primary btn-sm" id="nextStepBtn" type="button" onclick="navigateRunbook(1)">
+                    Next Step &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Clean Core Extensibility Matrix -->
+        <section class="content-block" id="cleanCoreSection">
+          <div class="slider-header-flex">
+            <div class="block-header">
+              <span class="tag-label">07 / Architectural Guardrails</span>
+              <h3 class="block-title">Clean Core Extensibility Matrix</h3>
+              <p class="block-subtitle">
+                Hover or click across enterprise modernization patterns to inspect decoupling architectures.
+              </p>
+            </div>
+            <div class="matrix-slider-controls">
+              <button class="slider-arrow" id="matrixPrevBtn" type="button" aria-label="Previous scenario">
+                &lsaquo;
+              </button>
+              <button class="slider-arrow" id="matrixNextBtn" type="button" aria-label="Next scenario">
+                &rsaquo;
+              </button>
+            </div>
+          </div>
+          <div class="matrix-wrapper">
+            <div class="matrix-slider-viewport" id="matrixSliderViewport">
+              <div class="matrix-slider-track" id="matrixSliderTrack">
+                <button class="scenario-btn active" data-scenario="sales_exit" data-index="0" type="button">
+                  <span class="scenario-icon">🔄</span>
+                  <div class="scenario-info">
+                    <span class="scenario-name">User Exit Remediation</span>
+                    <span class="scenario-sub">Refactoring MV45AFZZ</span>
+                  </div>
+                </button>
+                <button class="scenario-btn" data-scenario="custom_bo" data-index="1" type="button">
+                  <span class="scenario-icon">🧩</span>
+                  <div class="scenario-info">
+                    <span class="scenario-name">Transactional BO</span>
+                    <span class="scenario-sub">Custom Business Object</span>
+                  </div>
+                </button>
+                <button class="scenario-btn" data-scenario="analytics" data-index="2" type="button">
+                  <span class="scenario-icon">⚡</span>
+                  <div class="scenario-info">
+                    <span class="scenario-name">Operational Analytics</span>
+                    <span class="scenario-sub">High-Throughput Queries</span>
+                  </div>
+                </button>
+                <button class="scenario-btn" data-scenario="btp_event" data-index="3" type="button">
+                  <span class="scenario-icon">☁️</span>
+                  <div class="scenario-info">
+                    <span class="scenario-name">Side-by-Side Bridge</span>
+                    <span class="scenario-sub">Event Mesh &amp; SAP BTP</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="matrix-dots" id="matrixDots">
+              <span class="matrix-dot active" data-index="0"></span>
+              <span class="matrix-dot" data-index="1"></span>
+              <span class="matrix-dot" data-index="2"></span>
+              <span class="matrix-dot" data-index="3"></span>
+            </div>
+            <div class="blueprint-card unified-surface" id="blueprintCard">
+              <div class="blueprint-topbar">
+                <span class="tier-pill" id="bpTier">Tier 2: In-App Developer Extensibility</span>
+                <span class="contract-pill" id="bpContract">C1 Interface Contract</span>
+              </div>
+              <div class="blueprint-body">
+                <h4 class="blueprint-heading" id="bpTitle">Legacy User Exit to Cloud BAdI Pattern</h4>
+                <p class="blueprint-desc" id="bpDesc">
+                  Eliminates transparent core table and program modifications. Custom logic is isolated into standard Cloud BAdIs utilizing released SAP standard APIs, ensuring seamless zero-downtime upgrades.
+                </p>
+                <div class="pipeline-flow-container">
+                  <span class="pipeline-label">Refactoring Pipeline:</span>
+                  <div class="pipeline-track" id="bpPipeline">
+                    <div class="pipe-step pipe-legacy">Legacy Hook (MV45AFZZ)</div>
+                    <div class="pipe-arrow">&rarr;</div>
+                    <div class="pipe-step pipe-contract">C1 Released APIs</div>
+                    <div class="pipe-arrow">&rarr;</div>
+                    <div class="pipe-step pipe-target">Cloud BAdI Implementation</div>
+                  </div>
+                </div>
+                <div class="guardrails-grid" id="bpGuardrails">
+                  <div class="guardrail-item">
+                    <span class="check-icon">✓</span><span>100% Upgrade-Stable (Zero S/4HANA Upgrade Halts)</span>
+                  </div>
+                  <div class="guardrail-item">
+                    <span class="check-icon">✓</span><span>Enforced by ABAP Test Cockpit (ATC) Cloud Profile</span>
+                  </div>
+                  <div class="guardrail-item">
+                    <span class="check-icon">✓</span><span>No direct SELECTs on unreleased standard tables</span>
+                  </div>
+                </div>
+                <div class="blueprint-tags" id="bpTags">
+                  <span class="pill">Cloud BAdI</span>
+                  <span class="pill">ABAP Cloud</span>
+                  <span class="pill">ATC Governance</span>
+                  <span class="pill">Developer Extensibility</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Site Footer -->
+        <footer class="content-footer">
+          <p>&copy; 2026 Saibal Das &bull; SAP S/4HANA, RAP &amp; Clean Core Architecture Hub.</p>
+          <a href="#landing" class="back-top">&uarr; Return to Top</a>
+        </footer>
+      </main>
+    </div>
+
+    <!-- ====================================================================
+         MODAL 1: CONTACT & CONNECT POPUP
+         ==================================================================== -->
+    <div class="modal-backdrop" id="contactModalBackdrop" onclick="closeContactModal(event)">
+      <div class="modal-card">
+        <button class="modal-close-btn" type="button" onclick="closeContactModal()" aria-label="Close modal">
+          &times;
+        </button>
+        <div class="modal-header">
+          <span class="tag-label">Get in Touch</span>
+          <h3 class="modal-title">Let's Connect</h3>
+          <p class="modal-sub">
+            Available for SAP S/4HANA advisory, RAP transformations, and clean core migration projects.
+          </p>
+        </div>
+        <div class="modal-body">
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-info">
+              <span class="contact-type">Direct Email</span>
+              <span class="contact-val" id="emailToCopy">saibaldas04@gmail.com</span>
+            </div>
+            <button class="btn btn-sm btn-secondary copy-btn" type="button" onclick="copyEmail()">
+              <span id="copyEmailText">Copy</span>
+            </button>
+          </div>
+          <a href="tel:+917407147423" class="contact-card contact-link">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+              <span class="contact-type">Phone / WhatsApp</span>
+              <span class="contact-val">+91 7407147423</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card contact-link">
+            <div class="contact-icon">💼</div>
+            <div class="contact-info">
+              <span class="contact-type">LinkedIn Profile</span>
+              <span class="contact-val">Connect on LinkedIn &rarr;</span>
+            </div>
+          </a>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div class="contact-info">
+              <span class="contact-type">Location &amp; Engagement</span>
+              <span class="contact-val">Kolkata, India &bull; Open for Remote / Advisory</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="mailto:saibaldas04@gmail.com" class="btn btn-primary full-width">
+            Open Email App &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         MODAL 2: QUICK COMMAND PALETTE (Ctrl+K / Cmd+K)
+         ==================================================================== -->
+    <div class="modal-backdrop" id="cmdModalBackdrop" onclick="closeCmdModal(event)">
+      <div class="cmd-modal-card">
+        <div class="cmd-search-bar">
+          <span class="cmd-search-icon">⚡</span>
+          <input
+            type="text"
+            id="cmdSearchInput"
+            class="cmd-input"
+            placeholder="Type a command or jump to section..."
+            autocomplete="off"
+          />
+          <button class="cmd-esc-badge" type="button" onclick="closeCmdModal()">ESC</button>
+        </div>
+        <div class="cmd-list" id="cmdList">
+          <button class="cmd-item" type="button" data-action="jump" data-target="#principles-section">
+            <span class="cmd-item-icon">🛡️</span>
+            <span class="cmd-item-label">Jump to Core Engineering Standards</span>
+            <span class="cmd-item-meta">Section 01</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#showcase-section">
+            <span class="cmd-item-icon">🚀</span>
+            <span class="cmd-item-label">Jump to Featured Client Solutions (AMGEN, Halliburton, Coop)</span>
+            <span class="cmd-item-meta">Section 02</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#sandbox-section">
+            <span class="cmd-item-icon">💻</span>
+            <span class="cmd-item-label">Jump to Interactive RAP Code Lab (BDEF, EML, CDS)</span>
+            <span class="cmd-item-meta">Section 03</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#cookbook-section">
+            <span class="cmd-item-icon">📘</span>
+            <span class="cmd-item-label">Jump to Modern ABAP 7.5+ Syntax Matrix</span>
+            <span class="cmd-item-meta">Section 04</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#eventmesh-section">
+            <span class="cmd-item-icon">☁️</span>
+            <span class="cmd-item-label">Jump to SAP Event Mesh Decoupling Pipeline</span>
+            <span class="cmd-item-meta">Section 05</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#cfl-section">
+            <span class="cmd-item-icon">🔧</span>
+            <span class="cmd-item-label">Jump to 10-Step Coding Block (CI_COBL) Removal Runbook</span>
+            <span class="cmd-item-meta">Section 06</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="jump" data-target="#cleanCoreSection">
+            <span class="cmd-item-icon">✨</span>
+            <span class="cmd-item-label">Jump to Clean Core Extensibility Matrix</span>
+            <span class="cmd-item-meta">Section 07</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="profile">
+            <span class="cmd-item-icon">👤</span>
+            <span class="cmd-item-label">Toggle Career Profile &amp; Experience Drawer</span>
+            <span class="cmd-item-meta">Action</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="theme">
+            <span class="cmd-item-icon">🌗</span>
+            <span class="cmd-item-label">Switch Color Theme (Dark / Light Horizon)</span>
+            <span class="cmd-item-meta">Theme</span>
+          </button>
+          <button class="cmd-item" type="button" data-action="contact">
+            <span class="cmd-item-icon">✉️</span>
+            <span class="cmd-item-label">Open Contact Details &amp; Copy Email</span>
+            <span class="cmd-item-meta">Connect</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         MASTER JAVASCRIPT ENGINE
+         ==================================================================== -->
+    <!-- ====================================================================
          MASTER JAVASCRIPT ENGINE (Fetches Data from portfolio-data.json)
          ==================================================================== -->
     <script>
@@ -801,3 +1909,5 @@
         loadPortfolioDataAndInit();
       }
     </script>
+  </body>
+</html>
